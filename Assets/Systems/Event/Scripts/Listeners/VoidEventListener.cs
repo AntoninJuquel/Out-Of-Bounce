@@ -1,8 +1,8 @@
-using Systems.EventSystem.Scripts.Channels;
+using Systems.Event.Scripts.Channels;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Systems.EventSystem.Scripts.Listeners
+namespace Systems.Event.Scripts.Listeners
 {
     public class VoidEventListener : MonoBehaviour
     {

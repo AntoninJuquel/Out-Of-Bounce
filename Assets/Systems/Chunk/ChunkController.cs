@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Systems.ChunkSystem
+namespace Systems.Chunk
 {
     public class ChunkController : MonoBehaviour
     {

@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Systems.ChunkSystem
+namespace Systems.Chunk
 {
     public class ChunkManager : MonoBehaviour
     {

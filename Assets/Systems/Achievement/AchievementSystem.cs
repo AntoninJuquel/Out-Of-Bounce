@@ -1,7 +1,7 @@
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 
-namespace Systems.AchievementSystem
+namespace Systems.Achievement
 {
     [Serializable]
     public class Achievements

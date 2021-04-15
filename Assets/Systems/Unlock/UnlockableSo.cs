@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Systems.UnlockSystem
+namespace Systems.Unlock
 {
     public class UnlockableSo : ScriptableObject
     {

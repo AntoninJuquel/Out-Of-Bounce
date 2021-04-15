@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Systems.EventSystem.Scripts.Channels
+namespace Systems.Event.Scripts.Channels
 {
     [CreateAssetMenu(menuName = "Events/Vector2 Event Channel")]
     public class Vector2EventChannelSO : ScriptableObject
