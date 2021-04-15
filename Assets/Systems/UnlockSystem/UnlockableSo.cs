@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Systems.UnlockSystem
 {
@@ -15,20 +16,36 @@ namespace Systems.UnlockSystem
             Unlocked
         }
 
-        public void UpdateStatus(VaultSo vaultSo)
+        public void UpdateStatus(Vault vault)
         {
             if (_status != UnlockStatus.Locked) return;
-            if (vaultSo.GetLevel() >= levelRequired)
+            if (vault.GetLevel() >= levelRequired)
                 _status = UnlockStatus.Unlockable;
         }
 
-        public void Unlock(VaultSo vaultSo)
+        public void Unlock(Vault vault)
         {
             if (_status != UnlockStatus.Unlockable) return;
-            var res = vaultSo.GetValue() - price;
+            var res = vault.GetValue() - price;
             if (res <= 0) return;
             _status = UnlockStatus.Unlocked;
-            vaultSo.SetValue(res);
+            vault.SetValue(res);
         }
+    }
+
+    [Serializable]
+    public class Vault
+    {
+        [SerializeField] private int value;
+        [SerializeField] private int level;
+
+        public int GetValue() => value;
+        public int GetLevel() => level;
+
+        public void SetValue(int newValue) => value = newValue;
+        public void SetLevel(int newLevel) => level = newLevel;
+
+        public void AddValue(int amount) => value += amount;
+        public void AddLevel(int amount) => level += amount;
     }
 }

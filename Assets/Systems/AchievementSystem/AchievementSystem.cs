@@ -1,16 +1,17 @@
 using System.Collections.Generic;
-using UnityEngine;
 using System;
+using UnityEngine;
 
 namespace Systems.AchievementSystem
 {
-    [CreateAssetMenu(fileName = "Achievement", menuName = "Test")]
-    public class AchievementSo : ScriptableObject
+    [Serializable]
+    public class Achievements
     {
         private Dictionary<AchievementType, Achievement> _achievements = new Dictionary<AchievementType, Achievement>();
 
         public void LoadAchievements()
         {
+            _achievements = new Dictionary<AchievementType, Achievement>();
             foreach (var achievementType in (AchievementType[]) Enum.GetValues(typeof(AchievementType)))
             {
                 _achievements.Add(achievementType, new Achievement());
@@ -18,6 +19,8 @@ namespace Systems.AchievementSystem
         }
 
         public void UpdateAchievement(AchievementType achievementType, float last) => _achievements[achievementType].UpdateAchievement(last);
+
+        public Dictionary<AchievementType, Achievement> GetDictionary() => _achievements;
     }
 
     [Serializable]
