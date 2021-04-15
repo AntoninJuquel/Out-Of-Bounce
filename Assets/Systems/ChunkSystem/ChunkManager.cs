@@ -1,0 +1,106 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
+namespace Systems.ChunkSystem
+{
+    public class ChunkManager : MonoBehaviour
+    {
+        public static ChunkManager Instance;
+        [SerializeField] private int chunkSize = 32, chunkPopulation = 10;
+        [SerializeField] private GameObject prefab;
+        private Dictionary<Vector3, Chunk> _chunks = new Dictionary<Vector3, Chunk>();
+
+        private void Awake()
+        {
+            Instance = this;
+            _chunks = new Dictionary<Vector3, Chunk> {{Vector3.zero, new Chunk(Vector3.zero, chunkSize, prefab, chunkPopulation)}};
+        }
+
+        private void OnDrawGizmos()
+        {
+            foreach (var bounds in _chunks.Select(kvp => kvp.Value.GetBounds()))
+            {
+                Gizmos.DrawWireCube(bounds.center, bounds.size);
+            }
+        }
+
+        private void GenerateChunksAround(ChunkController chunkController, Vector3 position)
+        {
+            for (var x = -1; x < 2; x++)
+            {
+                for (var y = -1; y < 2; y++)
+                {
+                    var chunkPosition = position + new Vector3(x, y) * chunkSize;
+                    if (!_chunks.ContainsKey(chunkPosition)) _chunks.Add(chunkPosition, new Chunk(chunkPosition, chunkSize, prefab, chunkPopulation));
+                    _chunks[chunkPosition].AddChunkController(chunkController);
+                }
+            }
+        }
+
+        public Chunk GetClosestChunk(ChunkController chunkController, Vector3 oldPosition, Vector3 position)
+        {
+            var keyValuePair = _chunks.FirstOrDefault(kvp => kvp.Value.GetBounds().Contains(position));
+
+            GenerateChunksAround(chunkController, keyValuePair.Key);
+
+            var delta = (keyValuePair.Key - oldPosition).normalized;
+            if (delta == Vector3.zero) return keyValuePair.Value;
+            for (var i = -1; i < 2; i++)
+            {
+                var chunkPosition = oldPosition - delta * chunkSize + new Vector3(i * delta.y, i * delta.x) * chunkSize;
+                _chunks[chunkPosition].RemoveChunkController(chunkController);
+                if (!_chunks[chunkPosition].IsEmpty()) continue;
+                _chunks[chunkPosition].RemoveChunk();
+                _chunks.Remove(chunkPosition);
+            }
+
+            return keyValuePair.Value;
+        }
+    }
+
+    [System.Serializable]
+    public class Chunk
+    {
+        [SerializeField] private Bounds bounds;
+        [SerializeField] private List<ChunkController> chunkControllers = new List<ChunkController>();
+        [SerializeField] private List<GameObject> gameObjects = new List<GameObject>();
+
+        public Chunk(Vector3 position, float size, GameObject prefab, int population)
+        {
+            bounds = new Bounds(position, Vector3.one * size);
+            for (var i = 0; i < population; i++)
+            {
+                gameObjects.Add(Object.Instantiate(prefab, RandomPointInBounds(), Quaternion.identity));
+            }
+        }
+
+        public Vector3 RandomPointInBounds() =>
+            new Vector3(
+                Random.Range(bounds.min.x, bounds.max.x),
+                Random.Range(bounds.min.y, bounds.max.y),
+                Random.Range(bounds.min.z, bounds.max.z)
+            );
+
+        public Bounds GetBounds() => bounds;
+
+        public void AddChunkController(ChunkController chunkController)
+        {
+            if (chunkControllers.Contains(chunkController)) return;
+            chunkControllers.Add(chunkController);
+        }
+
+        public void RemoveChunkController(ChunkController chunkController) => chunkControllers.Remove(chunkController);
+        public bool IsEmpty() => chunkControllers.Count == 0;
+        public void AddGameObject(GameObject gameObject) => gameObjects.Add(gameObject);
+
+        public void RemoveChunk()
+        {
+            foreach (var gameObject in gameObjects)
+            {
+                Object.Destroy(gameObject);
+            }
+        }
+    }
+}
