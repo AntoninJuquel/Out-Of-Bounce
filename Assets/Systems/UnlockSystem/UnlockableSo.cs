@@ -4,7 +4,7 @@ namespace Systems.UnlockSystem
 {
     public class UnlockableSo : ScriptableObject
     {
-        [SerializeField] private int value;
+        [SerializeField] private int price;
         [SerializeField] private int levelRequired;
         private UnlockStatus _status = UnlockStatus.Locked;
 
@@ -25,7 +25,7 @@ namespace Systems.UnlockSystem
         public void Unlock(VaultSo vaultSo)
         {
             if (_status != UnlockStatus.Unlockable) return;
-            var res = vaultSo.GetValue() - value;
+            var res = vaultSo.GetValue() - price;
             if (res <= 0) return;
             _status = UnlockStatus.Unlocked;
             vaultSo.SetValue(res);
