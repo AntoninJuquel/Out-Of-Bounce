@@ -57,7 +57,7 @@ namespace Systems.Chunk
             var delta = (keyValuePair.Key - oldPosition).normalized;
             if (delta == Vector3.zero) return keyValuePair.Value;
 
-            if (delta.x != delta.y)
+            if (Mathf.Abs(delta.x) != Mathf.Abs(delta.y))
                 for (var i = -1; i < 2; i++)
                 {
                     var chunkPosition = oldPosition - delta * chunkSize + new Vector3(i * delta.y, i * delta.x) * chunkSize;
