@@ -21,7 +21,7 @@ namespace Systems.Chunk
 
         private void Update()
         {
-            if(!_chunkManager.started) return;
+            if(!_chunkManager.Started) return;
             var position = _transform.position;
             _chunk ??= _chunkManager.GetClosestChunk(this, position, position);
             if (_chunk.GetBounds().Contains(position)) return;

@@ -11,7 +11,7 @@ namespace Systems.Chunk
         public static ChunkManager Instance;
         [SerializeField] private int chunkSize = 32;
         private Dictionary<Vector3, Chunk> _chunks = new Dictionary<Vector3, Chunk>();
-        public bool started = false;
+        public bool Started => _chunks.Count != 0;
 
         public delegate void ChunkEventHandler(Chunk position, bool added);
 
@@ -20,11 +20,6 @@ namespace Systems.Chunk
         private void Awake()
         {
             Instance = this;
-        }
-
-        private void Start()
-        {
-            _chunks = new Dictionary<Vector3, Chunk> {{Vector3.zero, new Chunk(Vector3.zero, chunkSize)}};
         }
 
         private void OnDrawGizmos()
@@ -77,6 +72,11 @@ namespace Systems.Chunk
             }
 
             return keyValuePair.Value;
+        }
+
+        public void StartChunk(Vector3 position)
+        {
+            _chunks = new Dictionary<Vector3, Chunk> {{position, new Chunk(position, chunkSize)}};
         }
     }
 
