@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Systems.Pool
@@ -8,7 +9,12 @@ namespace Systems.Pool
         [SerializeField] private List<Pool> pools = new List<Pool>();
         private Dictionary<string, Queue<GameObject>> _poolDictionary;
 
-        protected void StartPool()
+        private void OnEnable()
+        {
+            StartPool();
+        }
+
+        private void StartPool()
         {
             _poolDictionary = new Dictionary<string, Queue<GameObject>>();
 

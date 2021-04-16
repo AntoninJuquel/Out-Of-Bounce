@@ -21,7 +21,6 @@ namespace Dot
 
         private void Start()
         {
-            StartPool();
             ChunkManager.Instance.ChunkEvent += HandleDots;
         }
 
