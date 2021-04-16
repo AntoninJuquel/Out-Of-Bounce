@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 
 namespace Ball
 {
@@ -16,6 +18,11 @@ namespace Ball
             _transform = transform;
         }
 
+        private void Start()
+        {
+            StartCoroutine(DeathRoutine());
+        }
+
         private void Update()
         {
             var velocity = _rigidbody.velocity;
@@ -26,10 +33,6 @@ namespace Ball
             render.localScale = new Vector3(_squashAmount, _stretchAmount, 1);
         }
 
-        public void Setup()
-        {
-            _rigidbody.simulated = GameManager.GameStatus != GameStatus.Starting;
-        }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
@@ -37,6 +40,22 @@ namespace Ball
             _stretchAmount = stretchWhenSquash;
             other.gameObject.TryGetComponent(out ICollide collide);
             collide?.Bounce(gameObject, 15);
+        }
+
+        private IEnumerator DeathRoutine()
+        {
+            yield return new WaitUntil(() => _transform.position.y < 0);
+            Destroy();
+        }
+
+        public void Setup()
+        {
+            _rigidbody.simulated = GameManager.GameStatus != GameStatus.Starting;
+        }
+
+        public void Destroy()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

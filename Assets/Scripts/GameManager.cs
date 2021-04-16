@@ -8,11 +8,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Vector3 startPosition;
-    private ChunkManager _chunkManager;
-    private BallManager _ballManager;
-
     private Rigidbody2D _firstBallRb;
-
     public static GameStatus GameStatus;
 
     private void Awake()
@@ -22,10 +18,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _chunkManager = ChunkManager.Instance;
-        _ballManager = BallManager.Instance;
-        _chunkManager.StartChunk(startPosition);
-        _ballManager.SpawnBall(startPosition, out _firstBallRb);
+        ChunkManager.Instance.StartChunk(startPosition);
+        BallManager.Instance.SpawnBall(startPosition, out _firstBallRb);
+        CameraController.Instance.SetTarget(_firstBallRb);
         StartCoroutine(StartRoutine());
     }
 
@@ -39,5 +34,8 @@ public class GameManager : MonoBehaviour
 
 public enum GameStatus
 {
-    Starting, Playing, Paused, GameOver
+    Starting,
+    Playing,
+    Paused,
+    GameOver
 }
