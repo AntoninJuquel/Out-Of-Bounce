@@ -23,22 +23,12 @@ namespace Platform
         {
             if (GameManager.GameStatus == GameStatus.Paused) return;
 
-            if (Input.GetMouseButtonDown(0) && platformCounter > 0)
-            {
-                StartLine();
-            }
+            if (Input.GetMouseButtonDown(0) && platformCounter > 0) StartLine();
 
             if (!_currentPlatform) return;
 
-            if (Input.GetMouseButton(0))
-            {
-                UpdateLine();
-            }
-            else if (Input.GetMouseButtonUp(0))
-            {
-                _currentPlatform.Activate(platformTimer);
-                ExitLine();
-            }
+            if (Input.GetMouseButton(0)) UpdateLine();
+            else if (Input.GetMouseButtonUp(0)) ExitLine();
         }
 
         private void DrawLine()
@@ -67,20 +57,14 @@ namespace Platform
 
         private void UpdateLine()
         {
-            if (_mousePositions.Count < 2)
-            {
-                _mousePositions.Add(MousePosition);
-            }
-            else
-            {
-                _mousePositions[1] = MousePosition;
-            }
-
+            if (_mousePositions.Count < 2)_mousePositions.Add(MousePosition);
+            else _mousePositions[1] = MousePosition;
             DrawLine();
         }
 
         private void ExitLine()
         {
+            _currentPlatform.Activate(platformTimer);
             _mousePositions = new List<Vector3>();
             _currentPlatform = null;
         }

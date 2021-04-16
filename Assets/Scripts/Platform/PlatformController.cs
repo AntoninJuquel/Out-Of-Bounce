@@ -17,6 +17,7 @@ namespace Platform
 
         private void Disable()
         {
+            CancelInvoke();
             //soundFXChannel.RaiseEvent("PlatformActivate");
             _edgeCollider.enabled = false;
             gameObject.SetActive(false);
@@ -26,13 +27,14 @@ namespace Platform
         {
             //soundFXChannel.RaiseEvent("PlatformActivate");
             _edgeCollider.enabled = true;
-            Invoke("Disable", time);
+            Invoke(nameof(Disable), time);
         }
 
         public void Bounce(GameObject ball, float bouncyness)
         {
             var rigid = ball.GetComponent<Rigidbody2D>();
             rigid.velocity = rigid.velocity.normalized * (bouncyness * (1 + 1 / Length));
+            Disable();
         }
 
         public LineRenderer GetLineRenderer() => _lineRenderer;
