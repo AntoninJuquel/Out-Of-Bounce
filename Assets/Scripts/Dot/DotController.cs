@@ -49,7 +49,6 @@ namespace Dot
 
         public void Bounce(GameObject ball, float bouncyness)
         {
-            Debug.Log(_dotSo.GetPoints());
             _bounce?.Invoke(ball, _gameObject, bouncyness);
             gameObject.SetActive(false);
         }

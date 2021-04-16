@@ -8,7 +8,7 @@ namespace Dot
     {
         [SerializeField] private Sprite[] sprites;
         [SerializeField] private Color color = Color.white;
-        [SerializeField] private float points;
+        [SerializeField] private int points;
         [SerializeField] private DotType dotType;
         [SerializeField] [Range(0, 1)] private float spawnChance = 1;
 
@@ -16,5 +16,6 @@ namespace Dot
         public Sprite[] GetSprites() => sprites;
         public DotType GetDotType() => dotType;
         public Color GetColor() => color;
+        public int GetPoints() => points;
     }
 }

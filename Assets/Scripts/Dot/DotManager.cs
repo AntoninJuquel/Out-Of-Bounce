@@ -26,11 +26,13 @@ namespace Dot
 
         private readonly Dictionary<DotType, Dot> _dotsMap = new Dictionary<DotType, Dot>()
         {
-            {DotType.Basic, new Dot(null, (ball, dot, bouncyness) =>
             {
-                var rigid = ball.GetComponent<Rigidbody2D>();
-                rigid.velocity = rigid.velocity.normalized * bouncyness;
-            })}
+                DotType.Basic, new Dot(null, (ball, dot, bouncyness) =>
+                {
+                    var rigid = ball.GetComponent<Rigidbody2D>();
+                    rigid.velocity = rigid.velocity.normalized * bouncyness;
+                })
+            }
         };
 
         private void HandleDots(Chunk chunk, bool added)
