@@ -11,18 +11,19 @@ namespace Systems.Chunk
         private void Awake()
         {
             _transform = transform;
+            chunk = null;
         }
 
         private void Start()
         {
             _chunkManager = ChunkManager.Instance;
-            chunk = _chunkManager.GetClosestChunk(this, Vector3.zero, _transform.position);
         }
 
         private void Update()
         {
-            if (chunk == null) return;
+            if(!_chunkManager.started) return;
             var position = _transform.position;
+            chunk ??= _chunkManager.GetClosestChunk(this, position, position);
             if (chunk.GetBounds().Contains(position)) return;
             chunk = _chunkManager.GetClosestChunk(this, chunk.GetBounds().center, position);
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -8,14 +9,22 @@ namespace Systems.Chunk
     public class ChunkManager : MonoBehaviour
     {
         public static ChunkManager Instance;
-        [SerializeField] private int chunkSize = 32, chunkPopulation = 10;
-        [SerializeField] private GameObject prefab;
+        [SerializeField] private int chunkSize = 32;
         private Dictionary<Vector3, Chunk> _chunks = new Dictionary<Vector3, Chunk>();
+        public bool started = false;
+
+        public delegate void ChunkEventHandler(Chunk position, bool added);
+
+        public event ChunkEventHandler ChunkEvent;
 
         private void Awake()
         {
             Instance = this;
-            _chunks = new Dictionary<Vector3, Chunk> {{Vector3.zero, new Chunk(Vector3.zero, chunkSize, prefab, chunkPopulation)}};
+        }
+
+        private void Start()
+        {
+            _chunks = new Dictionary<Vector3, Chunk> {{Vector3.zero, new Chunk(Vector3.zero, chunkSize)}};
         }
 
         private void OnDrawGizmos()
@@ -33,7 +42,13 @@ namespace Systems.Chunk
                 for (var y = -1; y < 2; y++)
                 {
                     var chunkPosition = position + new Vector3(x, y) * chunkSize;
-                    if (!_chunks.ContainsKey(chunkPosition)) _chunks.Add(chunkPosition, new Chunk(chunkPosition, chunkSize, prefab, chunkPopulation));
+                    if (!_chunks.ContainsKey(chunkPosition))
+                    {
+                        _chunks.Add(chunkPosition, new Chunk(chunkPosition, chunkSize));
+                    }
+
+                    ChunkEvent?.Invoke(_chunks[chunkPosition], true);
+
                     _chunks[chunkPosition].AddChunkController(chunkController);
                 }
             }
@@ -44,43 +59,42 @@ namespace Systems.Chunk
             var keyValuePair = _chunks.FirstOrDefault(kvp => kvp.Value.GetBounds().Contains(position));
 
             GenerateChunksAround(chunkController, keyValuePair.Key);
-
             var delta = (keyValuePair.Key - oldPosition).normalized;
             if (delta == Vector3.zero) return keyValuePair.Value;
-            for (var i = -1; i < 2; i++)
+
+            if (delta.x != delta.y)
+                for (var i = -1; i < 2; i++)
+                {
+                    var chunkPosition = oldPosition - delta * chunkSize + new Vector3(i * delta.y, i * delta.x) * chunkSize;
+                    _chunks[chunkPosition].RemoveChunkController(chunkController);
+                    if (!_chunks[chunkPosition].IsEmpty()) continue;
+                    ChunkEvent?.Invoke(_chunks[chunkPosition], false);
+                    _chunks.Remove(chunkPosition);
+                }
+            else
             {
-                var chunkPosition = oldPosition - delta * chunkSize + new Vector3(i * delta.y, i * delta.x) * chunkSize;
-                _chunks[chunkPosition].RemoveChunkController(chunkController);
-                if (!_chunks[chunkPosition].IsEmpty()) continue;
-                _chunks[chunkPosition].RemoveChunk();
-                _chunks.Remove(chunkPosition);
+                Debug.Log("Diagonal");
             }
 
             return keyValuePair.Value;
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class Chunk
     {
         [SerializeField] private Bounds bounds;
         [SerializeField] private List<ChunkController> chunkControllers = new List<ChunkController>();
-        [SerializeField] private List<GameObject> gameObjects = new List<GameObject>();
 
-        public Chunk(Vector3 position, float size, GameObject prefab, int population)
+        public Chunk(Vector3 position, float size)
         {
             bounds = new Bounds(position, Vector3.one * size);
-            for (var i = 0; i < population; i++)
-            {
-                gameObjects.Add(Object.Instantiate(prefab, RandomPointInBounds(), Quaternion.identity));
-            }
         }
 
         public Vector3 RandomPointInBounds() =>
             new Vector3(
                 Random.Range(bounds.min.x, bounds.max.x),
-                Random.Range(bounds.min.y, bounds.max.y),
-                Random.Range(bounds.min.z, bounds.max.z)
+                Random.Range(bounds.min.y, bounds.max.y)
             );
 
         public Bounds GetBounds() => bounds;
@@ -93,14 +107,5 @@ namespace Systems.Chunk
 
         public void RemoveChunkController(ChunkController chunkController) => chunkControllers.Remove(chunkController);
         public bool IsEmpty() => chunkControllers.Count == 0;
-        public void AddGameObject(GameObject gameObject) => gameObjects.Add(gameObject);
-
-        public void RemoveChunk()
-        {
-            foreach (var gameObject in gameObjects)
-            {
-                Object.Destroy(gameObject);
-            }
-        }
     }
 }
