@@ -23,6 +23,8 @@ namespace Systems.Pool
                     var obj = Instantiate(pool.prefab);
                     obj.name = pool.key;
                     obj.SetActive(false);
+                    var controller = obj.AddComponent<ObjectPoolController>();
+                    controller.SetObjectPool(this);
                     objectPool.Enqueue(obj);
                 }
 
@@ -43,9 +45,13 @@ namespace Systems.Pool
             {
                 objectToSpawn = Instantiate(pools.Find(p => p.key == key).prefab, position, rotation);
                 objectToSpawn.name = key;
+                var controller = objectToSpawn.AddComponent<ObjectPoolController>();
+                controller.SetObjectPool(this);
             }
+
             return objectToSpawn;
         }
+
         public void ReturnToPool(GameObject go) => _poolDictionary[go.name].Enqueue(go);
     }
 

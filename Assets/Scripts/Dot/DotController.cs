@@ -7,7 +7,6 @@ namespace Dot
     public class DotController : MonoBehaviour, ICollide
     {
         private DotSo _dotSo;
-        private DotManager _dotManager;
         private SpriteRenderer _spriteRenderer;
         private Action<GameObject, GameObject, float> _bounce;
         private GameObject _gameObject;
@@ -16,17 +15,6 @@ namespace Dot
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _gameObject = gameObject;
-        }
-
-        private void Start()
-        {
-            _dotManager = DotManager.Instance;
-        }
-
-        private void OnDisable()
-        {
-            if (_dotManager)
-                _dotManager.ReturnToPool(gameObject);
         }
 
         private IEnumerator AnimateSprite(Sprite[] sprites)
@@ -61,8 +49,9 @@ namespace Dot
 
         public void Bounce(GameObject ball, float bouncyness)
         {
-            gameObject.SetActive(false);
+            Debug.Log(_dotSo.GetPoints());
             _bounce?.Invoke(ball, _gameObject, bouncyness);
+            gameObject.SetActive(false);
         }
     }
 }
