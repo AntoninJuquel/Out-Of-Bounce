@@ -1,0 +1,20 @@
+﻿using Systems.Unlock;
+using UnityEngine;
+
+namespace Dot
+{
+    [CreateAssetMenu(fileName = "New Dot Data", menuName = "Dot", order = 0)]
+    public class DotSo : UnlockableSo
+    {
+        [SerializeField] private Sprite[] sprites;
+        [SerializeField] private Color color = Color.white;
+        [SerializeField] private float points;
+        [SerializeField] private DotType dotType;
+        [SerializeField] [Range(0, 1)] private float spawnChance = 1;
+
+        public bool Spawn(float chance) => chance <= spawnChance;
+        public Sprite[] GetSprites() => sprites;
+        public DotType GetDotType() => dotType;
+        public Color GetColor() => color;
+    }
+}
