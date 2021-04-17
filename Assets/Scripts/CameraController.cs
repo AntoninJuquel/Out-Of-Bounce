@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 
@@ -23,11 +22,6 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StopAllCoroutines();
-            StartCoroutine(ZoomRoutine());
-        }
         _position = _transform.position;
         _targetVelocity = _target.velocity;
         _targetPos = _target.position + (Vector2) _targetVelocity.normalized;
@@ -39,7 +33,7 @@ public class CameraController : MonoBehaviour
         _camera.orthographicSize = Mathf.SmoothDamp(_camera.orthographicSize, _targetZoom, ref _zoomVelocity, 1f / zoomSpeed);
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         if (!_target || Input.GetMouseButton(0)) return;
         _transform.position = Vector3.SmoothDamp(_position, _targetPos + Vector3.back, ref _moveVelocity, 1f / moveSpeed);
@@ -56,4 +50,11 @@ public class CameraController : MonoBehaviour
     }
 
     public void SetTarget(Rigidbody2D target) => _target = target;
+    public void SetTarget(GameObject target) => _target = target.GetComponent<Rigidbody2D>();
+
+    public void Zoom()
+    {
+        StopAllCoroutines();
+        StartCoroutine(ZoomRoutine());
+    }
 }
