@@ -42,10 +42,10 @@ public class CameraController : MonoBehaviour
     private IEnumerator ZoomRoutine()
     {
         _targetZoom = _camera.orthographicSize - zoomStep;
-        zoomSpeed *= 10; 
+        zoomSpeed *= 5; 
         _zooming = true;
         yield return new WaitForSeconds(1f / zoomSpeed);
-        zoomSpeed /= 10;
+        zoomSpeed /= 5;
         _zooming = false;
     }
 

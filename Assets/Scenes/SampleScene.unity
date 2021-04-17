@@ -184,7 +184,6 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420034}
-  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -289,35 +288,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be7c7df2f1558584f97f156fc252d8e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intEvents:
-  - channel: {fileID: 11400000, guid: 95861263603fdff40b316b6acd53ef81, type: 2}
-    OnEventRaised:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 519420034}
-          m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
-          m_MethodName: Zoom
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,9 +366,14 @@ MonoBehaviour:
   pools:
   - key: Dot
     prefab: {fileID: 6388628060645547033, guid: 7021e1c85e3bcb844a102eb2db9f7c9e, type: 3}
-    size: 15
+    size: 300
   dotSos:
+  - {fileID: 11400000, guid: e5f4be341321a7249ba91d2c62b93f79, type: 2}
   - {fileID: 11400000, guid: dead608448cd36c46b0ab354cf99ccaf, type: 2}
+  - {fileID: 11400000, guid: c621096b9b9efd5419c11be4c0ff129b, type: 2}
+  - {fileID: 11400000, guid: 898388a25e4b481438a8b1cec8669ca5, type: 2}
+  - {fileID: 11400000, guid: 694327941d97c994cabf4c6d585e2ca0, type: 2}
+  - {fileID: 11400000, guid: 4b2a2a940716e6443b113fcc1af91b7f, type: 2}
   - {fileID: 11400000, guid: b70f04b769509dc41b4246803fbd841f, type: 2}
   dotsPerChunk: 10
 --- !u!114 &1848306973

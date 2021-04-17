@@ -11,14 +11,15 @@ namespace Dot
         [SerializeField] private IntEventChannelSo intEventChannelSo;
         private DotSo _dotSo;
         private SpriteRenderer _spriteRenderer;
-        private Action<GameObject, GameObject, float> _bounce;
         private GameObject _gameObject;
         private Transform _transform;
+        private Collider2D _collider2D;
 
 
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
+            _collider2D = GetComponent<Collider2D>();
             _gameObject = gameObject;
             _transform = transform;
         }
@@ -37,12 +38,13 @@ namespace Dot
             StopAllCoroutines();
         }
 
-        public void Setup(DotSo dotSo, Action<GameObject> setup, Action<GameObject, GameObject, float> bounce)
+        public void Setup(DotSo dotSo)
         {
             _dotSo = dotSo;
 
-            setup?.Invoke(gameObject);
-            _bounce = bounce;
+            _collider2D.isTrigger = false;
+
+            _dotSo.Setup?.Invoke(gameObject);
 
             _spriteRenderer.color = dotSo.GetColor();
 
@@ -57,7 +59,12 @@ namespace Dot
         {
             intEventChannelSo.RaiseEvent(_dotSo.GetPoints());
             colorEventChannelSo.RaiseEvent(_dotSo.GetColor());
-            _bounce?.Invoke(ball, _gameObject, bouncyness);
+            _dotSo.Bounce?.Invoke(ball, _gameObject, bouncyness);
+            Destroy();
+        }
+
+        public void Destroy()
+        {
             _dotSo.InstantiateParticles(_transform.position);
             gameObject.SetActive(false);
         }

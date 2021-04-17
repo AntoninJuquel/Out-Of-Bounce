@@ -6,7 +6,7 @@ namespace Ball
 {
     public class BallController : MonoBehaviour
     {
-        [SerializeField] private float minStretch = .5f, stretchMult = 1 / 50f, stretchWhenSquash = .5f, stretchSpeed = 1f, squashAmount = .5f, squashSpeed = 1f;
+        [SerializeField] private float bouncyness = 15f,minStretch = .5f, stretchMult = 1 / 50f, stretchWhenSquash = .5f, stretchSpeed = 1f, squashAmount = .5f, squashSpeed = 1f;
         [SerializeField] private Transform render;
         private Rigidbody2D _rigidbody;
         private Transform _transform;
@@ -40,7 +40,13 @@ namespace Ball
             _squashAmount = squashAmount;
             _stretchAmount = stretchWhenSquash;
             other.gameObject.TryGetComponent(out ICollide collide);
-            collide?.Bounce(gameObject, 15);
+            collide?.Bounce(gameObject, bouncyness);
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            other.gameObject.TryGetComponent(out ICollide collide);
+            collide?.Bounce(gameObject, bouncyness);
         }
 
         private IEnumerator DeathRoutine()

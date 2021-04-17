@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Systems.Chunk;
 using Systems.Pool;
+using Ball;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -17,6 +18,11 @@ namespace Dot
         private void Awake()
         {
             Instance = this;
+            foreach (var dotSo in dotSos)
+            {
+                var dot = _dotsMap[dotSo.GetDotType()];
+                dotSo.SetActions(dot.SetUp, dot.Bounce);
+            }
         }
 
         private void Start()
@@ -24,19 +30,39 @@ namespace Dot
             ChunkManager.Instance.ChunkEvent += HandleDots;
         }
 
-        private readonly Dictionary<DotType, Dot> _dotsMap = new Dictionary<DotType, Dot>()
+        private readonly Dictionary<DotType, DotActions> _dotsMap = new Dictionary<DotType, DotActions>()
         {
             {
-                DotType.Basic, new Dot(null, (ball, dot, bouncyness) =>
+                DotType.Basic, new DotActions(null, (ball, dot, bouncyness) =>
                 {
                     var rigid = ball.GetComponent<Rigidbody2D>();
                     rigid.velocity = rigid.velocity.normalized * bouncyness;
                 })
             },
             {
-                DotType.Enemy, new Dot(null, (ball, dot, bouncyness) =>
+                DotType.Enemy, new DotActions(null, (ball, dot, bouncyness) => ball.SetActive(false))
+            },
+            {
+                DotType.Coin, new DotActions(dot => dot.GetComponent<Collider2D>().isTrigger = true, null)
+            },
+            {
+                DotType.Scaler, new DotActions(null, (ball, dot, bouncyness) => ball.transform.localScale = Vector3.one * 2f)
+            },
+            {
+                DotType.Explosive, new DotActions(null, (ball, dot, bouncyness) =>
                 {
-                    ball.SetActive(false);
+                    foreach (var col in Physics2D.OverlapCircleAll(dot.transform.position, 15f))
+                        col.GetComponent<DotController>()?.Destroy();
+                })
+            },
+            {
+                DotType.Spawner, new DotActions(null, (ball, dot, bouncyness) => BallManager.Instance.SpawnBall(dot.transform.position))
+            },
+            {
+                DotType.Direction, new DotActions(dot => dot.transform.eulerAngles = new Vector3(0, 0, Random.Range(0f, 360f)), (ball, dot, bouncyness) =>
+                {
+                    var rigid = ball.GetComponent<Rigidbody2D>();
+                    rigid.velocity = dot.transform.right * bouncyness;
                 })
             }
         };
@@ -52,9 +78,8 @@ namespace Dot
                     foreach (var dotSo in dotSos)
                     {
                         if (!dotSo.Spawn(Random.value)) continue;
-                        var dotType = dotSo.GetDotType();
                         var dot = SpawnFromPool("Dot", chunk.RandomPointInBounds(), Quaternion.identity);
-                        dot.GetComponent<DotController>().Setup(dotSo, _dotsMap[dotType].SetUp(), _dotsMap[dotType].Bounce());
+                        dot.GetComponent<DotController>().Setup(dotSo);
                         dotsMap[chunk].Add(dot);
                     }
                 }
@@ -71,24 +96,29 @@ namespace Dot
         }
     }
 
-    public class Dot
+    public class DotActions
     {
-        private readonly Action<GameObject> _setup;
-        private readonly Action<GameObject, GameObject, float> _bounce;
+        public Action<GameObject> SetUp { get; }
+        public Action<GameObject, GameObject, float> Bounce { get; }
 
-        public Dot(Action<GameObject> setup, Action<GameObject, GameObject, float> bounce)
+        public DotActions(Action<GameObject> setup, Action<GameObject, GameObject, float> bounce)
         {
-            _setup = setup;
-            _bounce = bounce;
+            SetUp = setup;
+            Bounce = bounce;
         }
-
-        public Action<GameObject> SetUp() => _setup;
-        public Action<GameObject, GameObject, float> Bounce() => _bounce;
     }
 
     public enum DotType
     {
         Basic,
-        Enemy
+        Enemy,
+        Coin,
+        Scaler,
+        Spawner,
+        TimeSlower,
+        Attractor,
+        Repulsor,
+        Explosive,
+        Direction,
     }
 }

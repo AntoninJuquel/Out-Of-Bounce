@@ -23,7 +23,7 @@ namespace Platform
         {
             if (GameManager.GameStatus == GameStatus.Paused) return;
 
-            if (Input.GetMouseButtonDown(0) && platformCounter > 0) StartLine();
+            if (Input.GetMouseButtonDown(0) /*&& platformCounter > 0*/) StartLine();
 
             if (!_currentPlatform) return;
 

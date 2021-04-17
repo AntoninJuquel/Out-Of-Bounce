@@ -1,4 +1,5 @@
-﻿using Systems.Unlock;
+﻿using System;
+using Systems.Unlock;
 using UnityEngine;
 
 namespace Dot
@@ -12,7 +13,13 @@ namespace Dot
         [SerializeField] private DotType dotType;
         [SerializeField] [Range(0, 1)] private float spawnChance = 1;
         [SerializeField] private GameObject destroyParticles;
-
+        public Action<GameObject> Setup { get; private set; }
+        public Action<GameObject, GameObject, float> Bounce { get; private set; }
+        public void SetActions(Action<GameObject> setup, Action<GameObject, GameObject, float> bounce)
+        {
+            Setup = setup;
+            Bounce = bounce;
+        }
         public bool Spawn(float chance) => chance <= spawnChance;
         public Sprite[] GetSprites() => sprites;
         public DotType GetDotType() => dotType;
