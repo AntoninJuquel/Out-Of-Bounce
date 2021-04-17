@@ -7,12 +7,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     [SerializeField] private Vector3 startPosition;
     private Rigidbody2D _firstBallRb;
     public static GameStatus GameStatus;
 
     private void Awake()
     {
+        Instance = this;
         GameStatus = GameStatus.Starting;
     }
 
@@ -29,6 +31,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
         GameStatus = GameStatus.Playing;
         _firstBallRb.simulated = true;
+    }
+
+    public void GameOver()
+    {
+        GameStatus = GameStatus.GameOver;
     }
 }
 
