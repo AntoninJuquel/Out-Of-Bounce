@@ -9,7 +9,7 @@ namespace Systems.Event.Scripts.Listeners
         [System.Serializable]
         private class BoolEvent
         {
-            [SerializeField] private BoolEventChannelSO channel = default;
+            [SerializeField] private BoolEventChannelSo channel = default;
             [SerializeField] UnityEvent<bool> OnEventRaised;
             public void Enable()
             {

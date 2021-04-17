@@ -96,6 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d608f25e2bbb442b83ebb0c0cb7d91a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorEventChannelSo: {fileID: 11400000, guid: b7fbb8ecb776723499d5df8c2f814c0d, type: 2}
+  intEventChannelSo: {fileID: 11400000, guid: 95861263603fdff40b316b6acd53ef81, type: 2}
 --- !u!58 &5413190724617234213
 CircleCollider2D:
   m_ObjectHideFlags: 0

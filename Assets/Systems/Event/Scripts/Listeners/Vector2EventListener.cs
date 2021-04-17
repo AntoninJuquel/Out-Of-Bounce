@@ -9,7 +9,7 @@ namespace Systems.Event.Scripts.Listeners
         [System.Serializable]
         private class Vector2Event
         {
-            [SerializeField] private Vector2EventChannelSO channel = default;
+            [SerializeField] private Vector2EventChannelSo channel = default;
             [SerializeField] UnityEvent<Vector2> OnEventRaised;
             public void Enable()
             {

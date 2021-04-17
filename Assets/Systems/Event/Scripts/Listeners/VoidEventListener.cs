@@ -9,7 +9,7 @@ namespace Systems.Event.Scripts.Listeners
         [System.Serializable]
         private class VoidEvent
         {
-            [SerializeField] private VoidEventChannelSO channel = default;
+            [SerializeField] private VoidEventChannelSo channel = default;
             [SerializeField] UnityEvent OnEventRaised;
             public void Enable()
             {

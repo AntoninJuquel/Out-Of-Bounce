@@ -9,7 +9,7 @@ namespace Systems.Event.Scripts.Listeners
         [System.Serializable]
         private class IntEvent
         {
-            [SerializeField] private IntEventChannelSO channel = default;
+            [SerializeField] private IntEventChannelSo channel = default;
             [SerializeField] UnityEvent<int> OnEventRaised;
             public void Enable()
             {

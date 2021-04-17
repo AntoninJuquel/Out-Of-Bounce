@@ -9,7 +9,7 @@ namespace Systems.Event.Scripts.Listeners
         [System.Serializable]
         private class GameObjectEvent
         {
-            [SerializeField] private GameObjectEventChannelSO channel = default;
+            [SerializeField] private GameObjectEventChannelSo channel = default;
             [SerializeField] UnityEvent<GameObject> OnEventRaised;
             public void Enable()
             {

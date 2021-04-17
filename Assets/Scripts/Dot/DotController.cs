@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections;
+using Systems.Event.Scripts.Channels;
 using UnityEngine;
 
 namespace Dot
 {
     public class DotController : MonoBehaviour, ICollide
     {
+        [SerializeField] private ColorEventChannelSo colorEventChannelSo;
+        [SerializeField] private IntEventChannelSo intEventChannelSo;
         private DotSo _dotSo;
         private SpriteRenderer _spriteRenderer;
         private Action<GameObject, GameObject, float> _bounce;
         private GameObject _gameObject;
         private Transform _transform;
+
 
         private void Awake()
         {
@@ -51,7 +55,8 @@ namespace Dot
 
         public void Bounce(GameObject ball, float bouncyness)
         {
-            CameraController.Instance.Zoom();
+            intEventChannelSo.RaiseEvent(_dotSo.GetPoints());
+            colorEventChannelSo.RaiseEvent(_dotSo.GetColor());
             _bounce?.Invoke(ball, _gameObject, bouncyness);
             _dotSo.InstantiateParticles(_transform.position);
             gameObject.SetActive(false);

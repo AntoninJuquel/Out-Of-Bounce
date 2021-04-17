@@ -9,7 +9,7 @@ namespace Systems.Event.Scripts.Listeners
         [System.Serializable]
         private class FloatEvent
         {
-            [SerializeField] private FloatEventChannelSO channel = default;
+            [SerializeField] private FloatEventChannelSo channel = default;
             [SerializeField] UnityEvent<float> OnEventRaised;
             public void Enable()
             {

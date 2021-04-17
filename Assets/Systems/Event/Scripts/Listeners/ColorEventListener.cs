@@ -9,7 +9,7 @@ namespace Systems.Event.Scripts.Listeners
         [System.Serializable]
         private class ColorEvent
         {
-            [SerializeField] private ColorEventChannelSO channel = default;
+            [SerializeField] private ColorEventChannelSo channel = default;
             [SerializeField] UnityEvent<Color> OnEventRaised;
             public void Enable()
             {
