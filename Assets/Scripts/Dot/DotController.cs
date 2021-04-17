@@ -10,11 +10,13 @@ namespace Dot
         private SpriteRenderer _spriteRenderer;
         private Action<GameObject, GameObject, float> _bounce;
         private GameObject _gameObject;
+        private Transform _transform;
 
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _gameObject = gameObject;
+            _transform = transform;
         }
 
         private IEnumerator AnimateSprite(Sprite[] sprites)
@@ -49,7 +51,9 @@ namespace Dot
 
         public void Bounce(GameObject ball, float bouncyness)
         {
+            CameraController.Instance.Zoom();
             _bounce?.Invoke(ball, _gameObject, bouncyness);
+            _dotSo.InstantiateParticles(_transform.position);
             gameObject.SetActive(false);
         }
     }

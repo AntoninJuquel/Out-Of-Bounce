@@ -32,6 +32,12 @@ namespace Dot
                     var rigid = ball.GetComponent<Rigidbody2D>();
                     rigid.velocity = rigid.velocity.normalized * bouncyness;
                 })
+            },
+            {
+                DotType.Enemy, new Dot(null, (ball, dot, bouncyness) =>
+                {
+                    ball.SetActive(false);
+                })
             }
         };
 
@@ -82,6 +88,7 @@ namespace Dot
 
     public enum DotType
     {
-        Basic
+        Basic,
+        Enemy
     }
 }
