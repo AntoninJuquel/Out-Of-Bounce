@@ -11,6 +11,7 @@ namespace Ball
         private Rigidbody2D _rigidbody;
         private Transform _transform;
         private float _stretchAmount, _squashAmount, _stretchVel, _squashVel;
+        private BallManager _ballManager;
 
         private void Awake()
         {
@@ -20,19 +21,19 @@ namespace Ball
 
         private void Start()
         {
+            _ballManager = BallManager.Instance;
             StartCoroutine(DeathRoutine());
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             var velocity = _rigidbody.velocity;
-            _transform.right = velocity.normalized;
+            render.right = velocity.normalized;
             var targetStretch = Mathf.Clamp(1 - velocity.magnitude * stretchMult, minStretch, 1f);
             _stretchAmount = Mathf.SmoothDamp(_stretchAmount, targetStretch, ref _stretchVel, Time.deltaTime * stretchSpeed);
             _squashAmount = Mathf.SmoothDamp(_squashAmount, 1f, ref _squashVel, Time.deltaTime * squashSpeed);
             render.localScale = new Vector3(_squashAmount, _stretchAmount, 1);
         }
-
 
         private void OnCollisionEnter2D(Collision2D other)
         {
@@ -48,6 +49,12 @@ namespace Ball
             Destroy();
         }
 
+        private void OnDisable()
+        {
+            if (_ballManager)
+                _ballManager.RemoveBall(gameObject);
+        }
+
         public void Setup()
         {
             _rigidbody.simulated = GameManager.GameStatus != GameStatus.Starting;
@@ -56,6 +63,7 @@ namespace Ball
         public void Destroy()
         {
             gameObject.SetActive(false);
+            // I am dead ball manager
         }
     }
 }
