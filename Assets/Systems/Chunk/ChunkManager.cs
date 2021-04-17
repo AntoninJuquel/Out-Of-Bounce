@@ -55,9 +55,9 @@ namespace Systems.Chunk
 
             GenerateChunksAround(chunkController, keyValuePair.Key);
             var delta = (keyValuePair.Key - oldPosition).normalized;
-            if (delta == Vector3.zero) return keyValuePair.Value;
+            if (delta == Vector3.zero || oldPosition == position) return keyValuePair.Value;
 
-            if (Mathf.Abs(delta.x) != Mathf.Abs(delta.y))
+            if (Mathf.Abs((int)delta.x) != Mathf.Abs((int)delta.y))
                 for (var i = -1; i < 2; i++)
                 {
                     var chunkPosition = oldPosition - delta * chunkSize + new Vector3(i * delta.y, i * delta.x) * chunkSize;
