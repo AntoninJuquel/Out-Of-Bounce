@@ -28,10 +28,10 @@ namespace Ball
         private void LateUpdate()
         {
             var velocity = _rigidbody.velocity;
-            render.right = velocity.normalized;
             var targetStretch = Mathf.Clamp(1 - velocity.magnitude * stretchMult, minStretch, 1f);
             _stretchAmount = Mathf.SmoothDamp(_stretchAmount, targetStretch, ref _stretchVel, Time.deltaTime * stretchSpeed);
             _squashAmount = Mathf.SmoothDamp(_squashAmount, 1f, ref _squashVel, Time.deltaTime * squashSpeed);
+            render.right = velocity.normalized;
             render.localScale = new Vector3(_squashAmount, _stretchAmount, 1);
         }
 

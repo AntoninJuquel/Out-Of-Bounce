@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
         {
             _targetZoom = Mathf.Clamp(_targetVelocity.magnitude, 10f, 20f);
         }
-        _camera.orthographicSize = Mathf.SmoothDamp(_camera.orthographicSize, _targetZoom, ref _zoomVelocity, 1f / zoomSpeed);
+        _camera.orthographicSize = Mathf.Lerp(_camera.orthographicSize, _targetZoom, Time.deltaTime * zoomSpeed);
     }
 
     private void LateUpdate()
@@ -42,10 +42,10 @@ public class CameraController : MonoBehaviour
     private IEnumerator ZoomRoutine()
     {
         _targetZoom = _camera.orthographicSize - zoomStep;
-        zoomSpeed *= 20;
+        zoomSpeed *= 10; 
         _zooming = true;
-        yield return new WaitForSeconds(zoomStep / zoomSpeed);
-        zoomSpeed /= 20;
+        yield return new WaitForSeconds(1f / zoomSpeed);
+        zoomSpeed /= 10;
         _zooming = false;
     }
 
