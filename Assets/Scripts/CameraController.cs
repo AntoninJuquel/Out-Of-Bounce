@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
     private Camera _camera;
     private Transform _transform;
     private Rigidbody2D _target;
-    private float _targetZoom, _zoomVelocity;
+    private float _targetZoom;
     private Vector3 _moveVelocity, _position, _targetPos, _targetVelocity;
     private bool _zooming;
 
