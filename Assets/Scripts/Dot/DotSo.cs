@@ -4,27 +4,39 @@ using UnityEngine;
 
 namespace Dot
 {
-    [CreateAssetMenu(fileName = "New Dot Data", menuName = "Dot", order = 0)]
+    [CreateAssetMenu(fileName = "New basic dot", menuName = "Dots/Basic", order = 0)]
     public class DotSo : UnlockableSo
     {
         [SerializeField] private Sprite[] sprites;
         [SerializeField] private Color color = Color.white;
         [SerializeField] private int points;
-        [SerializeField] private DotType dotType;
         [SerializeField] [Range(0, 1)] private float spawnChance = 1;
         [SerializeField] private GameObject destroyParticles;
-        public Action<GameObject> Setup { get; private set; }
-        public Action<GameObject, GameObject, float> Bounce { get; private set; }
-        public void SetActions(Action<GameObject> setup, Action<GameObject, GameObject, float> bounce)
+
+        public virtual void Setup(GameObject dot, Collider2D collider2D)
         {
-            Setup = setup;
-            Bounce = bounce;
+            collider2D.isTrigger = false;
         }
+
+        public virtual void Bounce(GameObject ball, GameObject dot, float bouncyness)
+        {
+            var rigid = ball.GetComponent<Rigidbody2D>();
+            rigid.velocity = rigid.velocity.normalized * bouncyness;
+
+            Destroy(dot);
+        }
+
+        public void Destroy(GameObject dot)
+        {
+            InstantiateParticles(dot.transform.position);
+            dot.SetActive(false);
+        }
+
         public bool Spawn(float chance) => chance <= spawnChance;
         public Sprite[] GetSprites() => sprites;
-        public DotType GetDotType() => dotType;
         public Color GetColor() => color;
         public int GetPoints() => points;
+
         public void InstantiateParticles(Vector3 position)
         {
             var particles = Instantiate(destroyParticles, position, Quaternion.identity);

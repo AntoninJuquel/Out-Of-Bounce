@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Systems.Event.Scripts.Channels;
 using UnityEngine;
 
@@ -12,7 +11,6 @@ namespace Dot
         private DotSo _dotSo;
         private SpriteRenderer _spriteRenderer;
         private GameObject _gameObject;
-        private Transform _transform;
         private Collider2D _collider2D;
 
 
@@ -21,7 +19,6 @@ namespace Dot
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _collider2D = GetComponent<Collider2D>();
             _gameObject = gameObject;
-            _transform = transform;
         }
 
         private IEnumerator AnimateSprite(Sprite[] sprites)
@@ -42,9 +39,7 @@ namespace Dot
         {
             _dotSo = dotSo;
 
-            _collider2D.isTrigger = false;
-
-            _dotSo.Setup?.Invoke(gameObject);
+            _dotSo.Setup(gameObject, _collider2D);
 
             _spriteRenderer.color = dotSo.GetColor();
 
@@ -59,14 +54,9 @@ namespace Dot
         {
             intEventChannelSo.RaiseEvent(_dotSo.GetPoints());
             colorEventChannelSo.RaiseEvent(_dotSo.GetColor());
-            _dotSo.Bounce?.Invoke(ball, _gameObject, bouncyness);
-            Destroy();
+            _dotSo.Bounce(ball, _gameObject, bouncyness);
         }
 
-        public void Destroy()
-        {
-            _dotSo.InstantiateParticles(_transform.position);
-            gameObject.SetActive(false);
-        }
+        public void Destroy() => _dotSo.Destroy(gameObject);
     }
 }
