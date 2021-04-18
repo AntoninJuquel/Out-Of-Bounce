@@ -133,6 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 147434579}
   - component: {fileID: 147434580}
+  - component: {fileID: 147434582}
+  - component: {fileID: 147434581}
   m_Layer: 0
   m_Name: Post-Processing
   m_TagString: Untagged
@@ -171,6 +173,50 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 90bb63409b1b40e42b85ba7726d4e519, type: 2}
+--- !u!114 &147434581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147434578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d54ce8794da6964cbb242b4a24aa836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColorEvents:
+  - channel: {fileID: 11400000, guid: b7fbb8ecb776723499d5df8c2f814c0d, type: 2}
+    OnEventRaised:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 147434582}
+          m_TargetAssemblyTypeName: VolumeController, Assembly-CSharp
+          m_MethodName: SetBloomTint
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &147434582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147434578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8debe53cea2b4aa7b5dcb73386ceb5ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorFadeInTime: 0.2
+  colorFadeOutTime: 0.2
+  colorFadeDelay: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
