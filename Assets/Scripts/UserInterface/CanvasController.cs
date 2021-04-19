@@ -9,14 +9,14 @@ namespace UserInterface
 
         private void Start()
         {
-            SetActiveMenu(0);
+            SetActiveMenu(menus[0]);
         }
 
-        public void SetActiveMenu(int index)
+        public void SetActiveMenu(GameObject menuTarget)
         {
-            for (var i = 0; i < menus.Length; i++)
+            foreach (var menu in menus)
             {
-                menus[i].SetActive(i == index);
+                menu.SetActive(menuTarget.name == menu.name);
             }
         }
     }

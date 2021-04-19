@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Systems.Event.Scripts.Channels;
 using UnityEngine;
 
 
@@ -6,6 +7,7 @@ public class CameraController : MonoBehaviour
 {
     public static CameraController Instance;
     [SerializeField] private float moveSpeed = 7f, zoomSpeed = 7f, zoomStep = 3f;
+    [SerializeField] private FloatEventChannelSo xAxisChannelSo, yAxisChannelSo;
     private Camera _camera;
     private Transform _transform;
     private Rigidbody2D _target;
@@ -22,16 +24,19 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        if(!_target) return;
+        if (!_target) return;
         _position = _transform.position;
         _targetVelocity = _target.velocity;
         _targetPos = _target.position + (Vector2) _targetVelocity.normalized;
 
-        if(!_zooming)
+        if (!_zooming)
         {
             _targetZoom = Mathf.Clamp(_targetVelocity.magnitude, 10f, 20f);
         }
+
         _camera.orthographicSize = Mathf.Lerp(_camera.orthographicSize, _targetZoom, Time.deltaTime * zoomSpeed);
+        xAxisChannelSo.RaiseEvent(_position.x);
+        yAxisChannelSo.RaiseEvent(_position.y);
     }
 
     private void LateUpdate()
@@ -43,7 +48,7 @@ public class CameraController : MonoBehaviour
     private IEnumerator ZoomRoutine()
     {
         _targetZoom = _camera.orthographicSize - zoomStep;
-        zoomSpeed *= 5; 
+        zoomSpeed *= 5;
         _zooming = true;
         yield return new WaitForSeconds(1f / zoomSpeed);
         zoomSpeed /= 5;

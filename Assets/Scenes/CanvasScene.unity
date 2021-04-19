@@ -912,25 +912,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1802612169}
-        m_TargetAssemblyTypeName: UserInterface.CanvasController, Assembly-CSharp
-        m_MethodName: SetActiveMenu
-        m_Mode: 3
+      - m_Target: {fileID: 1848306970}
+        m_TargetAssemblyTypeName: UserInterface.CanvasManager, Assembly-CSharp
+        m_MethodName: SetActiveCanvas
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 759566201}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Canvas, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1848306970}
-        m_TargetAssemblyTypeName: UserInterface.CanvasManager, Assembly-CSharp
-        m_MethodName: SetActiveCanvas
-        m_Mode: 3
+      - m_Target: {fileID: 759566203}
+        m_TargetAssemblyTypeName: UserInterface.CanvasController, Assembly-CSharp
+        m_MethodName: SetActiveMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1750385621}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -985,7 +985,6 @@ GameObject:
   - component: {fileID: 147434579}
   - component: {fileID: 147434580}
   - component: {fileID: 147434582}
-  - component: {fileID: 147434581}
   m_Layer: 0
   m_Name: Post-Processing
   m_TagString: Untagged
@@ -1024,35 +1023,6 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 90bb63409b1b40e42b85ba7726d4e519, type: 2}
---- !u!114 &147434581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147434578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d54ce8794da6964cbb242b4a24aa836, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ColorEvents:
-  - channel: {fileID: 11400000, guid: b7fbb8ecb776723499d5df8c2f814c0d, type: 2}
-    OnEventRaised:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 147434582}
-          m_TargetAssemblyTypeName: VolumeController, Assembly-CSharp
-          m_MethodName: SetBloomTint
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &147434582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1919,10 +1889,10 @@ MonoBehaviour:
       - m_Target: {fileID: 759566203}
         m_TargetAssemblyTypeName: UserInterface.CanvasController, Assembly-CSharp
         m_MethodName: SetActiveMenu
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1750385621}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2669,6 +2639,8 @@ MonoBehaviour:
   moveSpeed: 10
   zoomSpeed: 1
   zoomStep: 3
+  xAxisChannelSo: {fileID: 11400000, guid: 7ec7efbe87f4ae3408231e59f426e46f, type: 2}
+  yAxisChannelSo: {fileID: 11400000, guid: 34d5d1711b4c4244f9e2bfbc9647fb2d, type: 2}
 --- !u!1 &554757472
 GameObject:
   m_ObjectHideFlags: 0
@@ -2981,10 +2953,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1802612169}
         m_TargetAssemblyTypeName: UserInterface.CanvasController, Assembly-CSharp
         m_MethodName: SetActiveMenu
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1623922035}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4125,25 +4097,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1802612169}
-        m_TargetAssemblyTypeName: UserInterface.CanvasController, Assembly-CSharp
-        m_MethodName: SetActiveMenu
-        m_Mode: 3
+      - m_Target: {fileID: 1848306970}
+        m_TargetAssemblyTypeName: UserInterface.CanvasManager, Assembly-CSharp
+        m_MethodName: SetActiveCanvas
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 759566201}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Canvas, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1848306970}
-        m_TargetAssemblyTypeName: UserInterface.CanvasManager, Assembly-CSharp
-        m_MethodName: SetActiveCanvas
-        m_Mode: 3
+      - m_Target: {fileID: 759566203}
+        m_TargetAssemblyTypeName: UserInterface.CanvasController, Assembly-CSharp
+        m_MethodName: SetActiveMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1750385621}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4272,10 +4244,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1802612169}
         m_TargetAssemblyTypeName: UserInterface.CanvasController, Assembly-CSharp
         m_MethodName: SetActiveMenu
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 217325079}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4330,6 +4302,8 @@ GameObject:
   - component: {fileID: 992079351}
   - component: {fileID: 992079350}
   - component: {fileID: 992079349}
+  - component: {fileID: 992079352}
+  - component: {fileID: 992079353}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -4385,6 +4359,64 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &992079352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992079348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d54ce8794da6964cbb242b4a24aa836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColorEvents:
+  - channel: {fileID: 11400000, guid: b7fbb8ecb776723499d5df8c2f814c0d, type: 2}
+    OnEventRaised:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 147434582}
+          m_TargetAssemblyTypeName: VolumeController, Assembly-CSharp
+          m_MethodName: SetBloomTint
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &992079353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992079348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc6366499ea8b6a479f08cf5c4803ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatEvents:
+  - channel: {fileID: 11400000, guid: 34d5d1711b4c4244f9e2bfbc9647fb2d, type: 2}
+    OnEventRaised:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1848306970}
+          m_TargetAssemblyTypeName: UserInterface.CanvasManager, Assembly-CSharp
+          m_MethodName: SetHeightText
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1081945303
 GameObject:
   m_ObjectHideFlags: 0
@@ -5629,11 +5661,23 @@ MonoBehaviour:
       - m_Target: {fileID: 1848306970}
         m_TargetAssemblyTypeName: UserInterface.CanvasManager, Assembly-CSharp
         m_MethodName: SetActiveCanvas
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1802612167}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Canvas, UnityEngine
           m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1802612169}
+        m_TargetAssemblyTypeName: UserInterface.CanvasController, Assembly-CSharp
+        m_MethodName: SetActiveMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1623922035}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -5938,10 +5982,10 @@ MonoBehaviour:
       - m_Target: {fileID: 759566203}
         m_TargetAssemblyTypeName: UserInterface.CanvasController, Assembly-CSharp
         m_MethodName: SetActiveMenu
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 26277569}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6653,10 +6697,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1802612169}
         m_TargetAssemblyTypeName: UserInterface.CanvasController, Assembly-CSharp
         m_MethodName: SetActiveMenu
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1623922035}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6797,10 +6841,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1802612169}
         m_TargetAssemblyTypeName: UserInterface.CanvasController, Assembly-CSharp
         m_MethodName: SetActiveMenu
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 217325079}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7125,10 +7169,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1802612169}
         m_TargetAssemblyTypeName: UserInterface.CanvasController, Assembly-CSharp
         m_MethodName: SetActiveMenu
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1856049061}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7345,6 +7389,8 @@ MonoBehaviour:
   canvasArray:
   - {fileID: 759566201}
   - {fileID: 1802612167}
+  heightText: {fileID: 1349641700}
+  scoreText: {fileID: 1348773326}
 --- !u!4 &1848306971
 Transform:
   m_ObjectHideFlags: 0
@@ -7378,10 +7424,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1802612169}
         m_TargetAssemblyTypeName: UserInterface.CanvasController, Assembly-CSharp
         m_MethodName: SetActiveMenu
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 515518172}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 

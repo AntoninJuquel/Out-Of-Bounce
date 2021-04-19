@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
@@ -11,6 +12,8 @@ namespace UserInterface
         [SerializeField] private AudioMixer audioMixer;
         [SerializeField] private Slider[] sliders;
         [SerializeField] private Canvas[] canvasArray;
+        [SerializeField] private TextMeshProUGUI heightText, scoreText;
+
         private void Start()
         {
             foreach (var slider in sliders)
@@ -20,14 +23,14 @@ namespace UserInterface
                 audioMixer.SetFloat(slider.name, Mathf.Log10(value) * 20f);
             }
 
-            SetActiveCanvas(0);
+            SetActiveCanvas(canvasArray[0]);
         }
 
-        public void SetActiveCanvas(int index)
+        public void SetActiveCanvas(Canvas target)
         {
-            for (var i = 0; i < canvasArray.Length; i++)
+            foreach (var canvas in canvasArray)
             {
-                canvasArray[i].gameObject.SetActive(i == index);
+                canvas.gameObject.SetActive(target == canvas);
             }
         }
 
@@ -39,6 +42,15 @@ namespace UserInterface
             var sliderName = EventSystem.current.currentSelectedGameObject.name;
             PlayerPrefs.SetFloat(sliderName, value);
             audioMixer.SetFloat(sliderName, Mathf.Log10(value) * 20f);
+        }
+
+        public void SetHeightText(float value)
+        {
+            heightText.text = string.Concat(value.ToString("000.00"), "m");
+        }
+
+        public void SetScoreText()
+        {
         }
     }
 }

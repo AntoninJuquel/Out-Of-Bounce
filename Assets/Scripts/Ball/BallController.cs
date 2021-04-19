@@ -64,6 +64,7 @@ namespace Ball
         public void Setup()
         {
             _rigidbody.simulated = GameManager.GameStatus != GameStatus.Starting;
+            _transform.localScale = Vector3.one;
         }
 
         public void Destroy()

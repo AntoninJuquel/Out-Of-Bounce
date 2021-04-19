@@ -10,7 +10,6 @@ namespace Dot
         [SerializeField] private IntEventChannelSo intEventChannelSo;
         private DotSo _dotSo;
         private SpriteRenderer _spriteRenderer;
-        private GameObject _gameObject;
         private Collider2D _collider2D;
 
 
@@ -18,7 +17,6 @@ namespace Dot
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _collider2D = GetComponent<Collider2D>();
-            _gameObject = gameObject;
         }
 
         private IEnumerator AnimateSprite(Sprite[] sprites)
@@ -54,7 +52,7 @@ namespace Dot
         {
             intEventChannelSo.RaiseEvent(_dotSo.GetPoints());
             colorEventChannelSo.RaiseEvent(_dotSo.GetColor());
-            _dotSo.Bounce(ball, _gameObject, bouncyness);
+            _dotSo.Bounce(ball, gameObject, bouncyness);
         }
 
         public void Destroy() => _dotSo.Destroy(gameObject);
