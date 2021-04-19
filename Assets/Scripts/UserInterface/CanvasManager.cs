@@ -46,6 +46,7 @@ namespace UserInterface
 
         public void SetHeightText(float value)
         {
+            value = Mathf.Max(0, value);
             heightText.text = string.Concat(value.ToString("000.00"), "m");
         }
 
