@@ -33,7 +33,8 @@ public class CameraController : MonoBehaviour
         {
             _targetZoom = Mathf.Clamp(_targetVelocity.magnitude, 10f, 20f);
         }
-
+        
+        if(GameManager.GameStatus == GameStatus.GameOver) return;
         _camera.orthographicSize = Mathf.Lerp(_camera.orthographicSize, _targetZoom, Time.deltaTime * zoomSpeed);
         xAxisChannelSo.RaiseEvent(_position.x);
         yAxisChannelSo.RaiseEvent(_position.y);
@@ -41,7 +42,7 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (Input.GetMouseButton(0)) return;
+        if (!_target || Input.GetMouseButton(0)) return;
         _transform.position = Vector3.SmoothDamp(_position, _targetPos + Vector3.back, ref _moveVelocity, 1f / moveSpeed);
     }
 

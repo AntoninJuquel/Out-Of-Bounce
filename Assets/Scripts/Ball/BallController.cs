@@ -51,7 +51,7 @@ namespace Ball
 
         private IEnumerator DeathRoutine()
         {
-            yield return new WaitUntil(() => _transform.position.y < 0);
+            yield return new WaitUntil(() => _transform.position.y <= 0f);
             Destroy();
         }
 
@@ -65,6 +65,8 @@ namespace Ball
         {
             _rigidbody.simulated = GameManager.GameStatus != GameStatus.Starting;
             _transform.localScale = Vector3.one;
+            if(_transform.position.y <= 0f)
+                Destroy();
         }
 
         public void Destroy()

@@ -9,16 +9,20 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    [SerializeField] private UnityEvent onGameOver;
     [SerializeField] private Vector3 startPosition;
+    [SerializeField] private GameObject lavaPit;
     public static GameStatus GameStatus;
     private static GameStatus _gameStatusBeforePause;
+    private float lavaY;
 
-    public UnityEvent onGameOver;
+    
 
     private void Awake()
     {
         Instance = this;
         Application.targetFrameRate = 144;
+        lavaY = lavaPit.transform.position.y;
     }
 
     private IEnumerator StartRoutine()
@@ -72,6 +76,11 @@ public class GameManager : MonoBehaviour
         StopAllCoroutines();
         Time.timeScale = 1;
         SceneManager.UnloadSceneAsync("GameScene");
+    }
+
+    public void SetLavaPosition(float xPosition)
+    {
+        lavaPit.transform.position = new Vector3(xPosition, lavaY);
     }
 }
 
