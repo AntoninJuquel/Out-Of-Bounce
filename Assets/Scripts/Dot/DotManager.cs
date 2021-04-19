@@ -25,6 +25,11 @@ namespace Dot
             ChunkManager.Instance.ChunkEvent += HandleDots;
         }
 
+        private void OnDisable()
+        {
+            ChunkManager.Instance.ChunkEvent -= HandleDots;
+        }
+
         private void HandleDots(Chunk chunk, bool added)
         {
             if (added)

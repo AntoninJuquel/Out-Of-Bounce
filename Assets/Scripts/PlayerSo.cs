@@ -12,7 +12,7 @@ public class PlayerSo : ScriptableObject
     [SerializeField] private Achievements achievements = new Achievements();
     public Achievements GetAchievements() => achievements;
 }
-
+#if UNITY_EDITOR
 [CustomEditor(typeof(PlayerSo))]
 public class PlayerSoEditor : Editor
 {
@@ -51,3 +51,4 @@ public class PlayerSoEditor : Editor
         EditorGUILayout.EndHorizontal();
     }
 }
+#endif

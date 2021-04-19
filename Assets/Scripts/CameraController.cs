@@ -22,6 +22,7 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
+        if(!_target) return;
         _position = _transform.position;
         _targetVelocity = _target.velocity;
         _targetPos = _target.position + (Vector2) _targetVelocity.normalized;
@@ -35,7 +36,7 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!_target || Input.GetMouseButton(0)) return;
+        if (Input.GetMouseButton(0)) return;
         _transform.position = Vector3.SmoothDamp(_position, _targetPos + Vector3.back, ref _moveVelocity, 1f / moveSpeed);
     }
 

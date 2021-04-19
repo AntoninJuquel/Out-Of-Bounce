@@ -1,41 +1,77 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Systems.Chunk;
 using Ball;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     [SerializeField] private Vector3 startPosition;
-    private Rigidbody2D _firstBallRb;
     public static GameStatus GameStatus;
+    private static GameStatus _gameStatusBeforePause;
+
+    public UnityEvent onGameOver;
 
     private void Awake()
     {
         Instance = this;
-        GameStatus = GameStatus.Starting;
-    }
-
-    private void Start()
-    {
-        ChunkManager.Instance.StartChunk(startPosition);
-        BallManager.Instance.SpawnBall(startPosition, out _firstBallRb);
-        CameraController.Instance.SetTarget(_firstBallRb);
-        StartCoroutine(StartRoutine());
+        Application.targetFrameRate = 144;
     }
 
     private IEnumerator StartRoutine()
     {
-        yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
+        GameStatus = GameStatus.Starting;
+        yield return new WaitUntil(() => SceneManager.GetSceneByName("GameScene").isLoaded);
+        ChunkManager.Instance.StartChunk(startPosition);
+        BallManager.Instance.SpawnBall(startPosition, out var firstBallRb);
+        CameraController.Instance.SetTarget(firstBallRb);
+        yield return new WaitUntil(() => Input.GetMouseButtonUp(0) && GameStatus != GameStatus.Paused);
         GameStatus = GameStatus.Playing;
-        _firstBallRb.simulated = true;
+        firstBallRb.simulated = true;
+    }
+
+    public void StartGame()
+    {
+        Time.timeScale = 1;
+        var load = SceneManager.LoadSceneAsync("GameScene", LoadSceneMode.Additive);
+        load.completed += asyncOperation => StartCoroutine(StartRoutine());
+    }
+
+    public void RestartGame()
+    {
+        var load = SceneManager.UnloadSceneAsync("GameScene");
+        load.completed += asyncOperation => StartGame();
+    }
+
+    public void TogglePause()
+    {
+        if (GameStatus == GameStatus.Paused)
+        {
+            GameStatus = _gameStatusBeforePause;
+            Time.timeScale = 1;
+        }
+        else
+        {
+            _gameStatusBeforePause = GameStatus;
+            GameStatus = GameStatus.Paused;
+            Time.timeScale = 0;
+        }
     }
 
     public void GameOver()
     {
         GameStatus = GameStatus.GameOver;
+        onGameOver?.Invoke();
+    }
+
+    public void MainMenu()
+    {
+        StopAllCoroutines();
+        Time.timeScale = 1;
+        SceneManager.UnloadSceneAsync("GameScene");
     }
 }
 

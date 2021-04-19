@@ -1,6 +1,7 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Systems.Pool
 {
@@ -11,6 +12,13 @@ namespace Systems.Pool
 
         private void OnEnable()
         {
+            StartCoroutine(StartPoolRoutine());
+        }
+
+        private IEnumerator StartPoolRoutine()
+        {
+            yield return new WaitUntil(() => SceneManager.GetSceneByName("GameScene").isLoaded);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("GameScene"));
             StartPool();
         }
 
