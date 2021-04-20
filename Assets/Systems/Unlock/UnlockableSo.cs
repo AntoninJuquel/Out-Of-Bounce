@@ -36,8 +36,8 @@ namespace Systems.Unlock
     [Serializable]
     public class Vault
     {
-        [SerializeField] private int value;
-        [SerializeField] private int level;
+        public int value;
+        public int level;
 
         public int GetValue() => value;
         public int GetLevel() => level;

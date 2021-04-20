@@ -1,54 +1,37 @@
-﻿using UnityEngine;
-using UnityEditor;
-using System.Globalization;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 using Systems.Achievement;
+using Systems.Save;
 using Systems.Unlock;
 
 
 [CreateAssetMenu(fileName = "New player data", menuName = "Player", order = 0)]
 public class PlayerSo : ScriptableObject
 {
-    [SerializeField] private Vault vault = new Vault();
-    [SerializeField] private Achievements achievements = new Achievements();
-    public Achievements GetAchievements() => achievements;
-}
-#if UNITY_EDITOR
-[CustomEditor(typeof(PlayerSo))]
-public class PlayerSoEditor : Editor
-{
-    private bool _foldout;
+    [SerializeField] private Vector3 startPosition;
+    [SerializeField] private Vault vault;
+    [SerializeField] private List<Achievement> achievements;
 
-    public override void OnInspectorGUI()
+    public void UpdateAchievements(IEnumerable<AchievementValue> achievementValues)
     {
-        base.OnInspectorGUI();
-        var player = (PlayerSo) target;
-        var achievements = player.GetAchievements().GetDictionary();
-        if (GUILayout.Button("Show"))
-            _foldout = !_foldout;
-        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-        if (!_foldout) return;
-        foreach (var kvp in achievements)
+        foreach (var achievementValue in achievementValues)
         {
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField(kvp.Key.ToString(), GUILayout.Width(100));
-
-            EditorGUILayout.BeginVertical();
-            DrawProperty("Best", kvp.Value.GetBest());
-            DrawProperty("Last", kvp.Value.GetLast());
-            DrawProperty("Total", kvp.Value.GetTotal());
-            EditorGUILayout.EndVertical();
-
-            EditorGUILayout.EndHorizontal();
-            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+            achievements.Find(achievement => achievement.achievementType == achievementValue.achievementType).UpdateAchievement(achievementValue.value);
         }
+
+        vault.AddValue((int) achievements.Find(achievement => achievement.achievementType == AchievementType.Money).last);
     }
 
-    private void DrawProperty(string label, float value)
+    public Vector3 GetStartPosition() => startPosition;
+
+    public void LoadPlayer()
     {
-        EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField(label, GUILayout.Width(100));
-        EditorGUILayout.LabelField(value.ToString(CultureInfo.InvariantCulture));
-        EditorGUILayout.EndHorizontal();
+        achievements = SaveManager.LoadByXML("achievements.txt", achievements) as List<Achievement>;
+        vault = SaveManager.LoadByXML("vault.txt", vault) as Vault;
+    }
+
+    public void SavePlayer()
+    {
     }
 }
-#endif
