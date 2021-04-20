@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Systems.Pool;
 using UnityEngine;
+using UserInterface;
 
 namespace Platform
 {
@@ -23,7 +24,7 @@ namespace Platform
         {
             if (GameManager.GameStatus == GameStatus.Paused) return;
 
-            if (Input.GetMouseButtonDown(0) /*&& platformCounter > 0*/) StartLine();
+            if (Input.GetMouseButtonDown(0) && platformCounter > 0) StartLine();
 
             if (!_currentPlatform) return;
 
@@ -43,7 +44,7 @@ namespace Platform
         private void StartLine()
         {
             platformCounter--;
-            // UpdatePlatformCounter();
+            UpdatePlatformCounter();
             _mousePositions.Add(MousePosition);
             _currentPlatform = SpawnFromPool("Platform", Vector2.zero, Quaternion.identity).GetComponent<PlatformController>();
             _currentPlatform.SetActive(true);
@@ -69,14 +70,14 @@ namespace Platform
             _currentPlatform = null;
         }
 
-        // private void UpdatePlatformCounter() => platformsCounterChannel.RaiseEvent(string.Concat(platformCounter, " |"));
-        public void ResupplyPlatforms(float points)
+        private void UpdatePlatformCounter() => CanvasManager.Instance.SetPlatformText(platformCounter);
+        public void ResupplyPlatforms(int points)
         {
             if (points < 0)
                 platformCounter = 0;
             else if (points > 0)
                 platformCounter = platformAmount;
-            // UpdatePlatformCounter();
+            UpdatePlatformCounter();
         }
     }
 }

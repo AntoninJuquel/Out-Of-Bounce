@@ -12,7 +12,7 @@ namespace UserInterface
         [SerializeField] private AudioMixer audioMixer;
         [SerializeField] private Slider[] sliders;
         [SerializeField] private Canvas[] canvasArray;
-        [SerializeField] private TextMeshProUGUI heightText, scoreText;
+        [SerializeField] private TextMeshProUGUI heightText, scoreText, platformText;
 
         private void Awake()
         {
@@ -57,6 +57,11 @@ namespace UserInterface
         public void SetScoreText(float score)
         {
             scoreText.text = score.ToString("00000000");
+        }
+
+        public void SetPlatformText(int value)
+        {
+            platformText.text = string.Concat(value, "|");
         }
     }
 }

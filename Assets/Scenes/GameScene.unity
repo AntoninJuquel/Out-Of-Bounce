@@ -132,11 +132,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1848306971}
+  - component: {fileID: 1848306973}
   - component: {fileID: 1848306970}
   - component: {fileID: 1848306972}
   - component: {fileID: 1848306974}
   - component: {fileID: 1848306975}
-  - component: {fileID: 1848306973}
   - component: {fileID: 1848306976}
   - component: {fileID: 1848306977}
   m_Layer: 0
@@ -318,6 +318,18 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
           m_MethodName: UpdateKills
           m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1848306975}
+          m_TargetAssemblyTypeName: Platform.PlatformManager, Assembly-CSharp
+          m_MethodName: ResupplyPlatforms
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

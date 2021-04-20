@@ -12428,6 +12428,7 @@ MonoBehaviour:
   - {fileID: 1802612167}
   heightText: {fileID: 1349641700}
   scoreText: {fileID: 1348773326}
+  platformText: {fileID: 9754557}
 --- !u!4 &1848306971
 Transform:
   m_ObjectHideFlags: 0
