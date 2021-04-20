@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1095cc1c3f47f4a511aad31b79a042, type: 3}
   m_Name: Basic
   m_EditorClassIdentifier: 
-  price: 0
-  levelRequired: 0
   sprites:
   - {fileID: 21300000, guid: 5a7ad430efde2374bab0adfa19acd008, type: 3}
   color: {r: 0, g: 1, b: 0, a: 1}
+  price: 0
+  levelRequired: 0
+  description: Just give points and bounce
+  status: 2
   points: 1
   spawnChance: 1
   destroyParticles: {fileID: 5567021245606077315, guid: 729739bde3317bc4eb84fdbf3d5d2c89, type: 3}

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Systems.Chunk;
+using Systems.Unlock;
 using Ball;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject lavaPit;
     [SerializeField] private PlayerSo playerSo;
     [SerializeField] private UnityEvent onGameOver;
+    [SerializeField] private UnlockableDataBaseSo[] unlockableDataBaseSos;
     public static GameStatus GameStatus;
     private static GameStatus _gameStatusBeforePause;
     private float _lavaY, _startTime;
@@ -22,6 +24,10 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 144;
         _lavaY = lavaPit.transform.position.y;
         playerSo.LoadPlayer();
+        foreach (var unlockableDataBaseSo in unlockableDataBaseSos)
+        {
+            unlockableDataBaseSo.LoadUnlockables();
+        }
     }
 
     private IEnumerator StartRoutine()

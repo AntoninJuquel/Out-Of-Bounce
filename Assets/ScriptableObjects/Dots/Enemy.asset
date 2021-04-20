@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d6214f247845f18fe2a4e5c5576353, type: 3}
   m_Name: Enemy
   m_EditorClassIdentifier: 
-  price: 0
-  levelRequired: 0
   sprites:
   - {fileID: 21300000, guid: bd4b70df2bdae1a40b8669df89a719db, type: 3}
   color: {r: 1, g: 0, b: 0, a: 1}
+  price: 0
+  levelRequired: 0
+  description: Kills you instantly
+  status: 2
   points: 0
   spawnChance: 0.1
   destroyParticles: {fileID: 5567021245606077315, guid: 729739bde3317bc4eb84fdbf3d5d2c89, type: 3}

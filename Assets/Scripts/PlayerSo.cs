@@ -24,10 +24,27 @@ public class PlayerSo : ScriptableObject
     }
 
     public Vector3 GetStartPosition() => startPosition;
+    public int GetMoney() => vault.GetValue();
+    public Vault GetVault() => vault;
 
     public void LoadPlayer()
     {
-        achievements = SaveManager.LoadByXML("achievements.txt", achievements) as List<Achievement>;
+        var defaultAchievement = new List<Achievement>();
+        var achievementTypes = (AchievementType[]) Enum.GetValues(typeof(AchievementType));
+        foreach (var achievementType in achievementTypes)
+        {
+            defaultAchievement.Add(new Achievement {achievementType = achievementType});
+        }
+
+        var loadedAchievements = SaveManager.LoadByXML("achievements.txt", defaultAchievement) as List<Achievement>;
+
+        foreach (var achievementType in achievementTypes)
+        {
+            if (loadedAchievements.Find(achievement => achievement.achievementType == achievementType) != null) continue;
+            loadedAchievements.Add(new Achievement {achievementType = achievementType});
+        }
+
+        achievements = loadedAchievements;
         vault = SaveManager.LoadByXML("vault.txt", vault) as Vault;
     }
 

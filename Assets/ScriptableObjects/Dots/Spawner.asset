@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23676ce75df449ebf618019092d25a5, type: 3}
   m_Name: Spawner
   m_EditorClassIdentifier: 
-  price: 0
-  levelRequired: 0
   sprites:
   - {fileID: 21300000, guid: 165f96d315e51514f8b48c6a446696a5, type: 3}
   color: {r: 0, g: 1, b: 0.523159, a: 1}
+  price: 50
+  levelRequired: 0
+  description: Spawn another ball ez
+  status: 1
   points: 2
   spawnChance: 0.1
   destroyParticles: {fileID: 5567021245606077315, guid: 729739bde3317bc4eb84fdbf3d5d2c89, type: 3}

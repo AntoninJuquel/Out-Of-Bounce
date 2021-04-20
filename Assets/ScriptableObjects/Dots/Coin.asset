@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119f11d57d8b420082cae301026124be, type: 3}
   m_Name: Coin
   m_EditorClassIdentifier: 
-  price: 0
-  levelRequired: 0
   sprites:
   - {fileID: -8436573443567533466, guid: 8297a220a3a43a54daf1eeb956f70117, type: 3}
   - {fileID: -6864408677304628541, guid: 8297a220a3a43a54daf1eeb956f70117, type: 3}
@@ -22,6 +20,10 @@ MonoBehaviour:
   - {fileID: 5009542621015382640, guid: 8297a220a3a43a54daf1eeb956f70117, type: 3}
   - {fileID: 780838140082365885, guid: 8297a220a3a43a54daf1eeb956f70117, type: 3}
   color: {r: 0.93333334, g: 0.70980394, b: 0.003921569, a: 1}
+  price: 0
+  levelRequired: 0
+  description: Money money money !
+  status: 2
   points: 2
   spawnChance: 0.1
   destroyParticles: {fileID: 3934596105717551393, guid: 8c63452cb786f1a438c121b48875b20e, type: 3}

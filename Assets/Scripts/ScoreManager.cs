@@ -11,11 +11,16 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private PlayerSo playerSo;
     [SerializeField] private List<AchievementValue> achievementValues;
 
-    private float _lerpedScore;
+    private float _lerptScore;
 
     private void Awake()
     {
         Instance = this;
+        foreach (var achievementType in (AchievementType[]) Enum.GetValues(typeof(AchievementType)))
+        {
+            var achievement = new AchievementValue {achievementType = achievementType};
+            achievementValues.Add(achievement);
+        }
     }
 
     private IEnumerator LerpScore(float oldScore, float newScore)
@@ -24,11 +29,12 @@ public class ScoreManager : MonoBehaviour
         var waitTime = 3f;
         while (elapsedTime < waitTime)
         {
-            _lerpedScore = Mathf.Lerp(oldScore, newScore, elapsedTime / waitTime);
+            _lerptScore = Mathf.Lerp(oldScore, newScore, elapsedTime / waitTime);
             elapsedTime += Time.deltaTime;
-            CanvasManager.Instance.SetScoreText(_lerpedScore);
+            CanvasManager.Instance.SetScoreText(_lerptScore);
             yield return null;
         }
+
         CanvasManager.Instance.SetScoreText(newScore);
         yield return null;
     }
@@ -38,7 +44,7 @@ public class ScoreManager : MonoBehaviour
         var score = achievementValues.Find(achievement => achievement.achievementType == AchievementType.Score);
         score.value += (value * 1000);
         StopCoroutine(nameof(LerpScore));
-        StartCoroutine(LerpScore(_lerpedScore, score.value));
+        StartCoroutine(LerpScore(_lerptScore, score.value));
     }
 
     public void UpdateHeight(float value)

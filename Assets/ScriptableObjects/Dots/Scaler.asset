@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f197ab082a364fcb9b22f0cc53c8c09e, type: 3}
   m_Name: Scaler
   m_EditorClassIdentifier: 
-  price: 0
-  levelRequired: 0
   sprites:
   - {fileID: 21300000, guid: bb4a92589a5dd8745877afebef1d09ab, type: 3}
   color: {r: 0, g: 1, b: 1, a: 1}
+  price: 50
+  levelRequired: 0
+  description: Scale the ball x2
+  status: 1
   points: 2
   spawnChance: 0.1
   destroyParticles: {fileID: 5567021245606077315, guid: 729739bde3317bc4eb84fdbf3d5d2c89, type: 3}

@@ -14,26 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPosition: {x: 0, y: 32, z: 0}
   vault:
-    value: 50
+    value: 0
     level: 0
-  achievements:
-  - achievementType: 0
-    last: 0
-    best: 0
-    total: 0
-  - achievementType: 1
-    last: 38.311882
-    best: 72.76946
-    total: 152.14496
-  - achievementType: 2
-    last: -2.527208
-    best: 17.109602
-    total: 18.84786
-  - achievementType: 3
-    last: 6
-    best: 8
-    total: 15
-  - achievementType: 4
-    last: 0
-    best: 0
-    total: 0
+  achievements: []

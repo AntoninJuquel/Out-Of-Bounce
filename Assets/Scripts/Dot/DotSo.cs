@@ -7,8 +7,6 @@ namespace Dot
     [CreateAssetMenu(fileName = "New basic dot", menuName = "Dots/Basic", order = 0)]
     public class DotSo : UnlockableSo
     {
-        [SerializeField] private Sprite[] sprites;
-        [SerializeField] private Color color = Color.white;
         [SerializeField] private int points;
         [SerializeField] [Range(0, 1)] private float spawnChance = 1;
         [SerializeField] private GameObject destroyParticles;
@@ -33,8 +31,6 @@ namespace Dot
         }
 
         public bool Spawn(float chance) => chance <= spawnChance;
-        public Sprite[] GetSprites() => sprites;
-        public Color GetColor() => color;
         public int GetPoints() => points;
 
         public void InstantiateParticles(Vector3 position)
