@@ -13,6 +13,7 @@ namespace UserInterface
         [SerializeField] private VerticalLayoutGroup verticalLayoutGroup;
         [SerializeField] private TextMeshProUGUI money;
         [SerializeField] private PlayerSo playerSo;
+        [SerializeField] private CanvasController canvasController;
         private UnlockableDataBaseSo _unlockableDataBaseSo;
 
         public void SetupShop(UnlockableDataBaseSo unlockableDataBaseSo)
@@ -31,6 +32,7 @@ namespace UserInterface
                 shopItem.GetComponent<ShopItemController>().Setup(unlockableSo, this);
             }
 
+            canvasController.SetActiveMenu(gameObject);
             verticalLayoutGroup.enabled = false;
 
             money.text = string.Concat(playerSo.GetMoney(), " $");

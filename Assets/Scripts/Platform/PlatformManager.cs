@@ -18,6 +18,7 @@ namespace Platform
         {
             _mainCamera = Camera.main;
             platformCounter = platformAmount;
+            UpdatePlatformCounter();
         }
 
         private void Update()

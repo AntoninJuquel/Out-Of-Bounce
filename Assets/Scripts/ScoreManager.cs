@@ -22,6 +22,7 @@ public class ScoreManager : MonoBehaviour
             var achievement = new AchievementValue {achievementType = achievementType};
             achievementValues.Add(achievement);
         }
+        CanvasManager.Instance.SetScoreText(0);
     }
 
     private IEnumerator LerpScore(float oldScore, float newScore)
