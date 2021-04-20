@@ -136,6 +136,9 @@ GameObject:
   - component: {fileID: 1848306972}
   - component: {fileID: 1848306974}
   - component: {fileID: 1848306975}
+  - component: {fileID: 1848306973}
+  - component: {fileID: 1848306976}
+  - component: {fileID: 1848306977}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -195,6 +198,28 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e5f4be341321a7249ba91d2c62b93f79, type: 2}
   - {fileID: 11400000, guid: b70f04b769509dc41b4246803fbd841f, type: 2}
   dotsPerChunk: 10
+--- !u!114 &1848306973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848306969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32a45d1cc6edac4fa2d2e8ee73e9a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
+  achievementValues:
+  - achievementType: 0
+    value: 0
+  - achievementType: 1
+    value: 0
+  - achievementType: 2
+    value: 0
+  - achievementType: 3
+    value: 0
 --- !u!114 &1848306974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,3 +256,73 @@ MonoBehaviour:
   platformCounter: 3
   radius: 0.25
   platformTimer: 5
+--- !u!114 &1848306976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848306969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc6366499ea8b6a479f08cf5c4803ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatEvents:
+  - channel: {fileID: 11400000, guid: 34d5d1711b4c4244f9e2bfbc9647fb2d, type: 2}
+    OnEventRaised:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1848306973}
+          m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
+          m_MethodName: UpdateHeight
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1848306977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848306969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7c7df2f1558584f97f156fc252d8e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intEvents:
+  - channel: {fileID: 11400000, guid: 95861263603fdff40b316b6acd53ef81, type: 2}
+    OnEventRaised:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1848306973}
+          m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
+          m_MethodName: UpdateScore
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1848306973}
+          m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
+          m_MethodName: UpdateKills
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2

@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -9,10 +8,16 @@ namespace UserInterface
 {
     public class CanvasManager : MonoBehaviour
     {
+        public static CanvasManager Instance;
         [SerializeField] private AudioMixer audioMixer;
         [SerializeField] private Slider[] sliders;
         [SerializeField] private Canvas[] canvasArray;
         [SerializeField] private TextMeshProUGUI heightText, scoreText;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         private void Start()
         {
@@ -25,7 +30,6 @@ namespace UserInterface
 
             SetActiveCanvas(canvasArray[0]);
         }
-
         public void SetActiveCanvas(Canvas target)
         {
             foreach (var canvas in canvasArray)
@@ -50,8 +54,9 @@ namespace UserInterface
             heightText.text = string.Concat(value.ToString("000.00"), "m");
         }
 
-        public void SetScoreText()
+        public void SetScoreText(float score)
         {
+            scoreText.text = score.ToString("00000000");
         }
     }
 }

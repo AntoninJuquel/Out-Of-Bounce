@@ -9,32 +9,33 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    [SerializeField] private UnityEvent onGameOver;
-    [SerializeField] private Vector3 startPosition;
     [SerializeField] private GameObject lavaPit;
+    [SerializeField] private PlayerSo playerSo;
+    [SerializeField] private UnityEvent onGameOver;
     public static GameStatus GameStatus;
     private static GameStatus _gameStatusBeforePause;
-    private float lavaY;
-
-    
+    private float _lavaY, _startTime;
 
     private void Awake()
     {
         Instance = this;
         Application.targetFrameRate = 144;
-        lavaY = lavaPit.transform.position.y;
+        _lavaY = lavaPit.transform.position.y;
+        playerSo.LoadPlayer();
     }
 
     private IEnumerator StartRoutine()
     {
         GameStatus = GameStatus.Starting;
         yield return new WaitUntil(() => SceneManager.GetSceneByName("GameScene").isLoaded);
-        ChunkManager.Instance.StartChunk(startPosition);
-        BallManager.Instance.SpawnBall(startPosition, out var firstBallRb);
+        ChunkManager.Instance.StartChunk(playerSo.GetStartPosition());
+        BallManager.Instance.SpawnBall(playerSo.GetStartPosition(), out var firstBallRb);
         CameraController.Instance.SetTarget(firstBallRb);
         yield return new WaitUntil(() => Input.GetMouseButtonUp(0) && GameStatus != GameStatus.Paused);
         GameStatus = GameStatus.Playing;
         firstBallRb.simulated = true;
+        _startTime = Time.time;
+        ScoreManager.Instance.ResetScores();
     }
 
     public void StartGame()
@@ -69,6 +70,10 @@ public class GameManager : MonoBehaviour
     {
         GameStatus = GameStatus.GameOver;
         onGameOver?.Invoke();
+
+        ScoreManager.Instance.UpdateTime(Time.time - _startTime);
+        ScoreManager.Instance.UpdatePlayerSo();
+        playerSo.SavePlayer();
     }
 
     public void MainMenu()
@@ -80,7 +85,7 @@ public class GameManager : MonoBehaviour
 
     public void SetLavaPosition(float xPosition)
     {
-        lavaPit.transform.position = new Vector3(xPosition, lavaY);
+        lavaPit.transform.position = new Vector3(xPosition, _lavaY);
     }
 }
 

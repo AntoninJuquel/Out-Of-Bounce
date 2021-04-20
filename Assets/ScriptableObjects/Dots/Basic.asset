@@ -17,7 +17,6 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 5a7ad430efde2374bab0adfa19acd008, type: 3}
   color: {r: 0, g: 1, b: 0, a: 1}
-  points: 0
-  dotType: 0
+  points: 1
   spawnChance: 1
   destroyParticles: {fileID: 5567021245606077315, guid: 729739bde3317bc4eb84fdbf3d5d2c89, type: 3}

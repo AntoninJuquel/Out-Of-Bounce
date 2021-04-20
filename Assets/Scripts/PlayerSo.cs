@@ -33,5 +33,7 @@ public class PlayerSo : ScriptableObject
 
     public void SavePlayer()
     {
+        SaveManager.SaveByXML("achievements.txt", achievements);
+        SaveManager.SaveByXML("vault.txt", vault);
     }
 }

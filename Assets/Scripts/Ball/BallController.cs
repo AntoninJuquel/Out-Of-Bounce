@@ -22,7 +22,6 @@ namespace Ball
         private void Start()
         {
             _ballManager = BallManager.Instance;
-            StartCoroutine(DeathRoutine());
         }
 
         private void LateUpdate()
@@ -57,6 +56,7 @@ namespace Ball
 
         private void OnDisable()
         {
+            StopAllCoroutines();
             if (_ballManager)
                 _ballManager.RemoveBall(gameObject);
         }
@@ -65,6 +65,7 @@ namespace Ball
         {
             _rigidbody.simulated = GameManager.GameStatus != GameStatus.Starting;
             _transform.localScale = Vector3.one;
+            StartCoroutine(DeathRoutine());
             if(_transform.position.y <= 0f)
                 Destroy();
         }
@@ -72,7 +73,6 @@ namespace Ball
         public void Destroy()
         {
             gameObject.SetActive(false);
-            // I am dead ball manager
         }
     }
 }
