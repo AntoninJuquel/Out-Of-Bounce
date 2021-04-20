@@ -16,4 +16,24 @@ MonoBehaviour:
   vault:
     value: 0
     level: 0
-  achievements: []
+  achievements:
+  - achievementType: 0
+    last: 0
+    best: 0
+    total: 0
+  - achievementType: 1
+    last: 0
+    best: 0
+    total: 0
+  - achievementType: 2
+    last: 0
+    best: 0
+    total: 0
+  - achievementType: 3
+    last: 0
+    best: 0
+    total: 0
+  - achievementType: 4
+    last: 0
+    best: 0
+    total: 0

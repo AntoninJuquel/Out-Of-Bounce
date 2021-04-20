@@ -16,6 +16,7 @@ public class ScoreManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        achievementValues = new List<AchievementValue>();
         foreach (var achievementType in (AchievementType[]) Enum.GetValues(typeof(AchievementType)))
         {
             var achievement = new AchievementValue {achievementType = achievementType};
