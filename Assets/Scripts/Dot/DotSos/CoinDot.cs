@@ -9,5 +9,11 @@ namespace Dot.DotSos
         {
             collider2D.isTrigger = true;
         }
+
+        public override void Bounce(GameObject ball, GameObject dot, float bouncyness)
+        {
+            ScoreManager.Instance.UpdateMoney(GetPoints());
+            Destroy(dot);
+        }
     }
 }

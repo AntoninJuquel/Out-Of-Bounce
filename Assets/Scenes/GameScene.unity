@@ -220,6 +220,8 @@ MonoBehaviour:
     value: 0
   - achievementType: 3
     value: 0
+  - achievementType: 4
+    value: 0
 --- !u!114 &1848306974
 MonoBehaviour:
   m_ObjectHideFlags: 0

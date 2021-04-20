@@ -24,4 +24,4 @@ MonoBehaviour:
   color: {r: 0.93333334, g: 0.70980394, b: 0.003921569, a: 1}
   points: 2
   spawnChance: 0.1
-  destroyParticles: {fileID: 5567021245606077315, guid: 729739bde3317bc4eb84fdbf3d5d2c89, type: 3}
+  destroyParticles: {fileID: 3934596105717551393, guid: 8c63452cb786f1a438c121b48875b20e, type: 3}

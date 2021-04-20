@@ -12,7 +12,7 @@ namespace UserInterface
         [SerializeField] private AudioMixer audioMixer;
         [SerializeField] private Slider[] sliders;
         [SerializeField] private Canvas[] canvasArray;
-        [SerializeField] private TextMeshProUGUI heightText, scoreText, platformText;
+        [SerializeField] private TextMeshProUGUI heightText, scoreText, platformText, versionText;
 
         private void Awake()
         {
@@ -29,6 +29,7 @@ namespace UserInterface
             }
 
             SetActiveCanvas(canvasArray[0]);
+            versionText.text = string.Concat("version : ", Application.version);
         }
         public void SetActiveCanvas(Canvas target)
         {
