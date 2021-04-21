@@ -25,7 +25,7 @@ namespace Dot
             Destroy(dot);
         }
 
-        public void Destroy(GameObject dot)
+        public virtual void Destroy(GameObject dot)
         {
             InstantiateParticles(dot.transform.position);
             dot.SetActive(false);

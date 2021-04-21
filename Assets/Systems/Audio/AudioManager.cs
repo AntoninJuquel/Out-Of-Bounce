@@ -2,6 +2,7 @@
 using UnityEngine.Audio;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace Systems.Audio
 {
@@ -65,7 +66,7 @@ namespace Systems.Audio
                 return;
             }
 
-            foreach (var source in s.sources)
+            foreach (var source in s.sources.Where(source => source))
             {
                 source.Stop();
             }

@@ -18,7 +18,8 @@ MonoBehaviour:
   price: 50
   levelRequired: 0
   description: Bounce in a certain direction
-  status: 1
+  status: 2
   points: 2
   spawnChance: 0.1
   destroyParticles: {fileID: 5567021245606077315, guid: 729739bde3317bc4eb84fdbf3d5d2c89, type: 3}
+  destroySound: dot_destroy

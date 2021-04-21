@@ -28,7 +28,7 @@ public class PlayerSo : ScriptableObject
         }
 
         var defaultAchievement = _achievements.Select(achievement => achievement.Value).ToList();
-        var loadedAchievements = SaveManager.LoadByXML("achievements.txt", defaultAchievement) as List<Achievement>;
+        var loadedAchievements = SaveManager.LoadByBF("achievements.txt", defaultAchievement) as List<Achievement>;
 
         if (loadedAchievements != null)
             foreach (var achievement in loadedAchievements)
@@ -36,20 +36,20 @@ public class PlayerSo : ScriptableObject
                 _achievements[achievement.achievementType] = achievement;
             }
 
-        var save = SaveManager.LoadByXML("dots.txt", dots.Select(dotSo => dotSo.GetStatus()).ToList()) as List<UnlockStatus>;
+        var save = SaveManager.LoadByBF("dots.txt", dots.Select(dotSo => dotSo.GetStatus()).ToList()) as List<UnlockStatus>;
         for (var i = 0; i < save?.Count; i++)
         {
             dots[i].SetUnlocked(save[i]);
         }
 
-        vault = SaveManager.LoadByXML("vault.txt", vault) as Vault;
+        vault = SaveManager.LoadByBF("vault.txt", vault) as Vault;
     }
 
     public void SavePlayer()
     {
-        SaveManager.SaveByXML("achievements.txt", _achievements.Select(achievement => achievement.Value).ToList());
-        SaveManager.SaveByXML("vault.txt", vault);
-        SaveManager.SaveByXML("dots.txt", dots.Select(dotsSo => dotsSo.GetStatus()).ToList());
+        SaveManager.SaveByBF("achievements.txt", _achievements.Select(achievement => achievement.Value).ToList());
+        SaveManager.SaveByBF("vault.txt", vault);
+        SaveManager.SaveByBF("dots.txt", dots.Select(dotsSo => dotsSo.GetStatus()).ToList());
     }
 
     public void UpdatePlayer(Dictionary<AchievementType, float> achievementValues)

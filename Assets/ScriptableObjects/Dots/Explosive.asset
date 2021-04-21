@@ -18,9 +18,10 @@ MonoBehaviour:
   price: 50
   levelRequired: 0
   description: Explode nearby dots and bounce very fast
-  status: 1
+  status: 2
   points: 2
   spawnChance: 0.1
   destroyParticles: {fileID: 1035170851873987009, guid: e31088bc99eabda47b8b8548be56a08a, type: 3}
+  destroySound: dot_destroy
   force: 2
   radius: 15

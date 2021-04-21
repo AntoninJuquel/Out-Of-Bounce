@@ -14,29 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPosition: {x: 0, y: 32, z: 0}
   vault:
-    value: 38
+    value: 4
     level: 0
-  achievements:
-  - achievementType: 0
-    last: 0
-    best: 0
-    total: 0
-  - achievementType: 1
-    last: 0
-    best: 0
-    total: 0
-  - achievementType: 2
-    last: 0
-    best: 0
-    total: 0
-  - achievementType: 3
-    last: 0
-    best: 0
-    total: 0
-  - achievementType: 4
-    last: 0
-    best: 0
-    total: 0
   dots:
   - {fileID: 11400000, guid: b70f04b769509dc41b4246803fbd841f, type: 2}
   - {fileID: 11400000, guid: e5f4be341321a7249ba91d2c62b93f79, type: 2}
@@ -45,3 +24,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 898388a25e4b481438a8b1cec8669ca5, type: 2}
   - {fileID: 11400000, guid: 694327941d97c994cabf4c6d585e2ca0, type: 2}
   - {fileID: 11400000, guid: 294579e1a0e567f4994680f578bfd3c9, type: 2}
+  - {fileID: 11400000, guid: 65d1d72d24307d1479d96484c66e92f8, type: 2}
+  - {fileID: 11400000, guid: b03c779e20bc33f43a4d9acdbd52d5f7, type: 2}
