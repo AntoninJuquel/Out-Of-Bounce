@@ -27,3 +27,4 @@ MonoBehaviour:
   points: 2
   spawnChance: 0.1
   destroyParticles: {fileID: 3934596105717551393, guid: 8c63452cb786f1a438c121b48875b20e, type: 3}
+  destroySound: coin

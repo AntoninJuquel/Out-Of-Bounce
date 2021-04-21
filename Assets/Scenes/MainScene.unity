@@ -14060,6 +14060,19 @@ MonoBehaviour:
     loop: 0
     sources: []
     index: 0
+  - name: coin
+    clips:
+    - {fileID: 8300000, guid: 1f7e2f0aaaab6464798253a23f62c683, type: 3}
+    - {fileID: 8300000, guid: cd174a188b5ba7849875319a55319092, type: 3}
+    - {fileID: 8300000, guid: 8092e94f63b652a44b7d2e2d243db02c, type: 3}
+    - {fileID: 8300000, guid: 98b40992268b09e4c9c23650226a39c6, type: 3}
+    outputAudioMixerGroup: {fileID: -5952831266603608737, guid: f00cb753435f5f54ab772ec889872e0f, type: 2}
+    volume: 1
+    spatialBlend: 0
+    pitch: 1
+    loop: 0
+    sources: []
+    index: 0
   - name: platform_activate
     clips:
     - {fileID: 8300000, guid: 4eaf4246409108b4096907dc052f4f00, type: 3}

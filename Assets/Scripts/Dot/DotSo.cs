@@ -10,7 +10,7 @@ namespace Dot
         [SerializeField] private int points;
         [SerializeField] [Range(0, 1)] private float spawnChance = 1;
         [SerializeField] private GameObject destroyParticles;
-        [SerializeField] private string destroySound = "dot_destroy";
+        [SerializeField] protected string destroySound = "dot_destroy";
 
         public virtual void Setup(GameObject dot, Collider2D collider2D)
         {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Systems.Audio;
+using UnityEngine;
 
 namespace Dot.DotSos
 {
@@ -16,7 +17,7 @@ namespace Dot.DotSos
         {
             var rigid = ball.GetComponent<Rigidbody2D>();
             rigid.velocity = dot.transform.right * bouncyness;
-            
+            AudioManager.Instance.Play(destroySound);
             Destroy(dot);
         }
     }

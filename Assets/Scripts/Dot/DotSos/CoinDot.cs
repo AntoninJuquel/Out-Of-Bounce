@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Systems.Audio;
+using UnityEngine;
 
 namespace Dot.DotSos
 {
@@ -14,6 +15,12 @@ namespace Dot.DotSos
         {
             ScoreManager.Instance.UpdateMoney(GetPoints());
             Destroy(dot);
+        }
+
+        public override void Destroy(GameObject dot)
+        {
+            base.Destroy(dot);
+            AudioManager.Instance.Play(destroySound);
         }
     }
 }
