@@ -21,7 +21,7 @@ MonoBehaviour:
   status: 2
   points: 10
   spawnChance: 0.1
-  destroyParticles: {fileID: 5567021245606077315, guid: 729739bde3317bc4eb84fdbf3d5d2c89, type: 3}
+  destroyParticles: {fileID: 3768524794979209404, guid: b447c1ff8d0ab3f46b2224950abfa0dc, type: 3}
   destroySound: dot_destroy
   xRange: {x: -24, y: 24}
   yRange: {x: -24, y: 24}

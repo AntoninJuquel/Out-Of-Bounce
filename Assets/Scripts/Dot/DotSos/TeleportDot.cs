@@ -9,7 +9,9 @@ namespace Dot.DotSos
 
         public override void Bounce(GameObject ball, GameObject dot, float bouncyness)
         {
-            ball.transform.position =  dot.transform.position + new Vector3(Random.Range(xRange.x, xRange.y), Random.Range(yRange.x, yRange.y));
+            var teleportPosition = dot.transform.position + new Vector3(Random.Range(xRange.x, xRange.y), Random.Range(yRange.x, yRange.y));
+            ball.transform.position = teleportPosition;
+            InstantiateParticles(teleportPosition);
             base.Bounce(ball, dot, bouncyness);
         }
     }
