@@ -3,3 +3,8 @@ public static class Utilities
 {
     public static Vector2[] ToVector2Array(Vector3[] vector3Array) => System.Array.ConvertAll(vector3Array, (v3) => new Vector2(v3.x, v3.y));
 }
+
+public interface ICollide
+{
+    public void Bounce(GameObject ball, float bouncyness);
+}

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Systems.Chunk;
 using Systems.Pool;
+using ScriptableObjects;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

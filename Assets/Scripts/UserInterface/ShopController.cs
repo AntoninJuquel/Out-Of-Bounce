@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Systems.Unlock;
+using ScriptableObjects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
