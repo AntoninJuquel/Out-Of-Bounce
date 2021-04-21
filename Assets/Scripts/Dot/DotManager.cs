@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Systems.Chunk;
 using Systems.Pool;
-using Systems.Unlock;
-using Ball;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,7 +9,7 @@ namespace Dot
     public class DotManager : ObjectPool
     {
         public static DotManager Instance;
-        [SerializeField] private UnlockableDataBaseSo dotsDB;
+        [SerializeField] private PlayerSo playerSo;
         [SerializeField] private List<DotSo> dotSos = new List<DotSo>();
         [SerializeField] private int dotsPerChunk = 10;
         private Dictionary<Chunk, List<GameObject>> dotsMap = new Dictionary<Chunk, List<GameObject>>();
@@ -20,10 +17,7 @@ namespace Dot
         private void Awake()
         {
             Instance = this;
-            foreach (var unlockableSo in dotsDB.GetUnlockedSos() )
-            {
-                dotSos.Add(unlockableSo as DotSo);
-            }
+            dotSos = playerSo.GetDots().FindAll(dotSo => dotSo.Unlocked());
             dotSos.Reverse();
         }
 

@@ -14116,8 +14116,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  unlockableDataBaseSos:
-  - {fileID: 11400000, guid: be77a317b3e8701409b81cc7435712d4, type: 2}
 --- !u!1 &1852840722
 GameObject:
   m_ObjectHideFlags: 0
@@ -15058,14 +15056,13 @@ MonoBehaviour:
       - m_Target: {fileID: 907489078}
         m_TargetAssemblyTypeName: UserInterface.ShopController, Assembly-CSharp
         m_MethodName: SetupShop
-        m_Mode: 2
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: be77a317b3e8701409b81cc7435712d4, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Systems.Unlock.UnlockableDataBaseSo,
-            Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: dots
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2108381145

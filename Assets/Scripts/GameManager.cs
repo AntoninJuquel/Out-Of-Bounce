@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject lavaPit;
     [SerializeField] private PlayerSo playerSo;
     [SerializeField] private UnityEvent onGameOver;
-    [SerializeField] private UnlockableDataBaseSo[] unlockableDataBaseSos;
     public static GameStatus GameStatus;
     private static GameStatus _gameStatusBeforePause;
     private float _lavaY, _startTime;
@@ -25,10 +24,6 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 144;
         _lavaY = lavaPit.transform.position.y;
         playerSo.LoadPlayer();
-        foreach (var unlockableDataBaseSo in unlockableDataBaseSos)
-        {
-            unlockableDataBaseSo.LoadUnlockables();
-        }
         AudioManager.Instance.Play("theme",0);
     }
 

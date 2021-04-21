@@ -189,7 +189,7 @@ MonoBehaviour:
   - key: Dot
     prefab: {fileID: 6388628060645547033, guid: 7021e1c85e3bcb844a102eb2db9f7c9e, type: 3}
     size: 300
-  dotsDB: {fileID: 11400000, guid: be77a317b3e8701409b81cc7435712d4, type: 2}
+  playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
   dotSos: []
   dotsPerChunk: 10
 --- !u!114 &1848306973

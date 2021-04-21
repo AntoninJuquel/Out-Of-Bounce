@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Systems.Achievement;
@@ -9,19 +8,14 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
     [SerializeField] private PlayerSo playerSo;
-    [SerializeField] private List<AchievementValue> achievementValues;
+    private Dictionary<AchievementType, float> _achievementValues = new Dictionary<AchievementType, float>();
 
     private float _lerptScore;
 
     private void Awake()
     {
         Instance = this;
-        achievementValues = new List<AchievementValue>();
-        foreach (var achievementType in (AchievementType[]) Enum.GetValues(typeof(AchievementType)))
-        {
-            var achievement = new AchievementValue {achievementType = achievementType};
-            achievementValues.Add(achievement);
-        }
+        ResetScores();
         CanvasManager.Instance.SetScoreText(0);
     }
 
@@ -43,42 +37,41 @@ public class ScoreManager : MonoBehaviour
 
     public void UpdateScore(int value)
     {
-        var score = achievementValues.Find(achievement => achievement.achievementType == AchievementType.Score);
-        score.value += (value * 1000);
+        _achievementValues[AchievementType.Score] += (value * 1000);
         StopCoroutine(nameof(LerpScore));
-        StartCoroutine(LerpScore(_lerptScore, score.value));
+        StartCoroutine(LerpScore(_lerptScore, _achievementValues[AchievementType.Score]));
     }
 
     public void UpdateHeight(float value)
     {
-        var height = achievementValues.Find(achievement => achievement.achievementType == AchievementType.Height);
-        if (value <= height.value) return;
-        height.value = value;
+        var height = _achievementValues[AchievementType.Height];
+        if (value <= height) return;
+        _achievementValues[AchievementType.Height] = value;
     }
 
-    public void UpdateKills() => achievementValues.Find(achievement => achievement.achievementType == AchievementType.Kills).value += 1;
+    public void UpdateKills() => _achievementValues[AchievementType.Kills] += 1;
 
     public void UpdateTime(float value)
     {
-        achievementValues.Find(achievement => achievement.achievementType == AchievementType.Time).value = value;
+        _achievementValues[AchievementType.Time] = value;
     }
 
     public void UpdateMoney(float value)
     {
-        var money = achievementValues.Find(achievement => achievement.achievementType == AchievementType.Money);
-        money.value += value;
+        _achievementValues[AchievementType.Money] += value;
     }
 
     public void UpdatePlayerSo()
     {
-        playerSo.UpdateAchievements(achievementValues);
+        playerSo.UpdateAchievements(_achievementValues);
     }
 
     public void ResetScores()
     {
-        foreach (var achievementValue in achievementValues)
+        _achievementValues = new Dictionary<AchievementType, float>();
+        foreach (var achievementType in AchievementUtilities.AchievementTypesArray())
         {
-            achievementValue.value = 0;
+            _achievementValues.Add(achievementType, 0);
         }
     }
 }

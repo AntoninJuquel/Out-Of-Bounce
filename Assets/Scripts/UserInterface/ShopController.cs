@@ -1,4 +1,5 @@
-using Systems.Save;
+using System.Collections.Generic;
+using System.Linq;
 using Systems.Unlock;
 using TMPro;
 using UnityEngine;
@@ -14,11 +15,16 @@ namespace UserInterface
         [SerializeField] private TextMeshProUGUI money;
         [SerializeField] private PlayerSo playerSo;
         [SerializeField] private CanvasController canvasController;
-        private UnlockableDataBaseSo _unlockableDataBaseSo;
-
-        public void SetupShop(UnlockableDataBaseSo unlockableDataBaseSo)
+        public void SetupShop(string shopName)
         {
-            _unlockableDataBaseSo = unlockableDataBaseSo;
+            var unlockableSos = new List<UnlockableSo>();
+            switch (shopName)
+            {
+                case "dots":
+                    unlockableSos = playerSo.GetDots().Cast<UnlockableSo>().ToList();
+                    break;
+            }
+            
             verticalLayoutGroup.enabled = true;
 
             foreach (Transform child in content)
@@ -26,7 +32,7 @@ namespace UserInterface
                 Destroy(child.gameObject);
             }
 
-            foreach (var unlockableSo in unlockableDataBaseSo.unlockableSos)
+            foreach (var unlockableSo in unlockableSos)
             {
                 var shopItem = Instantiate(shopItemPrefab, content);
                 shopItem.GetComponent<ShopItemController>().Setup(unlockableSo, this);
@@ -41,7 +47,6 @@ namespace UserInterface
         public void UpdateShop()
         {
             money.text = string.Concat(playerSo.GetMoney(), " $");
-            _unlockableDataBaseSo.SaveUnlockables();
             playerSo.SavePlayer();
         }
     }

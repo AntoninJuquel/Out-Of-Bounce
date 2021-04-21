@@ -4,6 +4,11 @@ using UnityEngine;
 
 namespace Systems.Achievement
 {
+    public static class AchievementUtilities
+    {
+        public static IEnumerable<AchievementType> AchievementTypesArray() => (AchievementType[]) Enum.GetValues(typeof(AchievementType));
+    }
+
     [Serializable]
     public class Achievement
     {
@@ -11,7 +16,7 @@ namespace Systems.Achievement
         public float last;
         public float best;
         public float total;
-        
+
         public void UpdateAchievement(float lastValue)
         {
             last = lastValue;
@@ -20,14 +25,7 @@ namespace Systems.Achievement
             best = lastValue;
         }
     }
-
-    [Serializable]
-    public class AchievementValue
-    {
-        public AchievementType achievementType;
-        public float value;
-    }
-
+    
     [Serializable]
     public enum AchievementType
     {
