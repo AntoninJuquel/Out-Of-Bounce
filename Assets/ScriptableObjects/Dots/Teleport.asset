@@ -17,11 +17,11 @@ MonoBehaviour:
   color: {r: 0.5424528, g: 0.55774564, b: 1, a: 1}
   price: 50
   levelRequired: 0
-  description: 
+  description: Teleports you randomly around the dot !
   status: 2
   points: 10
   spawnChance: 0.1
   destroyParticles: {fileID: 5567021245606077315, guid: 729739bde3317bc4eb84fdbf3d5d2c89, type: 3}
   destroySound: dot_destroy
-  xRange: {x: -16, y: 16}
-  yRange: {x: -16, y: 16}
+  xRange: {x: -24, y: 24}
+  yRange: {x: -24, y: 24}

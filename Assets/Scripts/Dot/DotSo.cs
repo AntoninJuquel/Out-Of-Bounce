@@ -1,5 +1,6 @@
 ﻿using Systems.Audio;
 using Systems.Unlock;
+using Packages.LeanTween;
 using UnityEngine;
 
 namespace Dot
@@ -27,6 +28,7 @@ namespace Dot
 
         public virtual void Destroy(GameObject dot)
         {
+            LeanTween.cancel(dot);
             InstantiateParticles(dot.transform.position);
             dot.SetActive(false);
         }

@@ -43,7 +43,7 @@ namespace Dot
                     {
                         if (!dotSo.Spawn(Random.value)) continue;
                         var dot = SpawnFromPool("Dot", chunk.RandomPointInBounds(), Quaternion.identity);
-                        dot.GetComponent<DotController>().Setup(dotSo);
+                        dot.GetComponent<DotController>().Setup(dotSo, chunk);
                         dotsMap[chunk].Add(dot);
                     }
                 }
@@ -57,6 +57,12 @@ namespace Dot
 
                 dotsMap.Remove(chunk);
             }
+        }
+
+        public void RemoveDot(Chunk chunk, GameObject dot)
+        {
+            if (dotsMap[chunk].Contains(dot))
+                dotsMap[chunk].Remove(dot);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Systems.Chunk;
 using Systems.Event.Scripts.Channels;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ namespace Dot
         private DotSo _dotSo;
         private SpriteRenderer _spriteRenderer;
         private Collider2D _collider2D;
+        private Chunk _chunk;
 
 
         private void Awake()
@@ -33,10 +35,10 @@ namespace Dot
             StopAllCoroutines();
         }
 
-        public void Setup(DotSo dotSo)
+        public void Setup(DotSo dotSo, Chunk chunk)
         {
             _dotSo = dotSo;
-
+            _chunk = chunk;
             _dotSo.Setup(gameObject, _collider2D);
 
             _spriteRenderer.color = dotSo.GetColor();
@@ -52,9 +54,15 @@ namespace Dot
         {
             intEventChannelSo.RaiseEvent(_dotSo.GetPoints());
             colorEventChannelSo.RaiseEvent(_dotSo.GetColor());
+            DotManager.Instance.RemoveDot(_chunk, gameObject);
             _dotSo.Bounce(ball, gameObject, bouncyness);
         }
 
-        public void Destroy() => _dotSo.Destroy(gameObject);
+        public void Destroy()
+        {
+            DotManager.Instance.RemoveDot(_chunk, gameObject);
+            _dotSo.Destroy(gameObject);
+        }
+            
     }
 }
