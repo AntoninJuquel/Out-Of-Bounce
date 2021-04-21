@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Systems.Audio;
 using Systems.Unlock;
 using UnityEngine;
 
@@ -10,6 +10,7 @@ namespace Dot
         [SerializeField] private int points;
         [SerializeField] [Range(0, 1)] private float spawnChance = 1;
         [SerializeField] private GameObject destroyParticles;
+        [SerializeField] private string destroySound = "dot_destroy";
 
         public virtual void Setup(GameObject dot, Collider2D collider2D)
         {
@@ -20,7 +21,7 @@ namespace Dot
         {
             var rigid = ball.GetComponent<Rigidbody2D>();
             rigid.velocity = rigid.velocity.normalized * bouncyness;
-
+            AudioManager.Instance.Play(destroySound);
             Destroy(dot);
         }
 

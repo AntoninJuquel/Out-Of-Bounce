@@ -1,4 +1,5 @@
 ﻿using System;
+using Systems.Audio;
 using UnityEngine;
 
 namespace Platform
@@ -18,14 +19,13 @@ namespace Platform
         private void Disable()
         {
             CancelInvoke();
-            //soundFXChannel.RaiseEvent("PlatformActivate");
             _edgeCollider.enabled = false;
             gameObject.SetActive(false);
         }
 
         public void Activate(float time)
         {
-            //soundFXChannel.RaiseEvent("PlatformActivate");
+            AudioManager.Instance.Play("platform_activate");
             _edgeCollider.enabled = true;
             Invoke(nameof(Disable), time);
         }
@@ -34,6 +34,7 @@ namespace Platform
         {
             var rigid = ball.GetComponent<Rigidbody2D>();
             rigid.velocity = rigid.velocity.normalized * (bouncyness * (1 + 1 / Length));
+            AudioManager.Instance.Play("platform_bounce");
             Disable();
         }
 

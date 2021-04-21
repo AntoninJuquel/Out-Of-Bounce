@@ -13973,6 +13973,7 @@ GameObject:
   - component: {fileID: 1848306971}
   - component: {fileID: 1848306973}
   - component: {fileID: 1848306970}
+  - component: {fileID: 1848306972}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -14021,6 +14022,71 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1848306972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848306969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e0c4074d8148549082321c419e5e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: theme
+    clips:
+    - {fileID: 8300000, guid: 53c8ee7ce49705d488e3ae3fc5338545, type: 3}
+    - {fileID: 8300000, guid: 2e30afb7b795fbb42b792a9641560c83, type: 3}
+    outputAudioMixerGroup: {fileID: -8758848378379723247, guid: f00cb753435f5f54ab772ec889872e0f, type: 2}
+    volume: 1
+    spatialBlend: 0
+    pitch: 1
+    loop: 1
+    sources: []
+    index: 0
+  - name: dot_destroy
+    clips:
+    - {fileID: 8300000, guid: 7bc0a36250605a94b8147e7f005dc138, type: 3}
+    - {fileID: 8300000, guid: 6981ce893ed05fc4a825049732693441, type: 3}
+    - {fileID: 8300000, guid: 5c53ceb6f16151f4a9c1f9cd66432433, type: 3}
+    - {fileID: 8300000, guid: b6f950b64a3ed6440adcf8226d004f30, type: 3}
+    - {fileID: 8300000, guid: c987d0f5b03c3a1409541e3bb2f7765e, type: 3}
+    outputAudioMixerGroup: {fileID: -5952831266603608737, guid: f00cb753435f5f54ab772ec889872e0f, type: 2}
+    volume: 1
+    spatialBlend: 0
+    pitch: 1
+    loop: 0
+    sources: []
+    index: 0
+  - name: platform_activate
+    clips:
+    - {fileID: 8300000, guid: 4eaf4246409108b4096907dc052f4f00, type: 3}
+    - {fileID: 8300000, guid: da15252fe1d19d34388667302684312b, type: 3}
+    - {fileID: 8300000, guid: d3706b09031c5d845bb242264d6f866f, type: 3}
+    - {fileID: 8300000, guid: 33a21e49166f2ff43901fdb638ffe21e, type: 3}
+    outputAudioMixerGroup: {fileID: 207731708416389673, guid: f00cb753435f5f54ab772ec889872e0f, type: 2}
+    volume: 1
+    spatialBlend: 0
+    pitch: 1
+    loop: 0
+    sources: []
+    index: 0
+  - name: platform_bounce
+    clips:
+    - {fileID: 8300000, guid: b787f793863337345acf90cd5eeaf08c, type: 3}
+    - {fileID: 8300000, guid: 0e1a372e5151a844c91316c423d70d57, type: 3}
+    - {fileID: 8300000, guid: 3977c0ae2844d5e4bb00144c6b2f2920, type: 3}
+    - {fileID: 8300000, guid: 306f346270666be43af4951d54915785, type: 3}
+    - {fileID: 8300000, guid: 0bb9151aa4545df4d83f8307f3902120, type: 3}
+    outputAudioMixerGroup: {fileID: 207731708416389673, guid: f00cb753435f5f54ab772ec889872e0f, type: 2}
+    volume: 1
+    spatialBlend: 0
+    pitch: 1
+    loop: 0
+    sources: []
+    index: 0
 --- !u!114 &1848306973
 MonoBehaviour:
   m_ObjectHideFlags: 0

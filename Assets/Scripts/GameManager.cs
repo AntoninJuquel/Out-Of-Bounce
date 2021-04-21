@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Systems.Audio;
 using Systems.Chunk;
 using Systems.Unlock;
 using Ball;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
         {
             unlockableDataBaseSo.LoadUnlockables();
         }
+        AudioManager.Instance.Play("theme",0);
     }
 
     private IEnumerator StartRoutine()
@@ -38,6 +40,8 @@ public class GameManager : MonoBehaviour
         BallManager.Instance.SpawnBall(playerSo.GetStartPosition(), out var firstBallRb);
         CameraController.Instance.SetTarget(firstBallRb);
         yield return new WaitUntil(() => Input.GetMouseButtonUp(0) && GameStatus != GameStatus.Paused);
+        AudioManager.Instance.Stop("theme");
+        AudioManager.Instance.Play("theme",1);
         GameStatus = GameStatus.Playing;
         firstBallRb.simulated = true;
         _startTime = Time.time;
@@ -76,7 +80,8 @@ public class GameManager : MonoBehaviour
     {
         GameStatus = GameStatus.GameOver;
         onGameOver?.Invoke();
-
+        AudioManager.Instance.Stop("theme");
+        AudioManager.Instance.Play("theme",0);
         ScoreManager.Instance.UpdateTime(Time.time - _startTime);
         ScoreManager.Instance.UpdatePlayerSo();
         playerSo.SavePlayer();
