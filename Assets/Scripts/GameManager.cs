@@ -79,7 +79,6 @@ public class GameManager : MonoBehaviour
         AudioManager.Instance.Play("theme",0);
         ScoreManager.Instance.UpdateTime(Time.time - _startTime);
         ScoreManager.Instance.UpdatePlayerSo();
-        playerSo.SavePlayer();
     }
 
     public void MainMenu()

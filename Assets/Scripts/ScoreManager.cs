@@ -63,7 +63,7 @@ public class ScoreManager : MonoBehaviour
 
     public void UpdatePlayerSo()
     {
-        playerSo.UpdateAchievements(_achievementValues);
+        playerSo.UpdatePlayer(_achievementValues);
     }
 
     public void ResetScores()

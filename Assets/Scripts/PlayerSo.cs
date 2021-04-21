@@ -15,17 +15,6 @@ public class PlayerSo : ScriptableObject
     [SerializeField] private List<DotSo> dots;
 
     private Dictionary<AchievementType, Achievement> _achievements = new Dictionary<AchievementType, Achievement>();
-
-    public void UpdateAchievements(Dictionary<AchievementType, float> achievementValues)
-    {
-        foreach (var achievementType in AchievementUtilities.AchievementTypesArray())
-        {
-            _achievements[achievementType].UpdateAchievement(achievementValues[achievementType]);
-        }
-
-        vault.AddValue((int) achievementValues[AchievementType.Money]);
-    }
-
     public Vector3 GetStartPosition() => startPosition;
     public int GetMoney() => vault.GetValue();
     public Vault GetVault() => vault;
@@ -41,12 +30,13 @@ public class PlayerSo : ScriptableObject
         var defaultAchievement = _achievements.Select(achievement => achievement.Value).ToList();
         var loadedAchievements = SaveManager.LoadByXML("achievements.txt", defaultAchievement) as List<Achievement>;
 
-        foreach (var achievement in loadedAchievements)
-        {
-            _achievements[achievement.achievementType] = achievement;
-        }
-        
-        var save = SaveManager.LoadByXML("dots.txt",  dots.Select(dotSo => dotSo.GetStatus()).ToList()) as List<UnlockStatus>;
+        if (loadedAchievements != null)
+            foreach (var achievement in loadedAchievements)
+            {
+                _achievements[achievement.achievementType] = achievement;
+            }
+
+        var save = SaveManager.LoadByXML("dots.txt", dots.Select(dotSo => dotSo.GetStatus()).ToList()) as List<UnlockStatus>;
         for (var i = 0; i < save?.Count; i++)
         {
             dots[i].SetUnlocked(save[i]);
@@ -60,5 +50,22 @@ public class PlayerSo : ScriptableObject
         SaveManager.SaveByXML("achievements.txt", _achievements.Select(achievement => achievement.Value).ToList());
         SaveManager.SaveByXML("vault.txt", vault);
         SaveManager.SaveByXML("dots.txt", dots.Select(dotsSo => dotsSo.GetStatus()).ToList());
+    }
+
+    public void UpdatePlayer(Dictionary<AchievementType, float> achievementValues)
+    {
+        foreach (var achievementType in AchievementUtilities.AchievementTypesArray())
+        {
+            _achievements[achievementType].UpdateAchievement(achievementValues[achievementType]);
+        }
+
+        vault.AddValue((int) achievementValues[AchievementType.Money]);
+
+        foreach (var dot in dots)
+        {
+            dot.UpdateStatus(vault);
+        }
+        
+        SavePlayer();
     }
 }
