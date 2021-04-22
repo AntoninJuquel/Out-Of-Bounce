@@ -78,5 +78,7 @@ namespace Controllers
             _currentShake = Shake(.25f, .05f, 2.5f);
             StartCoroutine(_currentShake);
         }
+
+        public void StopShake() => StopCoroutine(_currentShake);
     }
 }

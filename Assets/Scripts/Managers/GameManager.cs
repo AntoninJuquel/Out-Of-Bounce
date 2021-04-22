@@ -69,6 +69,7 @@ namespace Managers
             {
                 _gameStatusBeforePause = GameStatus;
                 GameStatus = GameStatus.Paused;
+                CameraController.Instance.StopShake();
                 Time.timeScale = 0;
             }
         }
