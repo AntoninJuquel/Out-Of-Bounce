@@ -7,8 +7,9 @@ namespace Ball
 {
     public class BallController : MonoBehaviour
     {
-        [SerializeField] private float bouncyness = 15f,minStretch = .5f, stretchMult = 1 / 50f, stretchWhenSquash = .5f, stretchSpeed = 1f, squashAmount = .5f, squashSpeed = 1f;
+        [SerializeField] private float bouncyness = 15f, minStretch = .5f, stretchMult = 1 / 50f, stretchWhenSquash = .5f, stretchSpeed = 1f, squashAmount = .5f, squashSpeed = 1f;
         [SerializeField] private Transform render;
+        [SerializeField] private SpriteRenderer skinRenderer, faceRenderer;
         private Rigidbody2D _rigidbody;
         private Transform _transform;
         private float _stretchAmount, _squashAmount, _stretchVel, _squashVel;
@@ -62,12 +63,13 @@ namespace Ball
                 _ballManager.RemoveBall(gameObject);
         }
 
-        public void Setup()
+        public void Setup(Sprite[] sprites)
         {
             _rigidbody.simulated = GameManager.GameStatus != GameStatus.Starting;
             _transform.localScale = Vector3.one;
+            faceRenderer.sprite = sprites[0];
             StartCoroutine(DeathRoutine());
-            if(_transform.position.y <= 0f)
+            if (_transform.position.y <= 0f)
                 Destroy();
         }
 

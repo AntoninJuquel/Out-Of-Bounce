@@ -19,6 +19,8 @@ MonoBehaviour:
   levelRequired: 0
   description: Teleports you randomly around the dot !
   status: 2
+  level: 2
+  upgrades: []
   points: 10
   spawnChance: 0.1
   destroyParticles: {fileID: 3768524794979209404, guid: b447c1ff8d0ab3f46b2224950abfa0dc, type: 3}

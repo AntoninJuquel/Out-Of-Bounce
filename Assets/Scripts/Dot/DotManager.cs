@@ -11,15 +11,15 @@ namespace Dot
     {
         public static DotManager Instance;
         [SerializeField] private PlayerSo playerSo;
-        [SerializeField] private List<DotSo> dotSos = new List<DotSo>();
         [SerializeField] private int dotsPerChunk = 10;
+        private List<DotSo> _dotSos = new List<DotSo>();
         private Dictionary<Chunk, List<GameObject>> dotsMap = new Dictionary<Chunk, List<GameObject>>();
 
         private void Awake()
         {
             Instance = this;
-            dotSos = playerSo.GetDots().FindAll(dotSo => dotSo.Unlocked());
-            dotSos.Reverse();
+            _dotSos = playerSo.GetDots().FindAll(dotSo => dotSo.Unlocked());
+            _dotSos.Reverse();
         }
 
         private void Start()
@@ -40,7 +40,7 @@ namespace Dot
                 dotsMap.Add(chunk, new List<GameObject>());
                 for (var i = 0; i < dotsPerChunk; i++)
                 {
-                    foreach (var dotSo in dotSos)
+                    foreach (var dotSo in _dotSos)
                     {
                         if (!dotSo.Spawn(Random.value)) continue;
                         var dot = SpawnFromPool("Dot", chunk.RandomPointInBounds(), Quaternion.identity);

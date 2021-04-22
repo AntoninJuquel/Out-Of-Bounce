@@ -6,8 +6,9 @@ using UnityEngine;
 namespace Dot
 {
     [CreateAssetMenu(fileName = "New basic dot", menuName = "Dots/Basic", order = 0)]
-    public class DotSo : UnlockableSo
+    public class DotSo : UpgradableSo
     {
+        [Header("Dot data")]
         [SerializeField] private int points;
         [SerializeField] [Range(0, 1)] private float spawnChance = 1;
         [SerializeField] private GameObject destroyParticles;
@@ -22,12 +23,12 @@ namespace Dot
         {
             var rigid = ball.GetComponent<Rigidbody2D>();
             rigid.velocity = rigid.velocity.normalized * bouncyness;
-            AudioManager.Instance.Play(destroySound);
             Destroy(dot);
         }
 
         public virtual void Destroy(GameObject dot)
         {
+            AudioManager.Instance.Play(destroySound);
             LeanTween.cancel(dot);
             InstantiateParticles(dot.transform.position);
             dot.SetActive(false);

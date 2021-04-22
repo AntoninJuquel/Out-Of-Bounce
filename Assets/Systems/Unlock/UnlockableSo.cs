@@ -3,8 +3,9 @@ using UnityEngine;
 
 namespace Systems.Unlock
 {
-    public class UnlockableSo : ScriptableObject
+    public abstract class UnlockableSo : ScriptableObject
     {
+        [Header("Unlock data")]
         [SerializeField] private Sprite[] sprites;
         [SerializeField] protected Color color = Color.white;
         [SerializeField] private int price;
@@ -23,7 +24,7 @@ namespace Systems.Unlock
         {
             if (status != UnlockStatus.Unlockable) return;
             var res = vault.GetValue() - price;
-            if (res <= 0) return;
+            if (res < 0) return;
             status = UnlockStatus.Unlocked;
             vault.SetValue(res);
         }

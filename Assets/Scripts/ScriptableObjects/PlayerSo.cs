@@ -23,6 +23,8 @@ namespace ScriptableObjects
         public Vault GetVault() => vault;
         public List<DotSo> GetDots() => dots;
 
+        public List<SkinSo> GetBallSkins() => ballSkins;
+
         public void LoadPlayer()
         {
             foreach (var achievementType in AchievementUtilities.AchievementTypesArray())
@@ -39,10 +41,11 @@ namespace ScriptableObjects
                     _achievements[achievement.achievementType] = achievement;
                 }
 
-            var save = SaveManager.LoadByBF("dots.txt", dots.Select(dotSo => dotSo.GetStatus()).ToList()) as List<UnlockStatus>;
+            var save = SaveManager.LoadByBF("dots.txt", dots.Select(dotsSo => new UpgradableSave {level = dotsSo.GetLevel(), unlockStatus = dotsSo.GetStatus()}).ToList()) as List<UpgradableSave>;
             for (var i = 0; i < save?.Count; i++)
             {
-                dots[i].SetUnlocked(save[i]);
+                dots[i].SetUnlocked(save[i].unlockStatus);
+                dots[i].SetLevel(save[i].level);
             }
 
             vault = SaveManager.LoadByBF("vault.txt", vault) as Vault;
@@ -52,7 +55,7 @@ namespace ScriptableObjects
         {
             SaveManager.SaveByBF("achievements.txt", _achievements.Select(achievement => achievement.Value).ToList());
             SaveManager.SaveByBF("vault.txt", vault);
-            SaveManager.SaveByBF("dots.txt", dots.Select(dotsSo => dotsSo.GetStatus()).ToList());
+            SaveManager.SaveByBF("dots.txt", dots.Select(dotsSo => new UpgradableSave {level = dotsSo.GetLevel(), unlockStatus = dotsSo.GetStatus()}).ToList());
         }
 
         public void UpdatePlayer(Dictionary<AchievementType, float> achievementValues)

@@ -19,6 +19,8 @@ MonoBehaviour:
   levelRequired: 0
   description: Attract nearby dots very COOL
   status: 2
+  level: 1
+  upgrades: []
   points: 3
   spawnChance: 0.1
   destroyParticles: {fileID: 6368940093412750586, guid: db345abf37673b647b9964ce80e59678, type: 3}
