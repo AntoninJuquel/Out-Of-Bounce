@@ -14,17 +14,14 @@ namespace ScriptableObjects
         [SerializeField] private Vector3 startPosition;
         [SerializeField] private Vault vault;
         [SerializeField] private List<DotSo> dots;
-        [SerializeField] private List<SkinSo> ballSkins;
         [SerializeField] private List<SkinSo> platformSkins;
 
-        private Dictionary<AchievementType, Achievement> _achievements = new Dictionary<AchievementType, Achievement>();
+        private readonly Dictionary<AchievementType, Achievement> _achievements = new Dictionary<AchievementType, Achievement>();
         public Vector3 GetStartPosition() => startPosition;
         public int GetMoney() => vault.GetValue();
         public Vault GetVault() => vault;
         public List<DotSo> GetDots() => dots;
-
-        public List<SkinSo> GetBallSkins() => ballSkins;
-
+        
         public void LoadPlayer()
         {
             foreach (var achievementType in AchievementUtilities.AchievementTypesArray())
@@ -33,19 +30,18 @@ namespace ScriptableObjects
             }
 
             var defaultAchievement = _achievements.Select(achievement => achievement.Value).ToList();
-            var loadedAchievements = SaveManager.LoadByBF("achievements.txt", defaultAchievement) as List<Achievement>;
 
-            if (loadedAchievements != null)
+            if (SaveManager.LoadByBF("achievements.txt", defaultAchievement) is List<Achievement> loadedAchievements)
                 foreach (var achievement in loadedAchievements)
                 {
                     _achievements[achievement.achievementType] = achievement;
                 }
 
-            var save = SaveManager.LoadByBF("dots.txt", dots.Select(dotsSo => new UpgradableSave {level = dotsSo.GetLevel(), unlockStatus = dotsSo.GetStatus()}).ToList()) as List<UpgradableSave>;
-            for (var i = 0; i < save?.Count; i++)
+            var dotsSave = SaveManager.LoadByBF("dots.txt", dots.Select(dotsSo => new UpgradableSave {level = dotsSo.GetLevel(), unlockStatus = dotsSo.GetStatus()}).ToList()) as List<UpgradableSave>;
+            for (var i = 0; i < dotsSave?.Count; i++)
             {
-                dots[i].SetUnlocked(save[i].unlockStatus);
-                dots[i].SetLevel(save[i].level);
+                dots[i].SetUnlocked(dotsSave[i].unlockStatus);
+                dots[i].SetLevel(dotsSave[i].level);
             }
 
             vault = SaveManager.LoadByBF("vault.txt", vault) as Vault;

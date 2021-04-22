@@ -63,11 +63,10 @@ namespace Ball
                 _ballManager.RemoveBall(gameObject);
         }
 
-        public void Setup(Sprite[] sprites)
+        public void Setup()
         {
             _rigidbody.simulated = GameManager.GameStatus != GameStatus.Starting;
             _transform.localScale = Vector3.one;
-            faceRenderer.sprite = sprites[0];
             StartCoroutine(DeathRoutine());
             if (_transform.position.y <= 0f)
                 Destroy();

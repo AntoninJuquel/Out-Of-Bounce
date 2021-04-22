@@ -12,12 +12,10 @@ namespace Ball
         public static BallManager Instance;
         [SerializeField] private PlayerSo playerSo;
         private List<GameObject> _balls = new List<GameObject>();
-        private List<SkinSo> _skinSos = new List<SkinSo>();
 
         private void Awake()
         {
             Instance = this;
-            _skinSos = playerSo.GetBallSkins().FindAll(skinSo => skinSo.Selected() && skinSo.Unlocked());
         }
 
         public void RemoveBall(GameObject ball)
@@ -34,8 +32,7 @@ namespace Ball
         public GameObject SpawnBall(Vector3 position)
         {
             var ball = SpawnFromPool("Ball", position, Quaternion.identity);
-            var sprites = _skinSos[Random.Range(0, _skinSos.Count)].GetSprites();
-            ball.GetComponent<BallController>().Setup(sprites);
+            ball.GetComponent<BallController>().Setup();
             _balls.Add(ball);
             return ball;
         }
