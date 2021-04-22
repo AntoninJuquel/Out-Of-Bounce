@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Systems.Chunk;
 using Systems.Event.Scripts.Channels;
+using Controllers;
 using UnityEngine;
 
 namespace Dot
@@ -55,6 +56,7 @@ namespace Dot
             intEventChannelSo.RaiseEvent(_dotSo.GetPoints());
             colorEventChannelSo.RaiseEvent(_dotSo.GetColor());
             DotManager.Instance.RemoveDot(_chunk, gameObject);
+            CameraController.Instance.StartShake();
             _dotSo.Bounce(ball, gameObject, bouncyness);
         }
 
