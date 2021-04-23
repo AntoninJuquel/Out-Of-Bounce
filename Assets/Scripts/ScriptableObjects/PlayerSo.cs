@@ -21,6 +21,8 @@ namespace ScriptableObjects
         public int GetMoney() => vault.GetValue();
         public Vault GetVault() => vault;
         public List<DotSo> GetDots() => dots;
+        public List<SkinSo> GetPlatformSkins() => platformSkins;
+        public Achievement GetAchievement(AchievementType achievementType) => _achievements[achievementType];
         
         public void LoadPlayer()
         {

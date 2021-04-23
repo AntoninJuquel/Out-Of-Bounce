@@ -15,7 +15,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 21f9fea5d4635a640be32a0029b9f487, type: 3}
   color: {r: 0.5424528, g: 0.55774564, b: 1, a: 1}
-  price: 50
+  price: 60
   levelRequired: 0
   description: Teleports you randomly around the dot !
   status: 2

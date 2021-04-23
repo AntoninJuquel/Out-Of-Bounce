@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Systems.Pool;
 using Managers;
+using ScriptableObjects;
 using UnityEngine;
 using UserInterface;
 
@@ -8,18 +9,22 @@ namespace Platform
 {
     public class PlatformManager : ObjectPool
     {
+        [SerializeField] private PlayerSo playerSo;
         [SerializeField] private int platformAmount = 3, platformCounter = 3;
         [SerializeField] private float radius = .25f, platformTimer = 5f;
         private PlatformController _currentPlatform;
         private List<Vector3> _mousePositions = new List<Vector3>();
         private Vector2 MousePosition => _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         private Camera _mainCamera;
+        private List<SkinSo> _platformSkins;
+        private static readonly int BaseMap = Shader.PropertyToID("_BaseMap");
 
         private void Awake()
         {
             _mainCamera = Camera.main;
             platformCounter = platformAmount;
             UpdatePlatformCounter();
+            _platformSkins = playerSo.GetPlatformSkins().FindAll(platformSkin => platformSkin.Selected() && platformSkin.Unlocked());
         }
 
         private void Update()
@@ -52,6 +57,7 @@ namespace Platform
             _currentPlatform.SetActive(true);
             var lr = _currentPlatform.GetLineRenderer();
             var edgeCol = _currentPlatform.GetEdgeCollider2D();
+            lr.material.SetTexture(BaseMap, _platformSkins[Random.Range(0,_platformSkins.Count)].GetSprites()[0].texture);
             _mousePositions.Add(MousePosition);
             lr.widthMultiplier = edgeCol.edgeRadius = radius;
             edgeCol.enabled = false;

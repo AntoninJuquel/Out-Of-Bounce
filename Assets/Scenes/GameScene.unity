@@ -237,6 +237,7 @@ MonoBehaviour:
   - key: Platform
     prefab: {fileID: 1963161295159136204, guid: e10c2c24f9d33a7489576e6aad50d9ef, type: 3}
     size: 3
+  playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
   platformAmount: 3
   platformCounter: 3
   radius: 0.25

@@ -1,3 +1,6 @@
+using System.Collections;
+using Systems.Achievement;
+using ScriptableObjects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -9,10 +12,15 @@ namespace UserInterface
     public class CanvasManager : MonoBehaviour
     {
         public static CanvasManager Instance;
+        [SerializeField] private PlayerSo playerSo;
         [SerializeField] private AudioMixer audioMixer;
         [SerializeField] private Slider[] sliders;
         [SerializeField] private Canvas[] canvasArray;
         [SerializeField] private TextMeshProUGUI heightText, scoreText, platformText, versionText;
+        [SerializeField] private TextMeshProUGUI endHeightText, endScoreText, endKillsText, endTimerText, endCoinsText;
+
+        private const string ScoreFormat = "00000000";
+        private const string HeightFormat = "000.00";
 
         private void Awake()
         {
@@ -31,6 +39,7 @@ namespace UserInterface
             SetActiveCanvas(canvasArray[0]);
             versionText.text = string.Concat("version : ", Application.version);
         }
+
         public void SetActiveCanvas(Canvas target)
         {
             foreach (var canvas in canvasArray)
@@ -52,17 +61,47 @@ namespace UserInterface
         public void SetHeightText(float value)
         {
             value = Mathf.Max(0, value);
-            heightText.text = string.Concat(value.ToString("000.00"), "m");
+            heightText.text = string.Concat(value.ToString(HeightFormat), "m");
         }
 
         public void SetScoreText(float score)
         {
-            scoreText.text = score.ToString("00000000");
+            scoreText.text = score.ToString(ScoreFormat);
         }
 
         public void SetPlatformText(int value)
         {
             platformText.text = string.Concat(value, "|");
+        }
+
+        public void SetupEndScreen()
+        {
+            var height = playerSo.GetAchievement(AchievementType.Height).last;
+            var score = playerSo.GetAchievement(AchievementType.Score).last;
+            var kills = playerSo.GetAchievement(AchievementType.Kills).last;
+            var coins = playerSo.GetAchievement(AchievementType.Money).last;
+            var timer = Utilities.FormatTime(playerSo.GetAchievement(AchievementType.Time).last);
+
+            StartCoroutine(LerpText("SCORE\n", "", score, ScoreFormat, endScoreText));
+            StartCoroutine(LerpText("", "m", height, HeightFormat, endHeightText));
+            StartCoroutine(LerpText("", "", kills, "0", endKillsText));
+            StartCoroutine(LerpText("", " $", coins, "0", endCoinsText));
+            endTimerText.text = string.Concat(timer[0].ToString("00"), " : ", timer[1].ToString("00"));
+        }
+
+        private IEnumerator LerpText(string before, string after, float to, string format, TextMeshProUGUI textMeshProUGUI)
+        {
+            var elapsedTime = 0f;
+            var waitTime = 3f;
+            while (elapsedTime < waitTime)
+            {
+                textMeshProUGUI.text = string.Concat(before, Mathf.Lerp(0, to, elapsedTime / waitTime).ToString(format), after);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            textMeshProUGUI.text = string.Concat(before, to.ToString(format), after);
+            yield return null;
         }
     }
 }

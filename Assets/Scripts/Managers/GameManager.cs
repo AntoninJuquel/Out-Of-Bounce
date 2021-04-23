@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Systems.Achievement;
 using Systems.Audio;
 using Systems.Chunk;
 using Ball;
@@ -7,6 +8,7 @@ using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UserInterface;
 
 namespace Managers
 {
@@ -32,6 +34,7 @@ namespace Managers
         private IEnumerator StartRoutine()
         {
             GameStatus = GameStatus.Starting;
+            CanvasManager.Instance.SetScoreText(0);
             yield return new WaitUntil(() => SceneManager.GetSceneByName("GameScene").isLoaded);
             ChunkManager.Instance.StartChunk(playerSo.GetStartPosition());
             BallManager.Instance.SpawnBall(playerSo.GetStartPosition(), out var firstBallRb);
@@ -82,6 +85,7 @@ namespace Managers
             AudioManager.Instance.Play("theme",0);
             ScoreManager.Instance.UpdateTime(Time.time - _startTime);
             ScoreManager.Instance.UpdatePlayerSo();
+            CanvasManager.Instance.SetupEndScreen();
         }
 
         public void MainMenu()

@@ -19,7 +19,6 @@ namespace Managers
         {
             Instance = this;
             ResetScores();
-            CanvasManager.Instance.SetScoreText(0);
         }
 
         private IEnumerator LerpScore(float oldScore, float newScore)
