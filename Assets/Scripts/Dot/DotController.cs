@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Systems.Chunk;
 using Systems.Event.Scripts.Channels;
 using Controllers;
+using Score;
 using UnityEngine;
 
 namespace Dot
@@ -54,6 +56,7 @@ namespace Dot
         public void Bounce(GameObject ball, float bouncyness)
         {
             intEventChannelSo.RaiseEvent(_dotSo.GetPoints());
+            ScoreManager.Instance.SpawnPopup(_dotSo.GetPoints(), transform.position);
             colorEventChannelSo.RaiseEvent(_dotSo.GetColor());
             DotManager.Instance.RemoveDot(_chunk, gameObject);
             CameraController.Instance.StartShake();
@@ -62,9 +65,10 @@ namespace Dot
 
         public void Destroy()
         {
+            intEventChannelSo.RaiseEvent(_dotSo.GetPoints());
+            ScoreManager.Instance.SpawnPopup(_dotSo.GetPoints(), transform.position);
             DotManager.Instance.RemoveDot(_chunk, gameObject);
             _dotSo.Destroy(gameObject);
         }
-            
     }
 }
