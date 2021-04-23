@@ -8,6 +8,7 @@ namespace UserInterface
 {
     public class ShopItemController : MonoBehaviour
     {
+        [SerializeField] private Sprite buy, upgrade;
         [SerializeField] private PlayerSo playerSo;
         [SerializeField] private Image image, frame;
         [SerializeField] private TextMeshProUGUI title, price, description;
@@ -25,12 +26,20 @@ namespace UserInterface
             price.text = string.Concat(unlockableSo.GetPrice(), " $");
             title.text = unlockableSo.name;
             description.text = unlockableSo.GetDescription();
-            buyButton.interactable = !unlockableSo.Unlocked();
+            buyButton.GetComponent<Image>().sprite = unlockableSo.Unlocked() ? upgrade : buy;
+            buyButton.interactable = !unlockableSo.MaxLevel() || !unlockableSo.Unlocked();
         }
 
         public void Buy()
         {
-            _unlockableSo.Unlock(playerSo.GetVault());
+            if (_unlockableSo.Unlocked())
+            {
+                _unlockableSo.Upgrade(playerSo.GetVault());
+            }
+            else
+            {
+                _unlockableSo.Unlock(playerSo.GetVault());
+            }
             Setup(_unlockableSo, _shopController);
             _shopController.UpdateShop();
         }

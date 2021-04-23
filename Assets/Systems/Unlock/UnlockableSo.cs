@@ -9,10 +9,10 @@ namespace Systems.Unlock
         private Sprite[] sprites;
 
         [SerializeField] protected Color color = Color.white;
-        [SerializeField] private int price;
         [SerializeField] private int levelRequired;
-        [SerializeField] [TextArea] private string description;
-        [SerializeField] private UnlockStatus status = UnlockStatus.Locked;
+        [SerializeField] private UnlockStatus status = UnlockStatus.Unlockable;
+        [SerializeField] protected int level;
+        [SerializeField] private Upgrade[] upgrades;
 
         public void UpdateStatus(Vault vault)
         {
@@ -24,19 +24,39 @@ namespace Systems.Unlock
         public void Unlock(Vault vault)
         {
             if (status != UnlockStatus.Unlockable) return;
-            var res = vault.GetValue() - price;
+            var res = vault.GetValue() - upgrades[0].GetPrice();
             if (res < 0) return;
             status = UnlockStatus.Unlocked;
             vault.SetValue(res);
         }
 
+        public void Upgrade(Vault vault)
+        {
+            var res = vault.GetValue() - upgrades[level + 1].GetPrice();
+            var upgradable = res >= 0;
+            if (!upgradable) return;
+            level = Mathf.Min(level + 1, upgrades.Length - 1);
+            vault.SetValue(res);
+        }
+
+        public void Downgrade()
+        {
+            level = Mathf.Max(level - 1, 0);
+        }
+
         public Sprite[] GetSprites() => sprites;
         public bool Unlocked() => status == UnlockStatus.Unlocked;
-        public int GetPrice() => price;
+        public int GetPrice() => GetPrice(level);
+        public int GetPrice(int index) => upgrades[index].GetPrice();
         public Color GetColor() => color;
-        public string GetDescription() => description;
+        public string GetDescription() => GetDescription(level);
+        public string GetDescription(int index) => upgrades[index].GetDescription();
         public UnlockStatus GetStatus() => status;
         public void SetUnlocked(UnlockStatus unlockStatus) => status = unlockStatus;
+        public Upgrade[] GetUpgrades() => upgrades;
+        public int GetLevel() => level;
+        public void SetLevel(int lvl) => level = lvl;
+        public bool MaxLevel() => level == upgrades.Length - 1;
     }
 
     public enum UnlockStatus
@@ -76,5 +96,22 @@ namespace Systems.Unlock
             }
             else level += levelGained;
         }
+    }
+
+    [Serializable]
+    public class Upgrade
+    {
+        [SerializeField] private int price;
+        [SerializeField] [TextArea] private string description;
+
+        public int GetPrice() => price;
+        public string GetDescription() => description;
+    }
+
+    [Serializable]
+    public class UpgradableSave
+    {
+        public UnlockStatus unlockStatus;
+        public int level;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Systems.Audio;
 using Managers;
+using Score;
 using UnityEngine;
 
 namespace Dot.DotSos

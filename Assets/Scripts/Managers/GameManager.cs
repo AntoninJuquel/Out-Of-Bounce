@@ -4,6 +4,7 @@ using Systems.Audio;
 using Systems.Chunk;
 using Ball;
 using Controllers;
+using Score;
 using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
@@ -30,7 +31,7 @@ namespace Managers
             playerSo.LoadPlayer();
             AudioManager.Instance.Play("theme",0);
         }
-
+        
         private IEnumerator StartRoutine()
         {
             GameStatus = GameStatus.Starting;

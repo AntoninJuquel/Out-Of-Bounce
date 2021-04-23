@@ -11,7 +11,7 @@ namespace Dot.DotSos
         {
             base.Bounce(ball, dot, bouncyness);
 
-            ball.transform.localScale = Vector3.one * scaleAmount;
+            ball.transform.localScale = Vector3.one * scaleAmount * (level + 1);
         }
     }
 }

@@ -15,12 +15,14 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 21f9fea5d4635a640be32a0029b9f487, type: 3}
   color: {r: 0.5424528, g: 0.55774564, b: 1, a: 1}
-  price: 60
   levelRequired: 0
-  description: Teleports you randomly around the dot !
-  status: 2
-  level: 2
-  upgrades: []
+  status: 1
+  level: 0
+  upgrades:
+  - price: 50
+    description: Teleport randomly around
+  - price: 50
+    description: Teleport randomly over
   points: 10
   spawnChance: 0.1
   destroyParticles: {fileID: 3768524794979209404, guid: b447c1ff8d0ab3f46b2224950abfa0dc, type: 3}

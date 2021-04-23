@@ -15,10 +15,13 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: bd4b70df2bdae1a40b8669df89a719db, type: 3}
   color: {r: 1, g: 0, b: 0, a: 1}
-  price: 0
   levelRequired: 0
-  description: Kills you instantly
   status: 2
+  level: 0
+  upgrades:
+  - price: 0
+    description: Don't touch it
   points: 0
   spawnChance: 0.1
   destroyParticles: {fileID: 5567021245606077315, guid: 729739bde3317bc4eb84fdbf3d5d2c89, type: 3}
+  destroySound: dot_destroy

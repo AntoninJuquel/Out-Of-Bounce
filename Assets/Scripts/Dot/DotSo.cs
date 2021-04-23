@@ -6,10 +6,9 @@ using UnityEngine;
 namespace Dot
 {
     [CreateAssetMenu(fileName = "New basic dot", menuName = "Dots/Basic", order = 0)]
-    public class DotSo : UpgradableSo
+    public class DotSo : UnlockableSo
     {
-        [Header("Dot data")]
-        [SerializeField] private int points;
+        [Header("Dot data")] [SerializeField] private int points;
         [SerializeField] [Range(0, 1)] private float spawnChance = 1;
         [SerializeField] private GameObject destroyParticles;
         [SerializeField] protected string destroySound = "dot_destroy";

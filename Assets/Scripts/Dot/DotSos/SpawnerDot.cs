@@ -10,7 +10,7 @@ namespace Dot.DotSos
         {
             base.Bounce(ball, dot, bouncyness);
 
-            for (var i = 0; i < level; i++)
+            for (var i = 0; i < level + 1; i++)
             {
                 BallManager.Instance.SpawnBall(dot.transform.position);
             }

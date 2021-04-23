@@ -132,8 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1848306971}
-  - component: {fileID: 1848306973}
   - component: {fileID: 1848306970}
+  - component: {fileID: 1848306973}
   - component: {fileID: 1848306972}
   - component: {fileID: 1848306974}
   - component: {fileID: 1848306975}
@@ -190,7 +190,7 @@ MonoBehaviour:
     prefab: {fileID: 6388628060645547033, guid: 7021e1c85e3bcb844a102eb2db9f7c9e, type: 3}
     size: 300
   playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
-  dotsPerChunk: 10
+  dotsPerChunk: 15
 --- !u!114 &1848306973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +203,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32a45d1cc6edac4fa2d2e8ee73e9a73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pools:
+  - key: Popup
+    prefab: {fileID: 4638506021914536458, guid: d36171cd3e64c7941acccbb192829134, type: 3}
+    size: 10
   playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
 --- !u!114 &1848306974
 MonoBehaviour:

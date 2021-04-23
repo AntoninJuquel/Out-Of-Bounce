@@ -15,8 +15,8 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 4319ca22a00af264fa0f0df30d53746b, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
-  price: 0
   levelRequired: 0
-  description: 
-  status: 2
+  status: 1
+  level: 0
+  upgrades: []
   selected: 1

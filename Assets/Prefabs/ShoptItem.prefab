@@ -701,6 +701,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32f3dda9c3dc4db41b0d6f65cf9eb19a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buy: {fileID: 21300000, guid: 695b94a40e61ca948a024f432294f50a, type: 3}
+  upgrade: {fileID: 21300000, guid: 587f6237b13e05842bd9a5c99d69c551, type: 3}
   playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
   image: {fileID: 5733228999788146635}
   frame: {fileID: 5733228999871526192}

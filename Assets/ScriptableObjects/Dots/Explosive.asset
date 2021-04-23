@@ -15,12 +15,12 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 6bd788992dc2099458d7491c891ea31a, type: 3}
   color: {r: 1, g: 0.5882353, b: 0, a: 1}
-  price: 100
   levelRequired: 0
-  description: BOOM !
-  status: 2
-  level: 1
-  upgrades: []
+  status: 1
+  level: 0
+  upgrades:
+  - price: 100
+    description: BOOM BOOM
   points: 2
   spawnChance: 0.1
   destroyParticles: {fileID: 1035170851873987009, guid: e31088bc99eabda47b8b8548be56a08a, type: 3}
