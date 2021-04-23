@@ -3,6 +3,7 @@ using Systems.Pool;
 using Managers;
 using ScriptableObjects;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UserInterface;
 
 namespace Platform
@@ -31,7 +32,10 @@ namespace Platform
         {
             if (GameManager.GameStatus == GameStatus.Paused) return;
 
-            if (Input.GetMouseButtonDown(0) && platformCounter > 0) StartLine();
+            if (Input.GetMouseButtonDown(0) && platformCounter > 0 && !EventSystem.current.IsPointerOverGameObject())
+            {
+                StartLine();
+            }
 
             if (!_currentPlatform) return;
 

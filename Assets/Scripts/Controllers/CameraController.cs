@@ -8,7 +8,7 @@ namespace Controllers
     public class CameraController : MonoBehaviour
     {
         public static CameraController Instance;
-        [SerializeField] private float moveSpeed = 7f, zoomSpeed = 7f, zoomStep = 3f;
+        [SerializeField] private float moveSpeed = 7f, zoomSpeed = 7f;
         [SerializeField] private FloatEventChannelSo xAxisChannelSo, yAxisChannelSo;
         private Camera _camera;
         private Transform _transform;
@@ -79,6 +79,10 @@ namespace Controllers
             StartCoroutine(_currentShake);
         }
 
-        public void StopShake() => StopCoroutine(_currentShake);
+        public void StopShake()
+        {
+            if (_currentShake != null)
+                StopCoroutine(_currentShake);
+        }
     }
 }

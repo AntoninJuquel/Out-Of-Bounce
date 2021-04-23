@@ -11,7 +11,7 @@ namespace Managers
     {
         public static ScoreManager Instance;
         [SerializeField] private PlayerSo playerSo;
-        private Dictionary<AchievementType, float> _achievementValues = new Dictionary<AchievementType, float>();
+        private Dictionary<StatisticType, float> _statisticValues = new Dictionary<StatisticType, float>();
 
         private float _lerptScore;
 
@@ -39,41 +39,41 @@ namespace Managers
 
         public void UpdateScore(int value)
         {
-            _achievementValues[AchievementType.Score] += (value * 1000);
+            _statisticValues[StatisticType.Score] += (value * 1000);
             StopCoroutine(nameof(LerpScore));
-            StartCoroutine(LerpScore(_lerptScore, _achievementValues[AchievementType.Score]));
+            StartCoroutine(LerpScore(_lerptScore, _statisticValues[StatisticType.Score]));
         }
 
         public void UpdateHeight(float value)
         {
-            var height = _achievementValues[AchievementType.Height];
+            var height = _statisticValues[StatisticType.Height];
             if (value <= height) return;
-            _achievementValues[AchievementType.Height] = value;
+            _statisticValues[StatisticType.Height] = value;
         }
 
-        public void UpdateKills() => _achievementValues[AchievementType.Kills] += 1;
+        public void UpdateKills() => _statisticValues[StatisticType.Kills] += 1;
 
         public void UpdateTime(float value)
         {
-            _achievementValues[AchievementType.Time] = value;
+            _statisticValues[StatisticType.Time] = value;
         }
 
         public void UpdateMoney(float value)
         {
-            _achievementValues[AchievementType.Money] += value;
+            _statisticValues[StatisticType.Money] += value;
         }
 
         public void UpdatePlayerSo()
         {
-            playerSo.UpdatePlayer(_achievementValues);
+            playerSo.UpdatePlayer(_statisticValues);
         }
 
         public void ResetScores()
         {
-            _achievementValues = new Dictionary<AchievementType, float>();
+            _statisticValues = new Dictionary<StatisticType, float>();
             foreach (var achievementType in AchievementUtilities.AchievementTypesArray())
             {
-                _achievementValues.Add(achievementType, 0);
+                _statisticValues.Add(achievementType, 0);
             }
         }
     }

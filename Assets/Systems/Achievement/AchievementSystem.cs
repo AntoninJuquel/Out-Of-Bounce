@@ -6,18 +6,18 @@ namespace Systems.Achievement
 {
     public static class AchievementUtilities
     {
-        public static IEnumerable<AchievementType> AchievementTypesArray() => (AchievementType[]) Enum.GetValues(typeof(AchievementType));
+        public static IEnumerable<StatisticType> AchievementTypesArray() => (StatisticType[]) Enum.GetValues(typeof(StatisticType));
     }
 
     [Serializable]
-    public class Achievement
+    public class Statistic
     {
-        public AchievementType achievementType;
+        public StatisticType statisticType;
         public float last;
         public float best;
         public float total;
 
-        public void UpdateAchievement(float lastValue)
+        public void UpdateStatistic(float lastValue)
         {
             last = lastValue;
             total += lastValue;
@@ -27,7 +27,7 @@ namespace Systems.Achievement
     }
     
     [Serializable]
-    public enum AchievementType
+    public enum StatisticType
     {
         Score,
         Height,

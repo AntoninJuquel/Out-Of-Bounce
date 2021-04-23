@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPosition: {x: 0, y: 32, z: 0}
   vault:
-    value: 110
-    level: 0
+    value: 198
+    level: 42
+    experience: 167
   dots:
   - {fileID: 11400000, guid: b70f04b769509dc41b4246803fbd841f, type: 2}
   - {fileID: 11400000, guid: e5f4be341321a7249ba91d2c62b93f79, type: 2}

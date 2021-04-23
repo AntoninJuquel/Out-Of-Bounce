@@ -76,11 +76,11 @@ namespace UserInterface
 
         public void SetupEndScreen()
         {
-            var height = playerSo.GetAchievement(AchievementType.Height).last;
-            var score = playerSo.GetAchievement(AchievementType.Score).last;
-            var kills = playerSo.GetAchievement(AchievementType.Kills).last;
-            var coins = playerSo.GetAchievement(AchievementType.Money).last;
-            var timer = Utilities.FormatTime(playerSo.GetAchievement(AchievementType.Time).last);
+            var height = playerSo.GetAchievement(StatisticType.Height).last;
+            var score = playerSo.GetAchievement(StatisticType.Score).last;
+            var kills = playerSo.GetAchievement(StatisticType.Kills).last;
+            var coins = playerSo.GetAchievement(StatisticType.Money).last;
+            var timer = Utilities.FormatTime(playerSo.GetAchievement(StatisticType.Time).last);
 
             StartCoroutine(LerpText("SCORE\n", "", score, ScoreFormat, endScoreText));
             StartCoroutine(LerpText("", "m", height, HeightFormat, endHeightText));
