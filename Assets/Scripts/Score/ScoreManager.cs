@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using Systems.Achievement;
 using Systems.Pool;
+using Systems.Statistic;
 using ScriptableObjects;
 using UnityEngine;
 using UserInterface;
@@ -77,7 +77,7 @@ namespace Score
         public void ResetScores()
         {
             _statisticValues = new Dictionary<StatisticType, float>();
-            foreach (var achievementType in AchievementUtilities.AchievementTypesArray())
+            foreach (var achievementType in StatisticUtilities.StatisticTypesArray())
             {
                 _statisticValues.Add(achievementType, 0);
             }

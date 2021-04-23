@@ -22,7 +22,7 @@ MonoBehaviour:
   - price: 25
     description: Push out nearby dots
   points: 7
-  spawnChance: 0.5
+  spawnChance: 0.1
   destroyParticles: {fileID: 6368940093412750586, guid: 2a8844339c5dd2b4b951f89549092b63, type: 3}
   destroySound: dot_destroy
   radius: 10

@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-namespace Systems.Achievement
+namespace Systems.Statistic
 {
-    public static class AchievementUtilities
+    public static class StatisticUtilities
     {
-        public static IEnumerable<StatisticType> AchievementTypesArray() => (StatisticType[]) Enum.GetValues(typeof(StatisticType));
+        public static IEnumerable<StatisticType> StatisticTypesArray() => (StatisticType[]) Enum.GetValues(typeof(StatisticType));
     }
 
     [Serializable]

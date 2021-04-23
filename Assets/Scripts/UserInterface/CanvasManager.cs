@@ -1,5 +1,5 @@
 using System.Collections;
-using Systems.Achievement;
+using Systems.Statistic;
 using ScriptableObjects;
 using TMPro;
 using UnityEngine;
@@ -17,7 +17,7 @@ namespace UserInterface
         [SerializeField] private Slider[] sliders;
         [SerializeField] private Canvas[] canvasArray;
         [SerializeField] private TextMeshProUGUI heightText, scoreText, platformText, versionText;
-        [SerializeField] private TextMeshProUGUI endHeightText, endScoreText, endKillsText, endTimerText, endCoinsText;
+        [SerializeField] private TextMeshProUGUI endHeightText, endScoreText, endKillsText, endTimerText, endCoinsText, bestScore;
 
         private const string ScoreFormat = "00000000";
         private const string HeightFormat = "000.00";
@@ -76,17 +76,19 @@ namespace UserInterface
 
         public void SetupEndScreen()
         {
-            var height = playerSo.GetAchievement(StatisticType.Height).last;
-            var score = playerSo.GetAchievement(StatisticType.Score).last;
-            var kills = playerSo.GetAchievement(StatisticType.Kills).last;
-            var coins = playerSo.GetAchievement(StatisticType.Money).last;
-            var timer = Utilities.FormatTime(playerSo.GetAchievement(StatisticType.Time).last);
+            var height = playerSo.GetStatistic(StatisticType.Height).last;
+            var score = playerSo.GetStatistic(StatisticType.Score).last;
+            var kills = playerSo.GetStatistic(StatisticType.Kills).last;
+            var coins = playerSo.GetStatistic(StatisticType.Money).last;
+            var timer = Utilities.FormatTime(playerSo.GetStatistic(StatisticType.Time).last);
 
             StartCoroutine(LerpText("SCORE\n", "", score, ScoreFormat, endScoreText));
             StartCoroutine(LerpText("", "m", height, HeightFormat, endHeightText));
             StartCoroutine(LerpText("", "", kills, "0", endKillsText));
             StartCoroutine(LerpText("", " $", coins, "0", endCoinsText));
+            
             endTimerText.text = string.Concat(timer[0].ToString("00"), " : ", timer[1].ToString("00"));
+            bestScore.text = string.Concat("BEST SCORE : ", playerSo.GetStatistic(StatisticType.Score).best.ToString(ScoreFormat));
         }
 
         private IEnumerator LerpText(string before, string after, float to, string format, TextMeshProUGUI textMeshProUGUI)

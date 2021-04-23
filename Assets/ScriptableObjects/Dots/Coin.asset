@@ -27,6 +27,6 @@ MonoBehaviour:
   - price: 0
     description: MONEY MONEY
   points: 2
-  spawnChance: 0.1
+  spawnChance: 0.2
   destroyParticles: {fileID: 3934596105717551393, guid: 8c63452cb786f1a438c121b48875b20e, type: 3}
   destroySound: coin

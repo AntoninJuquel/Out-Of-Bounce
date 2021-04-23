@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Systems.Achievement;
 using Systems.Save;
+using Systems.Statistic;
 using Systems.Unlock;
 using Dot;
 using UnityEngine;
@@ -22,11 +22,11 @@ namespace ScriptableObjects
         public Vault GetVault() => vault;
         public List<DotSo> GetDots() => dots;
         public List<SkinSo> GetPlatformSkins() => platformSkins;
-        public Statistic GetAchievement(StatisticType statisticType) => _statistics[statisticType];
+        public Statistic GetStatistic(StatisticType statisticType) => _statistics[statisticType];
 
         public void LoadPlayer()
         {
-            foreach (var achievementType in AchievementUtilities.AchievementTypesArray())
+            foreach (var achievementType in StatisticUtilities.StatisticTypesArray())
             {
                 _statistics.Add(achievementType, new Statistic {statisticType = achievementType});
             }
@@ -58,7 +58,7 @@ namespace ScriptableObjects
 
         public void UpdatePlayer(Dictionary<StatisticType, float> achievementValues)
         {
-            foreach (var achievementType in AchievementUtilities.AchievementTypesArray())
+            foreach (var achievementType in StatisticUtilities.StatisticTypesArray())
             {
                 _statistics[achievementType].UpdateStatistic(achievementValues[achievementType]);
             }

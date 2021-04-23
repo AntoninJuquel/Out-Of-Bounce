@@ -46,6 +46,7 @@ namespace Dot
                         var dot = SpawnFromPool("Dot", chunk.RandomPointInBounds(), Quaternion.identity);
                         dot.GetComponent<DotController>().Setup(dotSo, chunk);
                         dotsMap[chunk].Add(dot);
+                        break;
                     }
                 }
             }
