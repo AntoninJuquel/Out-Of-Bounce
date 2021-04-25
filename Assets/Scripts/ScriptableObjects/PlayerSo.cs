@@ -15,6 +15,7 @@ namespace ScriptableObjects
         [SerializeField] private Vault vault;
         [SerializeField] private List<DotSo> dots;
         [SerializeField] private List<SkinSo> platformSkins;
+        public int deltalevel = 0;
 
         private readonly Dictionary<StatisticType, Statistic> _statistics = new Dictionary<StatisticType, Statistic>();
         public Vector3 GetStartPosition() => startPosition;
@@ -64,12 +65,16 @@ namespace ScriptableObjects
             }
 
             vault.AddValue((int) achievementValues[StatisticType.Money]);
+            var oldLevel = vault.level;
+            vault.LevelUp(achievementValues[StatisticType.Score] / 10000f + (achievementValues[StatisticType.Money] + achievementValues[StatisticType.Kills]) / 10f + achievementValues[StatisticType.Height] / 100f);
+            deltalevel = vault.level - oldLevel;
+            vault.AddValue(10 * deltalevel);
 
             foreach (var dot in dots)
             {
                 dot.UpdateStatus(vault);
             }
-            
+
             SavePlayer();
         }
     }

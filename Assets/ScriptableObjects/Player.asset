@@ -31,3 +31,4 @@ MonoBehaviour:
   platformSkins:
   - {fileID: 11400000, guid: 93648213625c0ce4a8e8f9f395a3e7a8, type: 2}
   - {fileID: 11400000, guid: e850c45a87f280e4f9e3f06ea6e80e2d, type: 2}
+  deltalevel: 0

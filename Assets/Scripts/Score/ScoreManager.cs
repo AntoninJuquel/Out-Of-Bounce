@@ -40,14 +40,14 @@ namespace Score
 
         public void UpdateScore(int value)
         {
-            _statisticValues[StatisticType.Score] += (value * 1000);
+            _statisticValues[StatisticType.Score] += (value * 100);
             StopCoroutine(nameof(LerpScore));
             StartCoroutine(LerpScore(_lerptScore, _statisticValues[StatisticType.Score]));
         }
 
         public void SpawnPopup(int value, Vector2 position)
         {
-            SpawnFromPool("Popup", position, Quaternion.identity).GetComponent<ScorePopupController>().Setup((value * 1000).ToString());
+            SpawnFromPool("Popup", position, Quaternion.identity).GetComponent<ScorePopupController>().Setup((value * 100).ToString());
         }
 
         public void UpdateHeight(float value)

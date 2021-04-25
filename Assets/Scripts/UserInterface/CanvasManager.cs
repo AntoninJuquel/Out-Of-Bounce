@@ -17,7 +17,8 @@ namespace UserInterface
         [SerializeField] private Slider[] sliders;
         [SerializeField] private Canvas[] canvasArray;
         [SerializeField] private TextMeshProUGUI heightText, scoreText, platformText, versionText;
-        [SerializeField] private TextMeshProUGUI endHeightText, endScoreText, endKillsText, endTimerText, endCoinsText, bestScore;
+        [SerializeField] private TextMeshProUGUI dollarBonus, experienceText, levelText, endHeightText, endScoreText, endKillsText, endTimerText, endCoinsText, bestScore;
+        [SerializeField] private Image levelSlider;
 
         private const string ScoreFormat = "00000000";
         private const string HeightFormat = "000.00";
@@ -38,6 +39,7 @@ namespace UserInterface
 
             SetActiveCanvas(canvasArray[0]);
             versionText.text = string.Concat("version : ", Application.version);
+            levelSlider.fillAmount = playerSo.GetVault().experience / playerSo.GetVault().ExperienceRequired;
         }
 
         public void SetActiveCanvas(Canvas target)
@@ -86,9 +88,10 @@ namespace UserInterface
             StartCoroutine(LerpText("", "m", height, HeightFormat, endHeightText));
             StartCoroutine(LerpText("", "", kills, "0", endKillsText));
             StartCoroutine(LerpText("", " $", coins, "0", endCoinsText));
-            
+
             endTimerText.text = string.Concat(timer[0].ToString("00"), " : ", timer[1].ToString("00"));
             bestScore.text = string.Concat("BEST SCORE : ", playerSo.GetStatistic(StatisticType.Score).best.ToString(ScoreFormat));
+            StartCoroutine(LerpSlider());
         }
 
         private IEnumerator LerpText(string before, string after, float to, string format, TextMeshProUGUI textMeshProUGUI)
@@ -104,6 +107,46 @@ namespace UserInterface
 
             textMeshProUGUI.text = string.Concat(before, to.ToString(format), after);
             yield return null;
+        }
+
+        private IEnumerator LerpSlider(int iteration = 0)
+        {
+            var elapsedTime = 0f;
+            var waitTime = 3f;
+            var initialAmount = levelSlider.fillAmount;
+            var amount = playerSo.GetVault().experience / playerSo.GetVault().ExperienceRequired;
+            levelText.text = (playerSo.GetVault().level - playerSo.deltalevel).ToString();
+            dollarBonus.text = string.Concat("+", iteration * 10, " $");
+            if (playerSo.deltalevel > 0)
+            {
+                while (elapsedTime < .5f * waitTime)
+                {
+                    levelSlider.fillAmount = Mathf.Lerp(initialAmount, 1, elapsedTime / (.5f * waitTime));
+                    experienceText.text = string.Concat((levelSlider.fillAmount * playerSo.GetVault().ExperienceRequired).ToString("00.00"), "/", playerSo.GetVault().ExperienceRequired);
+                    elapsedTime += Time.deltaTime;
+                    yield return null;
+                }
+
+                playerSo.deltalevel--;
+                iteration++;
+                dollarBonus.text = string.Concat("+", iteration * 10, " $");
+                levelSlider.fillAmount = 0;
+                StartCoroutine(LerpSlider(iteration));
+                yield return null;
+            }
+            else
+            {
+                while (elapsedTime < waitTime)
+                {
+                    levelSlider.fillAmount = Mathf.Lerp(initialAmount, amount, elapsedTime / waitTime);
+                    experienceText.text = string.Concat((levelSlider.fillAmount * playerSo.GetVault().ExperienceRequired).ToString("00.00"), "/", playerSo.GetVault().ExperienceRequired);
+                    elapsedTime += Time.deltaTime;
+                    yield return null;
+                }
+
+                levelSlider.fillAmount = amount;
+                yield return null;
+            }
         }
     }
 }

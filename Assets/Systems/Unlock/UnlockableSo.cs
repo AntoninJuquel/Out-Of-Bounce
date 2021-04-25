@@ -72,6 +72,7 @@ namespace Systems.Unlock
         public int value;
         public int level;
         public float experience;
+        public float ExperienceRequired => level < 15 ? 2 * level + 7 : (level < 30 ? 5 * level - 38 : 9 * level - 158);
 
         public int GetValue() => value;
         public int GetLevel() => level;
@@ -82,19 +83,16 @@ namespace Systems.Unlock
         public void AddValue(int amount) => value += amount;
         public void AddLevel(int amount) => level += amount;
 
-        public void LevelUp(int levelGained, float experienceGained)
+        public void LevelUp(float experienceGained)
         {
             experience += experienceGained;
-            var calculatedLevel = level + levelGained;
-            var experienceRequired = calculatedLevel < 15 ? 2 * calculatedLevel + 7 : (calculatedLevel < 30 ? 5 * calculatedLevel - 38 : 9 * calculatedLevel - 158);
-            if (experience >= experienceRequired)
-            {
-                var delta = experience - experienceRequired;
-                experience = delta;
-                levelGained++;
-                LevelUp(levelGained, 0);
-            }
-            else level += levelGained;
+
+            var delta = experience - ExperienceRequired;
+            
+            if(delta < 0) return;
+            level++;
+            experience = 0;
+            if(delta > 0) LevelUp(delta);
         }
     }
 
