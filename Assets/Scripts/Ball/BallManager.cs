@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Systems.Chunk;
 using Systems.Pool;
 using Controllers;
 using Managers;
@@ -22,7 +23,8 @@ namespace Ball
         {
             if (_balls.Count == 1)
             {
-                GameManager.Instance.GameOver();
+                GameManager.Instance.GameOver(ball.GetComponent<ChunkController>().GetPosition());
+                _balls.Remove(ball);
                 return;
             }
             _balls.Remove(ball);

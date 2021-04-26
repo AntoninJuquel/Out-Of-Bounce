@@ -57,7 +57,7 @@ namespace Systems.Chunk
             var delta = (keyValuePair.Key - oldPosition).normalized;
             if (delta == Vector3.zero || oldPosition == position) return keyValuePair.Value;
 
-            if (Mathf.Abs((int)delta.x) != Mathf.Abs((int)delta.y))
+            if (Mathf.Abs((int) delta.x) != Mathf.Abs((int) delta.y))
                 for (var i = -1; i < 2; i++)
                 {
                     var chunkPosition = oldPosition - delta * chunkSize + new Vector3(i * delta.y, i * delta.x) * chunkSize;
@@ -76,6 +76,11 @@ namespace Systems.Chunk
 
         public void StartChunk(Vector3 position)
         {
+            foreach (var kvp in _chunks)
+            {
+                ChunkEvent?.Invoke(_chunks[kvp.Key], false);
+            }
+
             _chunks = new Dictionary<Vector3, Chunk> {{position, new Chunk(position, chunkSize)}};
         }
     }

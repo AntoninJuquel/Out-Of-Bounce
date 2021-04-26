@@ -21,11 +21,16 @@ namespace Systems.Chunk
 
         private void Update()
         {
-            if(!_chunkManager.Started) return;
+            if (!_chunkManager.Started) return;
             var position = _transform.position;
             _chunk ??= _chunkManager.GetClosestChunk(this, position, position);
             if (_chunk.GetBounds().Contains(position)) return;
             _chunk = _chunkManager.GetClosestChunk(this, _chunk.GetBounds().center, position);
+        }
+
+        public Vector2 GetPosition()
+        {
+            return _chunk.GetBounds().center;
         }
     }
 }

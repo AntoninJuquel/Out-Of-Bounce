@@ -3,11 +3,13 @@ using Systems.Audio;
 using Systems.Chunk;
 using Ball;
 using Controllers;
+using Platform;
 using Score;
 using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UserInterface;
 
 namespace Managers
@@ -18,47 +20,60 @@ namespace Managers
         [SerializeField] private GameObject lavaPit;
         [SerializeField] private PlayerSo playerSo;
         [SerializeField] private UnityEvent onGameOver;
+        [SerializeField] private Button watchAd;
         public static GameStatus GameStatus;
         private static GameStatus _gameStatusBeforePause;
         private float _lavaY, _startTime;
-
+        private Vector3 _deathPosition;
+        
         private void Awake()
         {
             Instance = this;
             Application.targetFrameRate = 144;
             _lavaY = lavaPit.transform.position.y;
             playerSo.LoadPlayer();
-            AudioManager.Instance.Play("theme",0);
+            AudioManager.Instance.Play("theme", 0);
         }
-        
-        private IEnumerator StartRoutine()
+
+        private IEnumerator StartRoutine(bool reset)
         {
             GameStatus = GameStatus.Starting;
-            CanvasManager.Instance.SetScoreText(0);
             yield return new WaitUntil(() => SceneManager.GetSceneByName("GameScene").isLoaded);
-            ChunkManager.Instance.StartChunk(playerSo.GetStartPosition());
-            BallManager.Instance.SpawnBall(playerSo.GetStartPosition(), out var firstBallRb);
+            ChunkManager.Instance.StartChunk(reset ? playerSo.GetStartPosition() : _deathPosition);
+            BallManager.Instance.SpawnBall(reset ? playerSo.GetStartPosition() : _deathPosition + Vector3.up * 20, out var firstBallRb);
             CameraController.Instance.SetTarget(firstBallRb);
+            if (reset)
+            {
+                ScoreManager.Instance.ResetScores();
+                CanvasManager.Instance.SetScoreText(0);
+            }
+            PlatformManager.Instance.ResupplyPlatforms(1);
+            watchAd.interactable = reset;
             yield return new WaitUntil(() => Input.GetMouseButtonUp(0) && GameStatus != GameStatus.Paused);
             AudioManager.Instance.Stop("theme");
-            AudioManager.Instance.Play("theme",1);
+            AudioManager.Instance.Play("theme", 1);
             GameStatus = GameStatus.Playing;
             firstBallRb.simulated = true;
             _startTime = Time.time;
-            ScoreManager.Instance.ResetScores();
         }
 
         public void StartGame()
         {
             Time.timeScale = 1;
+
             var load = SceneManager.LoadSceneAsync("GameScene", LoadSceneMode.Additive);
-            load.completed += asyncOperation => StartCoroutine(StartRoutine());
+            load.completed += asyncOperation => StartCoroutine(StartRoutine(true));
         }
 
         public void RestartGame()
         {
             var load = SceneManager.UnloadSceneAsync("GameScene");
             load.completed += asyncOperation => StartGame();
+        }
+
+        public void Respawn()
+        {
+            StartCoroutine(StartRoutine(false));
         }
 
         public void TogglePause()
@@ -77,12 +92,13 @@ namespace Managers
             }
         }
 
-        public void GameOver()
+        public void GameOver(Vector2 position)
         {
             GameStatus = GameStatus.GameOver;
+            _deathPosition = position;
             onGameOver?.Invoke();
             AudioManager.Instance.Stop("theme");
-            AudioManager.Instance.Play("theme",0);
+            AudioManager.Instance.Play("theme", 0);
             ScoreManager.Instance.UpdateTime(Time.time - _startTime);
             ScoreManager.Instance.UpdatePlayerSo();
             CanvasManager.Instance.SetupEndScreen();

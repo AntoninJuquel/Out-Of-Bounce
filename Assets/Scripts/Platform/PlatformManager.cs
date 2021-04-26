@@ -10,6 +10,7 @@ namespace Platform
 {
     public class PlatformManager : ObjectPool
     {
+        public static PlatformManager Instance;
         [SerializeField] private PlayerSo playerSo;
         [SerializeField] private int platformAmount = 3, platformCounter = 3;
         [SerializeField] private float radius = .25f, platformTimer = 5f;
@@ -22,6 +23,7 @@ namespace Platform
 
         private void Awake()
         {
+            Instance = this;
             _mainCamera = Camera.main;
             platformCounter = platformAmount;
             UpdatePlatformCounter();
