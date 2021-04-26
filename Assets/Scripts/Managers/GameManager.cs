@@ -25,7 +25,7 @@ namespace Managers
         private static GameStatus _gameStatusBeforePause;
         private float _lavaY, _startTime;
         private Vector3 _deathPosition;
-        
+
         private void Awake()
         {
             Instance = this;
@@ -47,6 +47,7 @@ namespace Managers
                 ScoreManager.Instance.ResetScores();
                 CanvasManager.Instance.SetScoreText(0);
             }
+
             PlatformManager.Instance.ResupplyPlatforms(1);
             watchAd.interactable = reset;
             yield return new WaitUntil(() => Input.GetMouseButtonUp(0) && GameStatus != GameStatus.Paused);
@@ -60,7 +61,7 @@ namespace Managers
         public void StartGame()
         {
             Time.timeScale = 1;
-
+            lavaPit.SetActive(true);
             var load = SceneManager.LoadSceneAsync("GameScene", LoadSceneMode.Additive);
             load.completed += asyncOperation => StartCoroutine(StartRoutine(true));
         }
@@ -106,6 +107,7 @@ namespace Managers
 
         public void MainMenu()
         {
+            lavaPit.SetActive(false);
             StopAllCoroutines();
             Time.timeScale = 1;
             SceneManager.UnloadSceneAsync("GameScene");
