@@ -12,8 +12,8 @@ namespace Platform
     {
         public static PlatformManager Instance;
         [SerializeField] private PlayerSo playerSo;
-        [SerializeField] private int platformAmount = 3, platformCounter = 3;
         [SerializeField] private float radius = .25f, platformTimer = 5f;
+        private int _platformAmount, _platformCounter = 3;
         private PlatformController _currentPlatform;
         private List<Vector3> _mousePositions = new List<Vector3>();
         private Vector2 MousePosition => _mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -25,7 +25,7 @@ namespace Platform
         {
             Instance = this;
             _mainCamera = Camera.main;
-            platformCounter = platformAmount;
+            _platformCounter = _platformAmount = playerSo.GetPlatformCount();
             UpdatePlatformCounter();
             _platformSkins = playerSo.GetPlatformSkins().FindAll(platformSkin => platformSkin.Selected() && platformSkin.Unlocked());
         }
@@ -34,7 +34,7 @@ namespace Platform
         {
             if (GameManager.GameStatus == GameStatus.Paused) return;
 
-            if (Input.GetMouseButtonDown(0) && platformCounter > 0 && !EventSystem.current.IsPointerOverGameObject())
+            if (Input.GetMouseButtonDown(0) && _platformCounter > 0 && !EventSystem.current.IsPointerOverGameObject())
             {
                 StartLine();
             }
@@ -56,14 +56,14 @@ namespace Platform
 
         private void StartLine()
         {
-            platformCounter--;
+            _platformCounter--;
             UpdatePlatformCounter();
             _mousePositions.Add(MousePosition);
             _currentPlatform = SpawnFromPool("Platform", Vector2.zero, Quaternion.identity).GetComponent<PlatformController>();
             _currentPlatform.SetActive(true);
             var lr = _currentPlatform.GetLineRenderer();
             var edgeCol = _currentPlatform.GetEdgeCollider2D();
-            lr.material.SetTexture(BaseMap, _platformSkins[Random.Range(0,_platformSkins.Count)].GetSprites()[0].texture);
+            lr.material.SetTexture(BaseMap, _platformSkins[Random.Range(0, _platformSkins.Count)].GetSprites()[0].texture);
             _mousePositions.Add(MousePosition);
             lr.widthMultiplier = edgeCol.edgeRadius = radius;
             edgeCol.enabled = false;
@@ -72,7 +72,7 @@ namespace Platform
 
         private void UpdateLine()
         {
-            if (_mousePositions.Count < 2)_mousePositions.Add(MousePosition);
+            if (_mousePositions.Count < 2) _mousePositions.Add(MousePosition);
             else _mousePositions[1] = MousePosition;
             DrawLine();
         }
@@ -84,13 +84,14 @@ namespace Platform
             _currentPlatform = null;
         }
 
-        private void UpdatePlatformCounter() => CanvasManager.Instance.SetPlatformText(platformCounter);
+        private void UpdatePlatformCounter() => CanvasManager.Instance.SetPlatformText(_platformCounter);
+
         public void ResupplyPlatforms(int points)
         {
             if (points < 0)
-                platformCounter = 0;
+                _platformCounter = 0;
             else if (points > 0)
-                platformCounter = platformAmount;
+                _platformCounter = _platformAmount;
             UpdatePlatformCounter();
         }
     }

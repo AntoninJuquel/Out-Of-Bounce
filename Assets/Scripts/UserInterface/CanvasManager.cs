@@ -115,9 +115,9 @@ namespace UserInterface
             var waitTime = 3f;
             var initialAmount = levelSlider.fillAmount;
             var amount = playerSo.GetVault().experience / playerSo.GetVault().ExperienceRequired;
-            levelText.text = (playerSo.GetVault().level - playerSo.deltalevel).ToString();
+            levelText.text = (playerSo.GetVault().level - playerSo.GetVault().deltalevel).ToString();
             dollarBonus.text = string.Concat("+", iteration * 10, " $");
-            if (playerSo.deltalevel > 0)
+            if (playerSo.GetVault().deltalevel > 0)
             {
                 while (elapsedTime < .5f * waitTime)
                 {
@@ -127,7 +127,7 @@ namespace UserInterface
                     yield return null;
                 }
 
-                playerSo.deltalevel--;
+                playerSo.GetVault().deltalevel--;
                 iteration++;
                 dollarBonus.text = string.Concat("+", iteration * 10, " $");
                 levelSlider.fillAmount = 0;

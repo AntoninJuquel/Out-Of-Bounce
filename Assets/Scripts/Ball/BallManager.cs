@@ -3,7 +3,6 @@ using Systems.Chunk;
 using Systems.Pool;
 using Controllers;
 using Managers;
-using ScriptableObjects;
 using UnityEngine;
 
 namespace Ball
@@ -11,7 +10,6 @@ namespace Ball
     public class BallManager : ObjectPool
     {
         public static BallManager Instance;
-        [SerializeField] private PlayerSo playerSo;
         private List<GameObject> _balls = new List<GameObject>();
 
         private void Awake()

@@ -224,6 +224,7 @@ MonoBehaviour:
   - key: Ball
     prefab: {fileID: 4791766661187583728, guid: ba3c642ab922374468d7ea09e57f58ff, type: 3}
     size: 3
+  ballPrefab: {fileID: 4791766661187583728, guid: ba3c642ab922374468d7ea09e57f58ff, type: 3}
   playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
 --- !u!114 &1848306975
 MonoBehaviour:

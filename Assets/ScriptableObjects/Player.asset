@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059d0e0512f34004ad2be69ecf967aef, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  startPosition: {x: 0, y: 32, z: 0}
   vault:
     value: 0
-    level: 0
-    experience: 0
+    level: 6
+    experience: 12.022089
+    deltalevel: 0
   dots:
   - {fileID: 11400000, guid: b70f04b769509dc41b4246803fbd841f, type: 2}
   - {fileID: 11400000, guid: e5f4be341321a7249ba91d2c62b93f79, type: 2}
@@ -31,4 +31,7 @@ MonoBehaviour:
   platformSkins:
   - {fileID: 11400000, guid: 93648213625c0ce4a8e8f9f395a3e7a8, type: 2}
   - {fileID: 11400000, guid: e850c45a87f280e4f9e3f06ea6e80e2d, type: 2}
-  deltalevel: 0
+  upgrades:
+  - {fileID: 11400000, guid: 5881a97e46c4c8a4bb5417f0c6e45a47, type: 2}
+  - {fileID: 11400000, guid: ea7f92924880fe442b5688efde017193, type: 2}
+  - {fileID: 11400000, guid: 5010d991ea9c5674bbc69c0250da55dc, type: 2}

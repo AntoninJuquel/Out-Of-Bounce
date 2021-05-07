@@ -72,6 +72,7 @@ namespace Systems.Unlock
         public int value;
         public int level;
         public float experience;
+        public int deltalevel = 0;
         public float ExperienceRequired => level < 15 ? 2 * level + 7 : (level < 30 ? 5 * level - 38 : 9 * level - 158);
 
         public int GetValue() => value;

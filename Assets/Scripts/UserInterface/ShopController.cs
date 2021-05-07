@@ -24,6 +24,9 @@ namespace UserInterface
                 case "dots":
                     unlockableSos = playerSo.GetDots().Cast<UnlockableSo>().ToList();
                     break;
+                case "upgrades":
+                    unlockableSos = playerSo.GetUpgrades().Cast<UnlockableSo>().ToList();
+                    break;
             }
             
             verticalLayoutGroup.enabled = true;
