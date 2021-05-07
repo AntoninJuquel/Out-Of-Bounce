@@ -1,6 +1,4 @@
-﻿using Systems.Audio;
-using Managers;
-using Score;
+﻿using Score;
 using UnityEngine;
 
 namespace Dot.DotSos
@@ -15,8 +13,13 @@ namespace Dot.DotSos
 
         public override void Bounce(GameObject ball, GameObject dot, float bouncyness)
         {
-            ScoreManager.Instance.UpdateMoney(GetPoints());
             Destroy(dot);
+        }
+
+        public override void Destroy(GameObject dot)
+        {
+            base.Destroy(dot);
+            ScoreManager.Instance.UpdateMoney(GetPoints());
         }
     }
 }

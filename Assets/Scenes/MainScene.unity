@@ -11083,6 +11083,7 @@ MonoBehaviour:
   shopItemPrefab: {fileID: 5733228999871526189, guid: 1e3a6fbb246b7874faaee408b94328dc, type: 3}
   content: {fileID: 45715458}
   verticalLayoutGroup: {fileID: 1604670364}
+  title: {fileID: 1929024519}
   money: {fileID: 450724455}
   playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
   canvasController: {fileID: 759566203}

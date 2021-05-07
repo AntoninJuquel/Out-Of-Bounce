@@ -38,7 +38,5 @@ namespace Upgrade
                 upgrade.OnDisableUpgrade(gameObject);
             }
         }
-
-        public void SetUpgrades(List<UpgradeSo> upgrades) => _upgradeSos = upgrades;
     }
 }

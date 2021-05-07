@@ -7,13 +7,14 @@ namespace Ball
 {
     public class BallController : MonoBehaviour
     {
-        [SerializeField] private float bouncyness = 15f, minStretch = .5f, stretchMult = 1 / 50f, stretchWhenSquash = .5f, stretchSpeed = 1f, squashAmount = .5f, squashSpeed = 1f;
+        [SerializeField] private float minStretch = .5f, stretchMult = 1 / 50f, stretchWhenSquash = .5f, stretchSpeed = 1f, squashAmount = .5f, squashSpeed = 1f;
         [SerializeField] private Transform render;
         [SerializeField] private SpriteRenderer skinRenderer, faceRenderer;
         private Rigidbody2D _rigidbody;
         private Transform _transform;
-        private float _stretchAmount, _squashAmount, _stretchVel, _squashVel;
+        private float _stretchAmount, _squashAmount, _stretchVel, _squashVel, _bouncyness = 15f;
         private BallManager _ballManager;
+        
 
         private void Awake()
         {
@@ -41,13 +42,13 @@ namespace Ball
             _squashAmount = squashAmount;
             _stretchAmount = stretchWhenSquash;
             other.gameObject.TryGetComponent(out ICollide collide);
-            collide?.Bounce(gameObject, bouncyness);
+            collide?.Bounce(gameObject, _bouncyness);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             other.gameObject.TryGetComponent(out ICollide collide);
-            collide?.Bounce(gameObject, bouncyness);
+            collide?.Bounce(gameObject, _bouncyness);
         }
 
         private IEnumerator DeathRoutine()
@@ -63,10 +64,11 @@ namespace Ball
                 _ballManager.RemoveBall(gameObject);
         }
 
-        public void Setup()
+        public void Setup(float bouncyness)
         {
             _rigidbody.simulated = GameManager.GameStatus != GameStatus.Starting;
             _transform.localScale = Vector3.one;
+            _bouncyness = bouncyness;
             StartCoroutine(DeathRoutine());
             if (_transform.position.y <= 0f)
                 Destroy();

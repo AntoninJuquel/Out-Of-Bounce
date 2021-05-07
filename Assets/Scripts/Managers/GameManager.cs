@@ -57,6 +57,13 @@ namespace Managers
             firstBallRb.simulated = true;
             _startTime = Time.time;
         }
+        
+        private IEnumerator EndRoutine()
+        {
+            yield return new WaitForEndOfFrame();
+            ScoreManager.Instance.UpdatePlayerSo();
+            CanvasManager.Instance.SetupEndScreen();
+        }
 
         public void StartGame()
         {
@@ -101,10 +108,9 @@ namespace Managers
             AudioManager.Instance.Stop("theme");
             AudioManager.Instance.Play("theme", 0);
             ScoreManager.Instance.UpdateTime(Time.time - _startTime);
-            ScoreManager.Instance.UpdatePlayerSo();
-            CanvasManager.Instance.SetupEndScreen();
+            StartCoroutine(EndRoutine());
         }
-
+        
         public void MainMenu()
         {
             lavaPit.SetActive(false);

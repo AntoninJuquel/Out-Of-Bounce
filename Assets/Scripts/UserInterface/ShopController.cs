@@ -13,7 +13,7 @@ namespace UserInterface
         [SerializeField] private GameObject shopItemPrefab;
         [SerializeField] private RectTransform content;
         [SerializeField] private VerticalLayoutGroup verticalLayoutGroup;
-        [SerializeField] private TextMeshProUGUI money;
+        [SerializeField] private TextMeshProUGUI title,money;
         [SerializeField] private PlayerSo playerSo;
         [SerializeField] private CanvasController canvasController;
         public void SetupShop(string shopName)
@@ -46,6 +46,7 @@ namespace UserInterface
             verticalLayoutGroup.enabled = false;
 
             money.text = string.Concat(playerSo.GetMoney(), " $");
+            title.text = shopName.ToUpper();
         }
 
         public void UpdateShop()
