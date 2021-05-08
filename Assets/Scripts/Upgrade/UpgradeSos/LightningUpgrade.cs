@@ -9,27 +9,43 @@ namespace Upgrade.UpgradeSos
     {
         [SerializeField] private LayerMask dotLayer;
         [SerializeField] private GameObject lightningGo;
-        [SerializeField] private float radius, chance;
+        [SerializeField] private float radius;
         [SerializeField] private Vector2 noiseStrength;
+        private float Chance => (level + 1) * .5f;
+        private int LightningCount => level < 2 ? 1 : level;
 
-        public override void OnBounceUpgrade(GameObject gameObject, GameObject other)
+        private void CastLightningBolt(Vector3 position)
         {
-            if(!other.GetComponent<DotController>()) return;
-            var cols = Physics2D.OverlapCircleAll(gameObject.transform.position, radius, dotLayer);
-            var col = cols.FirstOrDefault(collider2D => collider2D.gameObject != gameObject);
-            if (!col) return;
-            var distance = Vector2.Distance(gameObject.transform.position, col.transform.position);
+            var cols = Physics2D.OverlapCircleAll(position, radius, dotLayer);
+            if (cols.Length == 0) return;
+            var dot = cols[0]?.GetComponent<DotController>();
+
+            if (!dot) return;
+
+            var dotPosition = dot.transform.position;
+            var direction = dotPosition - position;
+            var perpendicular = Vector2.Perpendicular(direction).normalized;
+            var distance = Vector2.Distance(position, dotPosition);
+
             var line = Instantiate(lightningGo).GetComponent<LineRenderer>();
             line.positionCount = Mathf.Max(Mathf.CeilToInt(distance), 2);
-            var vector = col.transform.position - gameObject.transform.position;
-            var perpendicular = Vector2.Perpendicular(vector).normalized;
             for (var i = 0; i < line.positionCount; i++)
             {
                 var percent = i / (float) line.positionCount;
-                line.SetPosition(i, (Vector2) (gameObject.transform.position + percent * vector) + perpendicular * Random.Range(noiseStrength.x, noiseStrength.y));
+                line.SetPosition(i, (Vector2) (position + percent * direction) + perpendicular * Random.Range(noiseStrength.x, noiseStrength.y));
             }
-            col.GetComponent<DotController>().Destroy();
-            Destroy(line, 1f);
+
+            dot.Destroy();
+            Destroy(line, .5f);
+        }
+
+        public override void OnBounceUpgrade(GameObject gameObject, GameObject other)
+        {
+            for (var i = 0; i < LightningCount; i++)
+            {
+                if (Random.value > Chance - i * .9f || !other.GetComponent<DotController>()) return;
+                CastLightningBolt(gameObject.transform.position);
+            }
         }
     }
 }
