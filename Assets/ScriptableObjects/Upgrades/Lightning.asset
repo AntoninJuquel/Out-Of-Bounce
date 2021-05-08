@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a250294607644af789b721f175a94434, type: 3}
+  m_Name: Lightning
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  levelRequired: 0
+  status: 2
+  level: 0
+  upgrades:
+  - price: 0
+    description: 
+  dotLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  lightningGo: {fileID: 6724546621913682295, guid: 14ec0560d8e2c894488c997f37f39f9a, type: 3}
+  radius: 15
+  chance: 0
+  noiseStrength: {x: -0.5, y: 0.5}

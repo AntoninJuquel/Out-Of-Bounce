@@ -2,6 +2,7 @@
 using System.Collections;
 using Managers;
 using UnityEngine;
+using Upgrade;
 
 namespace Ball
 {
@@ -14,12 +15,14 @@ namespace Ball
         private Transform _transform;
         private float _stretchAmount, _squashAmount, _stretchVel, _squashVel, _bouncyness = 15f;
         private BallManager _ballManager;
+        private UpgradeController _upgradeController;
         
 
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _transform = transform;
+            _upgradeController = GetComponent<UpgradeController>();
         }
 
         private void Start()
@@ -43,12 +46,14 @@ namespace Ball
             _stretchAmount = stretchWhenSquash;
             other.gameObject.TryGetComponent(out ICollide collide);
             collide?.Bounce(gameObject, _bouncyness);
+            _upgradeController.OnBounce(other.gameObject);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             other.gameObject.TryGetComponent(out ICollide collide);
             collide?.Bounce(gameObject, _bouncyness);
+            _upgradeController.OnBounce(other.gameObject);
         }
 
         private IEnumerator DeathRoutine()

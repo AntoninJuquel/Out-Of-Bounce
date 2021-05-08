@@ -38,5 +38,13 @@ namespace Upgrade
                 upgrade.OnDisableUpgrade(gameObject);
             }
         }
+
+        public void OnBounce(GameObject other)
+        {
+            foreach (var upgrade in _upgradeSos)
+            {
+                upgrade.OnBounceUpgrade(gameObject, other);
+            }
+        }
     }
 }
