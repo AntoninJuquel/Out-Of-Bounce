@@ -35,6 +35,15 @@ namespace Managers
             AudioManager.Instance.Play("theme", 0);
         }
 
+        private void Update()
+        {
+            if (GameStatus != GameStatus.Paused)
+            {
+                Time.timeScale += (1f / 3f) * Time.unscaledDeltaTime;
+                Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);
+            }
+        }
+
         private IEnumerator StartRoutine(bool reset)
         {
             GameStatus = GameStatus.Starting;
