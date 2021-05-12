@@ -27,6 +27,7 @@ namespace ScriptableObjects
         public List<SkinSo> GetPlatformSkins() => platformSkins;
         public List<UpgradeSo> GetUpgrades() => upgrades;
         public Statistic GetStatistic(StatisticType statisticType) => _statistics[statisticType];
+        public Dictionary<StatisticType, Statistic> GetStatistics() => _statistics;
 
         public void LoadPlayer()
         {

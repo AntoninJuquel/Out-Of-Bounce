@@ -17,11 +17,13 @@ MonoBehaviour:
   color: {r: 1, g: 0.6745283, b: 0.82073116, a: 1}
   levelRequired: 0
   status: 2
-  level: 0
+  level: 1
   upgrades:
   - price: 100
     description: BULLET TIME
+  - price: 100
+    description: BULLET TIME
   points: 10
-  spawnChance: 1
-  destroyParticles: {fileID: 5567021245606077315, guid: 729739bde3317bc4eb84fdbf3d5d2c89, type: 3}
+  spawnChance: 0.05
+  destroyParticles: {fileID: 1425755896592036708, guid: 1206d8045c87a184c8a822361ded9463, type: 3}
   destroySound: dot_destroy

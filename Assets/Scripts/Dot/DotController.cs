@@ -43,6 +43,7 @@ namespace Dot
             _dotSo = dotSo;
             _chunk = chunk;
             _dotSo.Setup(gameObject, _collider2D);
+            gameObject.tag = dotSo.name == "Coin" ? "Coin" : "Untagged";
 
             _spriteRenderer.color = dotSo.GetColor();
 
@@ -51,6 +52,7 @@ namespace Dot
                 _spriteRenderer.sprite = sprites[0];
             else if (sprites.Length > 0)
                 StartCoroutine(AnimateSprite(sprites));
+
         }
 
         public void Bounce(GameObject ball, float bouncyness)
@@ -70,5 +72,7 @@ namespace Dot
             DotManager.Instance.RemoveDot(_chunk, gameObject);
             _dotSo.Destroy(gameObject);
         }
+
+        public bool IsCoin => _dotSo.name == "Coin";
     }
 }
