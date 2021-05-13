@@ -91,7 +91,7 @@ namespace Platform
 
         public void ResupplyPlatforms(int points)
         {
-            _platformCounter = points <= 0 ? 0 : _platformAmount;
+            _platformCounter = points <= 0 ? _platformCounter : _platformAmount;
             UpdatePlatformCounter();
         }
     }

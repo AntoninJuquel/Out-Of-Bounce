@@ -21,7 +21,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b70f04b769509dc41b4246803fbd841f, type: 2}
   - {fileID: 11400000, guid: e5f4be341321a7249ba91d2c62b93f79, type: 2}
   - {fileID: 11400000, guid: dead608448cd36c46b0ab354cf99ccaf, type: 2}
-  - {fileID: 11400000, guid: d46cdd054cb43d34eb19edb1222df287, type: 2}
   - {fileID: 11400000, guid: c621096b9b9efd5419c11be4c0ff129b, type: 2}
   - {fileID: 11400000, guid: 898388a25e4b481438a8b1cec8669ca5, type: 2}
   - {fileID: 11400000, guid: 694327941d97c994cabf4c6d585e2ca0, type: 2}
@@ -31,13 +30,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1b4d7bc093855f040a5f972b481bbc3c, type: 2}
   - {fileID: 11400000, guid: 846bc1739e8164e41a9ca6a496d8c11b, type: 2}
   - {fileID: 11400000, guid: b93a1a404111f424b887be29940f257b, type: 2}
+  - {fileID: 11400000, guid: d46cdd054cb43d34eb19edb1222df287, type: 2}
   platformSkins:
   - {fileID: 11400000, guid: 93648213625c0ce4a8e8f9f395a3e7a8, type: 2}
   - {fileID: 11400000, guid: e850c45a87f280e4f9e3f06ea6e80e2d, type: 2}
   upgrades:
   - {fileID: 11400000, guid: 5881a97e46c4c8a4bb5417f0c6e45a47, type: 2}
   - {fileID: 11400000, guid: ea7f92924880fe442b5688efde017193, type: 2}
-  - {fileID: 11400000, guid: 5010d991ea9c5674bbc69c0250da55dc, type: 2}
   - {fileID: 11400000, guid: 0f4a2dee02249d142beee28f520bce0c, type: 2}
+  - {fileID: 11400000, guid: 5010d991ea9c5674bbc69c0250da55dc, type: 2}
   - {fileID: 11400000, guid: 103bbddeb71dbb646b029b85bcd5af70, type: 2}
   - {fileID: 11400000, guid: 81d5aee26ad8b4945b4f79c96edafc09, type: 2}
