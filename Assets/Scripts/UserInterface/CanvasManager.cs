@@ -16,6 +16,7 @@ namespace UserInterface
         [SerializeField] private AudioMixer audioMixer;
         [SerializeField] private Slider[] sliders;
         [SerializeField] private Canvas[] canvasArray;
+        [SerializeField] private Toggle[] toggles;
         [SerializeField] private TextMeshProUGUI heightText, scoreText, platformText, versionText;
         [SerializeField] private TextMeshProUGUI dollarBonus, experienceText, levelText, endHeightText, endScoreText, endKillsText, endTimerText, endCoinsText, bestScore;
         [SerializeField] private Image levelSlider;
@@ -35,6 +36,11 @@ namespace UserInterface
                 var value = PlayerPrefs.GetFloat(slider.name, .5f);
                 slider.value = value;
                 audioMixer.SetFloat(slider.name, Mathf.Log10(value) * 20f);
+            }
+
+            foreach (var toggle in toggles)
+            {
+                toggle.isOn = PlayerPrefs.GetInt(toggle.name, 1) == 1;
             }
 
             SetActiveCanvas(canvasArray[0]);

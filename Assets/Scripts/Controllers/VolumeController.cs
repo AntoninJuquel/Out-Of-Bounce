@@ -22,6 +22,8 @@ namespace Controllers
             _volume.profile.TryGet(out _chromaticAberration);
 
             _startColor = _bloom.tint.value;
+            
+            _bloom.active = PlayerPrefs.GetInt("Bloom", 1) == 1;
         }
 
         private IEnumerator ColorLerp(Color startColor, Color endColor, float time, bool pingPong)
@@ -41,6 +43,12 @@ namespace Controllers
         {
             StopCoroutine(nameof(ColorLerp));
             StartCoroutine(ColorLerp(_bloom.tint.value, endColor, colorFadeInTime, true));
+        }
+
+        public void EnableBloom(bool enable)
+        {
+            PlayerPrefs.SetInt("Bloom", enable ? 1 : 0);
+            _bloom.active = enable;
         }
     }
 }

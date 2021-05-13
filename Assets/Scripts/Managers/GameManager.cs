@@ -132,6 +132,15 @@ namespace Managers
         {
             lavaPit.transform.position = new Vector3(xPosition, _lavaY);
         }
+
+        public void ShareGame()
+        {
+            new NativeShare()
+                .SetTitle("Partager Out of Bounce")
+                .SetText("Jouez à Out of Bounce et marquez le plus de points possible : ")
+                .SetUrl("https://play.google.com/store/apps/details?id=com.kibblecorp.outofbounce")
+                .Share();
+        }
     }
 
     public enum GameStatus
