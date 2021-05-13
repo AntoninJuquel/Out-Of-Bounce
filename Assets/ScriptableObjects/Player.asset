@@ -29,6 +29,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b03c779e20bc33f43a4d9acdbd52d5f7, type: 2}
   - {fileID: 11400000, guid: 1b4d7bc093855f040a5f972b481bbc3c, type: 2}
   - {fileID: 11400000, guid: 846bc1739e8164e41a9ca6a496d8c11b, type: 2}
+  - {fileID: 11400000, guid: b93a1a404111f424b887be29940f257b, type: 2}
   platformSkins:
   - {fileID: 11400000, guid: 93648213625c0ce4a8e8f9f395a3e7a8, type: 2}
   - {fileID: 11400000, guid: e850c45a87f280e4f9e3f06ea6e80e2d, type: 2}

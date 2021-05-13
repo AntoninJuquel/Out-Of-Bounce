@@ -14,5 +14,7 @@ namespace UserInterface
         {
             _material.mainTextureOffset = transform.position / 100f;
         }
+
+        public void SetColor(Color color) => _material.color = color;
     }
 }

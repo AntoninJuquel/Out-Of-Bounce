@@ -22,7 +22,7 @@ namespace Game
         [SerializeField] private UnityEvent onGameOver;
         [SerializeField] private Button watchAd;
         public static GameStatus GameStatus;
-        private static GameStatus _gameStatusBeforePause;
+        private static GameStatus gameStatusBeforePause;
         private float _lavaY, _startTime;
         private Vector3 _deathPosition;
 
@@ -34,7 +34,7 @@ namespace Game
             playerSo.LoadPlayer();
             AudioManager.Instance.Play("theme", 0);
         }
-
+        
         private void Update()
         {
             if (GameStatus != GameStatus.Paused)
@@ -74,6 +74,37 @@ namespace Game
             CanvasManager.Instance.SetupEndScreen();
         }
 
+        // private IEnumerator CheckForUpdate()
+        // {
+        //     _appUpdateManager = new AppUpdateManager();
+        //     var appUpdateInfoOperation = _appUpdateManager.GetAppUpdateInfo();
+        //
+        //     // Wait until the asynchronous operation completes.
+        //     yield return appUpdateInfoOperation;
+        //
+        //     if (appUpdateInfoOperation.IsSuccessful)
+        //     {
+        //         var appUpdateInfoResult = appUpdateInfoOperation.GetResult();
+        //         if (appUpdateInfoResult.UpdateAvailability == UpdateAvailability.UpdateAvailable)
+        //         {
+        //             Debug.Log(UpdateAvailability.UpdateAvailable.ToString());
+        //             var appUpdateOptions = AppUpdateOptions.ImmediateAppUpdateOptions();
+        //             StartCoroutine(StartUpdate(appUpdateInfoResult, appUpdateOptions));
+        //         }
+        //         else
+        //         {
+        //             Debug.Log("No Update Available");
+        //         }
+        //
+        //     }
+        // }
+        //
+        // private IEnumerator StartUpdate(AppUpdateInfo appUpdateInfo, AppUpdateOptions appUpdateOptions)
+        // {
+        //     var startUpdateRequest = _appUpdateManager.StartUpdate(appUpdateInfo,appUpdateOptions);
+        //     yield return startUpdateRequest;
+        // }
+
         public void StartGame()
         {
             Time.timeScale = 1;
@@ -97,12 +128,12 @@ namespace Game
         {
             if (GameStatus == GameStatus.Paused)
             {
-                GameStatus = _gameStatusBeforePause;
+                GameStatus = gameStatusBeforePause;
                 Time.timeScale = 1;
             }
             else
             {
-                _gameStatusBeforePause = GameStatus;
+                gameStatusBeforePause = GameStatus;
                 GameStatus = GameStatus.Paused;
                 CameraController.Instance.StopShake();
                 Time.timeScale = 0;

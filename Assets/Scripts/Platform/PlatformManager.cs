@@ -16,7 +16,7 @@ namespace Platform
         private int _platformAmount, _platformCounter = 3;
         private PlatformController _currentPlatform;
         private List<Vector3> _mousePositions = new List<Vector3>();
-        private Vector2 MousePosition => _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        private Vector2 mousePosition => _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         private Camera _mainCamera;
         private List<SkinSo> _platformSkins;
         private static readonly int BaseMap = Shader.PropertyToID("_BaseMap");
@@ -59,7 +59,7 @@ namespace Platform
         {
             _platformCounter--;
             UpdatePlatformCounter();
-            _mousePositions.Add(MousePosition);
+            _mousePositions.Add(mousePosition);
             _currentPlatform = SpawnFromPool("Platform", Vector2.zero, Quaternion.identity).GetComponent<PlatformController>();
             _currentPlatform.SetActive(true);
             var lr = _currentPlatform.GetLineRenderer();
@@ -67,7 +67,7 @@ namespace Platform
             var skin = _platformSkins[Random.Range(0, _platformSkins.Count)];
             lr.material.SetTexture(BaseMap, skin.GetSprites()[0].texture);
             lr.material.SetColor(BaseColor,skin.GetColor() * .5f);
-            _mousePositions.Add(MousePosition);
+            _mousePositions.Add(mousePosition);
             lr.widthMultiplier = edgeCol.edgeRadius = radius;
             edgeCol.enabled = false;
             DrawLine();
@@ -75,8 +75,8 @@ namespace Platform
 
         private void UpdateLine()
         {
-            if (_mousePositions.Count < 2) _mousePositions.Add(MousePosition);
-            else _mousePositions[1] = MousePosition;
+            if (_mousePositions.Count < 2) _mousePositions.Add(mousePosition);
+            else _mousePositions[1] = mousePosition;
             DrawLine();
         }
 
@@ -91,10 +91,7 @@ namespace Platform
 
         public void ResupplyPlatforms(int points)
         {
-            if (points < 0)
-                _platformCounter = 0;
-            else if (points > 0)
-                _platformCounter = _platformAmount;
+            _platformCounter = points <= 0 ? 0 : _platformAmount;
             UpdatePlatformCounter();
         }
     }
