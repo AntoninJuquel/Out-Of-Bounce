@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using Systems.Event.Scripts.Channels;
-using Managers;
+using Game;
 using UnityEngine;
 
 namespace Controllers

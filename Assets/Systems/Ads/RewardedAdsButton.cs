@@ -1,4 +1,4 @@
-﻿using Managers;
+﻿using Game;
 using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.UI;

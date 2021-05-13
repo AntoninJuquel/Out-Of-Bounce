@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d77e1733f51c453fae6d05b6c83e513e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bouncyness: 15
   minStretch: 0.5
   stretchMult: 0.02
   stretchWhenSquash: 0.9
@@ -190,7 +189,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

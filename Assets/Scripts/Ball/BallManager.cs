@@ -2,7 +2,7 @@
 using Systems.Chunk;
 using Systems.Pool;
 using Controllers;
-using Managers;
+using Game;
 using ScriptableObjects;
 using UnityEngine;
 using Upgrade.UpgradeSos;

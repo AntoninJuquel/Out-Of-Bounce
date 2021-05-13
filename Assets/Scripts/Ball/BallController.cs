@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-using Managers;
+using Game;
 using UnityEngine;
 using Upgrade;
 

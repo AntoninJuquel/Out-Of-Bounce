@@ -1,5 +1,5 @@
 ﻿using Dot;
-using Managers;
+using Game;
 using UnityEngine;
 
 namespace Upgrade.UpgradeSos

@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UserInterface;
 
-namespace Managers
+namespace Game
 {
     public class GameManager : MonoBehaviour
     {

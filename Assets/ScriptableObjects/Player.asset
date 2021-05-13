@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   vault:
-    value: 99340
-    level: 19
-    experience: 6.27124
-    deltalevel: 3
+    value: 0
+    level: 0
+    experience: 0
+    deltalevel: 0
   dots:
   - {fileID: 11400000, guid: b70f04b769509dc41b4246803fbd841f, type: 2}
   - {fileID: 11400000, guid: e5f4be341321a7249ba91d2c62b93f79, type: 2}

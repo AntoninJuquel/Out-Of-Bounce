@@ -17,7 +17,7 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   levelRequired: 0
   status: 2
-  level: 2
+  level: 0
   upgrades:
   - price: 100
     description: 'Start height : 32'
