@@ -3208,9 +3208,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -58934605
+  m_SortingLayer: 3
+  m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 1, g: 0.39215687, b: 0, a: 1}
   m_FlipX: 0
@@ -10701,8 +10701,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 890519992}
   m_HandleRect: {fileID: 890519991}
   m_Direction: 2
-  m_Value: 0.9999985
-  m_Size: 0.7677024
+  m_Value: 0.99999976
+  m_Size: 0.7202855
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14303,8 +14303,8 @@ MonoBehaviour:
     !\n\n - Added TimeSlower dot\n - Added Projectiles dot\n - Added Stop dot\n\\n
     Because skill matters !\n\n - Added Statistics menu\n \\n Better performance
     !\n\n - Enable/Disable bloom effect in the Settings menu\n - Enable/Disable background
-    in the Settings menu\n - Enable/Disable ambient effect in the Settings menu\n\n
-    Huge thanks to Deffekt for the music"
+    in the Settings menu\n - Enable/Disable ambient effect in the Settings menu\n\nHuge
+    thanks to Deffekt for the music"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 77a47315321cab0448e78fe721dc9344, type: 2}
   m_sharedMaterial: {fileID: 6238946150887792615, guid: 77a47315321cab0448e78fe721dc9344, type: 2}
@@ -19876,8 +19876,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -729478563
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -24618,7 +24618,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1784280640}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.7, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 519420032}
@@ -25276,7 +25276,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: -58934605
   m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1802612168
