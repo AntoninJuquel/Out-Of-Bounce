@@ -1,6 +1,7 @@
 ﻿using Game;
 using UnityEngine;
 using UnityEngine.Advertisements;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Systems.Ads
@@ -16,6 +17,7 @@ namespace Systems.Ads
 
         private Button _myButton;
         private const string MySurfacingId = "rewardedVideo";
+        [SerializeField] private UnityEvent onFinished, onSkipped, onFailed;
 
         private void Start()
         {
@@ -50,18 +52,21 @@ namespace Systems.Ads
 
         public void OnUnityAdsDidFinish(string surfacingId, ShowResult showResult)
         {
-            // Define conditional logic for each ad completion status:
-            if (showResult == ShowResult.Finished)
+            switch (showResult)
             {
-                GameManager.Instance.Respawn();
-            }
-            else if (showResult == ShowResult.Skipped)
-            {
-                // Do not reward the user for skipping the ad.
-            }
-            else if (showResult == ShowResult.Failed)
-            {
-                Debug.LogWarning("The ad did not finish due to an error.");
+                // Define conditional logic for each ad completion status:
+                case ShowResult.Finished:
+                    onFinished?.Invoke();
+                    break;
+                case ShowResult.Skipped:
+                    onSkipped?.Invoke();
+                    break;
+                case ShowResult.Failed:
+                    Debug.LogWarning("The ad did not finish due to an error.");
+                    onFailed?.Invoke();
+                    break;
+                default:
+                    break;
             }
         }
 
