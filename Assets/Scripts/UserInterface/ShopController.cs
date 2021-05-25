@@ -62,7 +62,7 @@ namespace UserInterface
             }
         }
 
-        void HandleBuyUnlockable(Image unlockableFrame, UnlockableSo unlockable, Button unlockableButton, TextMeshProUGUI unlockableDescription)
+        private void HandleBuyUnlockable(Graphic unlockableFrame, UnlockableSo unlockable, Selectable unlockableButton, TMP_Text unlockableDescription)
         {
             if(unlockable.Unlocked())
                 unlockable.Upgrade(playerSo.GetVault());
