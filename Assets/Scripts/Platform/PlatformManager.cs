@@ -2,6 +2,7 @@
 using Systems.Pool;
 using Game;
 using ScriptableObjects;
+using Skin;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UserInterface;
@@ -13,6 +14,7 @@ namespace Platform
         public static PlatformManager Instance;
         [SerializeField] private PlayerSo playerSo;
         [SerializeField] private float radius = .25f, platformTimer = 5f;
+        [SerializeField] private SkinSo defaultSkin;
         private int _platformAmount, _platformCounter = 3;
         private PlatformController _currentPlatform;
         private List<Vector3> _mousePositions = new List<Vector3>();
@@ -28,7 +30,7 @@ namespace Platform
             _mainCamera = Camera.main;
             _platformCounter = _platformAmount = playerSo.GetPlatformCount();
             UpdatePlatformCounter();
-            _platformSkins = playerSo.GetPlatformSkins().FindAll(platformSkin => platformSkin.Selected() && platformSkin.Unlocked());
+            _platformSkins = playerSo.GetUnlockedSkins()[SkinType.Platform];
         }
 
         private void Update()
@@ -64,9 +66,9 @@ namespace Platform
             _currentPlatform.SetActive(true);
             var lr = _currentPlatform.GetLineRenderer();
             var edgeCol = _currentPlatform.GetEdgeCollider2D();
-            var skin = _platformSkins[Random.Range(0, _platformSkins.Count)];
+            var skin = _platformSkins.Count == 0 ? defaultSkin : _platformSkins[Random.Range(0, _platformSkins.Count)];
             lr.material.SetTexture(BaseMap, skin.GetSprites()[0].texture);
-            lr.material.SetColor(BaseColor,skin.GetColor() * .5f);
+            lr.material.SetColor(BaseColor, skin.GetColor() * .5f);
             _mousePositions.Add(mousePosition);
             lr.widthMultiplier = edgeCol.edgeRadius = radius;
             edgeCol.enabled = false;

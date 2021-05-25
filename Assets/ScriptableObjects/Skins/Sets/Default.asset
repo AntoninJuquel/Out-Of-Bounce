@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7231ae80eec24be582614239224bf370, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: 
+  sprites: []
+  color: {r: 1, g: 1, b: 1, a: 1}
+  levelRequired: 0
+  status: 1
+  level: 0
+  upgrades: []
+  skins:
+  - {fileID: 11400000, guid: 93648213625c0ce4a8e8f9f395a3e7a8, type: 2}
+  - {fileID: 11400000, guid: 079d90890551f17418ce3f89ebb4be61, type: 2}

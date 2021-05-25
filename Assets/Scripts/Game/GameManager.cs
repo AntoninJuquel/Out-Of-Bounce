@@ -34,7 +34,7 @@ namespace Game
             playerSo.LoadPlayer();
             AudioManager.Instance.Play("theme", 0);
         }
-        
+
         private void Update()
         {
             if (GameStatus != GameStatus.Paused)
@@ -66,7 +66,7 @@ namespace Game
             firstBallRb.simulated = true;
             _startTime = Time.time;
         }
-        
+
         private IEnumerator EndRoutine()
         {
             yield return new WaitForEndOfFrame();
@@ -107,6 +107,7 @@ namespace Game
 
         public void StartGame()
         {
+            playerSo.CacheSkins();
             Time.timeScale = 1;
             lavaPit.SetActive(true);
             var load = SceneManager.LoadSceneAsync("GameScene", LoadSceneMode.Additive);
@@ -150,7 +151,7 @@ namespace Game
             ScoreManager.Instance.UpdateTime(Time.time - _startTime);
             StartCoroutine(EndRoutine());
         }
-        
+
         public void MainMenu()
         {
             lavaPit.SetActive(false);

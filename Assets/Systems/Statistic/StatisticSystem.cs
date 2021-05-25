@@ -24,7 +24,7 @@ namespace Systems.Statistic
             best = lastValue;
         }
     }
-    
+
     [Serializable]
     public enum StatisticType
     {

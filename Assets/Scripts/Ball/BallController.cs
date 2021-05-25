@@ -10,13 +10,11 @@ namespace Ball
     {
         [SerializeField] private float minStretch = .5f, stretchMult = 1 / 50f, stretchWhenSquash = .5f, stretchSpeed = 1f, squashAmount = .5f, squashSpeed = 1f;
         [SerializeField] private Transform render;
-        [SerializeField] private SpriteRenderer skinRenderer, faceRenderer;
         private Rigidbody2D _rigidbody;
         private Transform _transform;
         private float _stretchAmount, _squashAmount, _stretchVel, _squashVel, _bouncyness = 15f;
         private BallManager _ballManager;
         private UpgradeController _upgradeController;
-        
 
         private void Awake()
         {

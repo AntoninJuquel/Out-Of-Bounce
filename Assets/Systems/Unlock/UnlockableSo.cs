@@ -10,7 +10,7 @@ namespace Systems.Unlock
 
         [SerializeField] protected Color color = Color.white;
         [SerializeField] private int levelRequired;
-        [SerializeField] private UnlockStatus status = UnlockStatus.Unlockable;
+        [SerializeField] protected UnlockStatus status = UnlockStatus.Unlockable;
         [SerializeField] protected int level;
         [SerializeField] private Upgrade[] upgrades;
 
@@ -89,11 +89,11 @@ namespace Systems.Unlock
             experience += experienceGained;
 
             var delta = experience - ExperienceRequired;
-            
-            if(delta < 0) return;
+
+            if (delta < 0) return;
             level++;
             experience = 0;
-            if(delta > 0) LevelUp(delta);
+            if (delta > 0) LevelUp(delta);
         }
     }
 
@@ -110,6 +110,7 @@ namespace Systems.Unlock
     [Serializable]
     public class UpgradableSave
     {
+        public string name;
         public UnlockStatus unlockStatus;
         public int level;
     }

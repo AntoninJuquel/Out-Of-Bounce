@@ -48,6 +48,9 @@ TagManager:
   - name: Middleground
     uniqueID: 909857457
     locked: 0
+  - name: Ball
+    uniqueID: 3006358679
+    locked: 0
   - name: Foreground
     uniqueID: 4236032691
     locked: 0

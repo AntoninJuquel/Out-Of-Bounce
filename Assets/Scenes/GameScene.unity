@@ -224,7 +224,6 @@ MonoBehaviour:
   - key: Ball
     prefab: {fileID: 4791766661187583728, guid: ba3c642ab922374468d7ea09e57f58ff, type: 3}
     size: 3
-  ballPrefab: {fileID: 4791766661187583728, guid: ba3c642ab922374468d7ea09e57f58ff, type: 3}
   playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
 --- !u!114 &1848306975
 MonoBehaviour:
@@ -243,10 +242,9 @@ MonoBehaviour:
     prefab: {fileID: 1963161295159136204, guid: e10c2c24f9d33a7489576e6aad50d9ef, type: 3}
     size: 3
   playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
-  platformAmount: 3
-  platformCounter: 3
   radius: 0.25
   platformTimer: 5
+  defaultSkin: {fileID: 11400000, guid: 93648213625c0ce4a8e8f9f395a3e7a8, type: 2}
 --- !u!114 &1848306976
 MonoBehaviour:
   m_ObjectHideFlags: 0
