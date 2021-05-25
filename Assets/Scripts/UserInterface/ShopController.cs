@@ -14,11 +14,11 @@ namespace UserInterface
         [SerializeField] private RectTransform shopMenu;
         [SerializeField] private GameObject shopItem;
         [SerializeField] private TextMeshProUGUI moneyText;
-        [SerializeField] private Scrollbar shopScroll;
+        [SerializeField] private ScrollRect shopScroll;
 
         public void SetupShop(string shopName)
         {
-            shopScroll.value = 0;
+            shopScroll.ScrollToTop();
             moneyText.text = string.Concat(playerSo.GetMoney(), "$");
             var unlockableSos = new List<UnlockableSo>();
             switch (shopName)

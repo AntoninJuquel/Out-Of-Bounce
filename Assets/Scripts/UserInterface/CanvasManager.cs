@@ -89,7 +89,7 @@ namespace UserInterface
             var score = playerSo.GetStatistic(StatisticType.Score).last;
             var kills = playerSo.GetStatistic(StatisticType.Kills).last;
             var coins = playerSo.GetStatistic(StatisticType.Money).last;
-            var timer = Utilities.FormatTime(playerSo.GetStatistic(StatisticType.Time).last);
+            var timer = Game.Utilities.FormatTime(playerSo.GetStatistic(StatisticType.Time).last);
 
             StartCoroutine(LerpText("SCORE\n", "", score, ScoreFormat, endScoreText));
             StartCoroutine(LerpText("", "m", height, HeightFormat, endHeightText));

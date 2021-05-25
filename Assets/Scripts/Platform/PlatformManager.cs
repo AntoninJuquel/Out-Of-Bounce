@@ -54,7 +54,7 @@ namespace Platform
             var edgeCol = _currentPlatform.GetEdgeCollider2D();
             lr.positionCount = _mousePositions.Count;
             lr.SetPositions(_mousePositions.ToArray());
-            edgeCol.points = Utilities.ToVector2Array(_mousePositions.ToArray());
+            edgeCol.points = Game.Utilities.ToVector2Array(_mousePositions.ToArray());
         }
 
         private void StartLine()

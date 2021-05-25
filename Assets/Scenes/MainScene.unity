@@ -14653,7 +14653,7 @@ MonoBehaviour:
   shopMenu: {fileID: 2083048509}
   shopItem: {fileID: 3938146460453065884}
   moneyText: {fileID: 1703165728}
-  shopScroll: {fileID: 300411630}
+  shopScroll: {fileID: 810277311}
 --- !u!1 &907524541
 GameObject:
   m_ObjectHideFlags: 0
