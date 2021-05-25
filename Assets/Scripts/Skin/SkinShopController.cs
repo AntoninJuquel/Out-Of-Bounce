@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using Systems.Unlock;
 using ScriptableObjects;
@@ -22,10 +21,8 @@ namespace Skin
                 var categoryBtn = Instantiate(categoryButton, categoriesMenu);
                 categoryBtn.GetComponent<Button>().onClick.AddListener(delegate { HandleCategory(skinType); });
                 categoryBtn.GetComponentInChildren<TextMeshProUGUI>().text = skinType.ToString();
+                categoryBtn.SetActive(true);
             }
-
-            categoryButton.SetActive(false);
-            skinItem.SetActive(false);
         }
 
         private void HandleCategory(SkinType skinType)
@@ -37,7 +34,10 @@ namespace Skin
                     var skinTrans = i < skinsMenu.childCount ? skinsMenu.GetChild(i) : Instantiate(skinItem, skinsMenu).transform;
                     var inSkinRange = i < skins.Count;
 
-                    var skiFrame = skinTrans.GetChild(1).GetComponent<Image>();
+                    var skinName = skinTrans.GetChild(0).GetComponent<TextMeshProUGUI>();
+                    var skinFrame = skinTrans.GetChild(1).GetComponent<Image>();
+                    var skinImage = skinTrans.GetChild(2).GetComponent<Image>();
+                    var skinPrice = skinTrans.GetChild(3).GetComponent<TextMeshProUGUI>();
                     var skinButton = skinTrans.GetChild(4).GetComponent<Button>();
                     var skinToggle = skinTrans.GetChild(5).GetComponent<Toggle>();
 
@@ -48,13 +48,13 @@ namespace Skin
 
                     if (!inSkinRange) continue;
                     var skin = skins[i];
-                    skinTrans.GetChild(0).GetComponent<TextMeshProUGUI>().text = skin.name;
-                    skiFrame.color = skin.Unlocked() ? Color.green : Color.red;
-                    skinTrans.GetChild(2).GetComponent<Image>().sprite = skin.GetSprites()[0];
-                    skinTrans.GetChild(3).GetComponent<TextMeshProUGUI>().text = string.Concat(skin.GetPrice(), "$");
+                    skinName.text = skin.name;
+                    skinFrame.color = skin.Unlocked() ? Color.green : Color.red;
+                    skinImage.sprite = skin.GetSprites()[0];
+                    skinPrice.text = string.Concat(skin.GetPrice(), "$");
 
                     skinButton.gameObject.SetActive(!skin.Unlocked());
-                    skinButton.onClick.AddListener(delegate { HandleBuySkin(skiFrame, skin, skinToggle, skinButton); });
+                    skinButton.onClick.AddListener(delegate { HandleBuySkin(skinFrame, skin, skinToggle, skinButton); });
 
                     skinToggle.gameObject.SetActive(skin.Unlocked());
                     skinToggle.isOn = skin.Selected();
