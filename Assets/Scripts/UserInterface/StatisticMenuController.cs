@@ -13,15 +13,16 @@ namespace UserInterface
 
         private void OnEnable()
         {
+            var i = 0;
             foreach (var statistic in playerSo.GetStatistics())
             {
-                var statisticGo = Instantiate(statisticItemTemplate, content);
-                statisticGo.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = statistic.Key.ToString().ToUpper();
-                statisticGo.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().text = statistic.Value.best.ToString();
-                statisticGo.transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().text = statistic.Value.last.ToString();
-                statisticGo.transform.GetChild(3).GetChild(1).GetComponent<TextMeshProUGUI>().text = statistic.Value.total.ToString();
+                var statisticGo = i < content.childCount ? content.GetChild(i) : Instantiate(statisticItemTemplate, content).transform;
+                statisticGo.GetChild(0).GetComponent<TextMeshProUGUI>().text = statistic.Key.ToString().ToUpper();
+                statisticGo.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().text = statistic.Value.best.ToString();
+                statisticGo.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().text = statistic.Value.last.ToString();
+                statisticGo.GetChild(3).GetChild(1).GetComponent<TextMeshProUGUI>().text = statistic.Value.total.ToString();
+                i++;
             }
-            statisticItemTemplate.SetActive(false);
         }
     }
 }
