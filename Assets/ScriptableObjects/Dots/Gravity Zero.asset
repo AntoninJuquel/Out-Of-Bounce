@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5a7ad430efde2374bab0adfa19acd008, type: 3}
   color: {r: 0.6367924, g: 0.8165122, b: 1, a: 1}
   levelRequired: 0
-  status: 2
+  status: 1
   level: 0
   upgrades:
   - price: 0
@@ -28,6 +28,7 @@ MonoBehaviour:
   radius: 12
   duration: 3
   force: 0
+  speed: 0
   areaEffectPrefab: {fileID: 8312879301509076524, guid: 5fd1ef3488559454bb0435792699aeaa, type: 3}
   gradient:
     m_Mode: 1
@@ -91,3 +92,6 @@ MonoBehaviour:
       m_NumAlphaKeys: 3
     m_ColorMin: {r: 0, g: 0, b: 0, a: 0}
     m_ColorMax: {r: 0, g: 0, b: 0, a: 0}
+  whatIsDot:
+    serializedVersion: 2
+    m_Bits: 0

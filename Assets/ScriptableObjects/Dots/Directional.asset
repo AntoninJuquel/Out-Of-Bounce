@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a3dfc8c523b653c4db0e1d66741a8a4e, type: 3}
   color: {r: 0.39215687, g: 0, b: 1, a: 1}
   levelRequired: 0
-  status: 2
+  status: 1
   level: 0
   upgrades:
   - price: 10
