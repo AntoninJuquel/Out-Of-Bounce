@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   vault:
-    value: 0
-    level: 0
-    experience: 0
+    value: 191
+    level: 9
+    experience: 19.373924
     deltalevel: 0
   dots:
   - {fileID: 11400000, guid: b70f04b769509dc41b4246803fbd841f, type: 2}
@@ -25,12 +25,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 898388a25e4b481438a8b1cec8669ca5, type: 2}
   - {fileID: 11400000, guid: 694327941d97c994cabf4c6d585e2ca0, type: 2}
   - {fileID: 11400000, guid: 294579e1a0e567f4994680f578bfd3c9, type: 2}
-  - {fileID: 11400000, guid: 65d1d72d24307d1479d96484c66e92f8, type: 2}
-  - {fileID: 11400000, guid: b03c779e20bc33f43a4d9acdbd52d5f7, type: 2}
+  - {fileID: 11400000, guid: 7c50c7f1b70767947aba90f084b371ac, type: 2}
+  - {fileID: 11400000, guid: 55fb2897668ac2147a36e18f6da34d46, type: 2}
   - {fileID: 11400000, guid: 1b4d7bc093855f040a5f972b481bbc3c, type: 2}
   - {fileID: 11400000, guid: 846bc1739e8164e41a9ca6a496d8c11b, type: 2}
   - {fileID: 11400000, guid: b93a1a404111f424b887be29940f257b, type: 2}
   - {fileID: 11400000, guid: d46cdd054cb43d34eb19edb1222df287, type: 2}
+  - {fileID: 11400000, guid: 3bb57eb4e2814ca49a503f017e240087, type: 2}
   upgrades:
   - {fileID: 11400000, guid: 5881a97e46c4c8a4bb5417f0c6e45a47, type: 2}
   - {fileID: 11400000, guid: ea7f92924880fe442b5688efde017193, type: 2}

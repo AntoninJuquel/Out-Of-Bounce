@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a3dfc8c523b653c4db0e1d66741a8a4e, type: 3}
   color: {r: 0.39215687, g: 0, b: 1, a: 1}
   levelRequired: 0
-  status: 1
+  status: 2
   level: 0
   upgrades:
   - price: 10
@@ -25,3 +25,7 @@ MonoBehaviour:
   spawnChance: 0.1
   destroyParticles: {fileID: 5567021245606077315, guid: 729739bde3317bc4eb84fdbf3d5d2c89, type: 3}
   destroySound: dot_destroy
+  areaEffectorPrefab: {fileID: 1506898221632921974, guid: 4b315ecb6eee36349a47e2625277c3cb, type: 3}
+  radius: 5
+  force: 20
+  duration: 3
