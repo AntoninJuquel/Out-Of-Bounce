@@ -27,7 +27,7 @@ namespace Platform
 
         public void Activate(float time)
         {
-            _lineRenderer.material.SetColor(BaseColor,_lineRenderer.material.color * 2f);
+            _lineRenderer.material.SetColor(BaseColor, _lineRenderer.material.color * 2f);
             AudioManager.Instance.Play("platform_activate");
             _edgeCollider.enabled = true;
             Invoke(nameof(Disable), time);
@@ -36,7 +36,7 @@ namespace Platform
         public void Bounce(GameObject ball, float bouncyness)
         {
             var rigid = ball.GetComponent<Rigidbody2D>();
-            rigid.velocity = rigid.velocity.normalized * (bouncyness * (1 + 1 / Length));
+            rigid.velocity = rigid.velocity.normalized * (bouncyness * (2 / Mathf.Max(1, Length) + 1));
             AudioManager.Instance.Play("platform_bounce");
             Disable();
         }
