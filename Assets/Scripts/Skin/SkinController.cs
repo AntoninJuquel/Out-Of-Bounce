@@ -7,20 +7,31 @@ namespace Skin
     {
         [SerializeField] private PlayerSo playerSo;
         [SerializeField] private SkinType skinType;
-        private SpriteRenderer _spriteRenderer;
+        private Renderer _renderer;
+        private static readonly int BaseMap = Shader.PropertyToID("_BaseMap");
 
         private void Awake()
         {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _renderer = GetComponent<Renderer>();
         }
 
         private void OnEnable()
         {
+            var sr = _renderer as SpriteRenderer;
             var skins = playerSo.GetUnlockedSkins()[skinType];
-            if (skins.Count == 0) return;
+            if (skins.Count == 0)
+            {
+                if (skinType == SkinType.Particles) _renderer.enabled = false;
+                return;
+            }
             var skin = skins[Random.Range(0, skins.Count)];
-            _spriteRenderer.sprite = skin.GetSprites()[0];
-            _spriteRenderer.color = skin.GetColor();
+            if (sr)
+            {
+                sr.sprite = skin.GetSprites()[0];
+                sr.color = skin.GetColor();
+            }
+            else
+                _renderer.material.SetTexture(BaseMap, skin.GetSprites()[0].texture);
         }
     }
 }

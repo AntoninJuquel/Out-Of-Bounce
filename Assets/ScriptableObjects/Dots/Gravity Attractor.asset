@@ -28,6 +28,7 @@ MonoBehaviour:
   radius: 12
   duration: 3
   force: -10
+  pointEffectorForce: 30
   speed: 1
   areaEffectPrefab: {fileID: 8312879301509076524, guid: 5fd1ef3488559454bb0435792699aeaa, type: 3}
   gradient:

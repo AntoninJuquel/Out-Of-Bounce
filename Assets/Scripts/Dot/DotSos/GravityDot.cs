@@ -7,7 +7,7 @@ namespace Dot.DotSos
     [CreateAssetMenu(fileName = "New gravity dot", menuName = "Dots/Gravity", order = 0)]
     public class GravityDot : DotSo
     {
-        [SerializeField] private float radius, duration, force, speed;
+        [SerializeField] private float radius, duration, force, pointEffectorForce, speed;
         [SerializeField] private GameObject areaEffectPrefab;
         [SerializeField] private ParticleSystem.MinMaxGradient gradient;
         [SerializeField] private LayerMask whatIsDot;
@@ -35,6 +35,7 @@ namespace Dot.DotSos
             pointEffectorController.SetInnerLifeTime(radius / 10f);
             
             pointEffectorController.SetInnerColorOverLifeTime(gradient);
+            pointEffectorController.SetForce(pointEffectorForce * mult);
 
             pointEffectorController.SetOnTriggerEnterAction((other) =>
             {
@@ -47,7 +48,6 @@ namespace Dot.DotSos
                 if (rb) rb.gravityScale = 1;
             });
 
-            pointEffectorController.SetForce(force);
             
             base.Destroy(dot);
         }

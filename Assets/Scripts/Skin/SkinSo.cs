@@ -23,7 +23,9 @@ namespace Skin
         Mouth,
         Accessories,
         Body,
-        Platform
+        Platform,
+        Trail,
+        Particles
     }
 
     public static class SkinUtilities

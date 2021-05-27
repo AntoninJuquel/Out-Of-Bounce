@@ -15,12 +15,14 @@ namespace Ball
         private float _stretchAmount, _squashAmount, _stretchVel, _squashVel, _bouncyness = 15f;
         private BallManager _ballManager;
         private UpgradeController _upgradeController;
+        private TrailRenderer _trailRenderer;
 
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _transform = transform;
             _upgradeController = GetComponent<UpgradeController>();
+            _trailRenderer = GetComponentInChildren<TrailRenderer>();
         }
 
         private void Start()
@@ -36,6 +38,7 @@ namespace Ball
             _squashAmount = Mathf.SmoothDamp(_squashAmount, 1f, ref _squashVel, Time.deltaTime * squashSpeed);
             render.right = velocity.normalized;
             render.localScale = new Vector3(_squashAmount, _stretchAmount, 1);
+            _trailRenderer.startWidth = render.localScale.y;
         }
 
         private void OnCollisionEnter2D(Collision2D other)

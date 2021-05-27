@@ -50,7 +50,7 @@ namespace Skin
                     var skin = skins[i];
                     skinName.text = skin.name;
                     skinFrame.color = skin.Unlocked() ? Color.green : Color.red;
-                    skinImage.rectTransform.sizeDelta = new Vector2(480, 480) * (skinType == SkinType.Platform ? .5f : 1);
+                    skinImage.rectTransform.sizeDelta = new Vector2(480, 480) * (skinType == SkinType.Platform || skinType == SkinType.Trail || skinType == SkinType.Particles ? .5f : 1);
                     skinImage.sprite = skin.GetSprites()[0];
                     skinPrice.text = string.Concat(skin.GetPrice(), "$");
 

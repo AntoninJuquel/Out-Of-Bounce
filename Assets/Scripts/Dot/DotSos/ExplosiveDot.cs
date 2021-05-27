@@ -17,7 +17,6 @@ namespace Dot.DotSos
             {
                 var direction = col.transform.position - dotPosition;
                 col.GetComponent<Rigidbody2D>().velocity += (Vector2) direction.normalized * force;
-                Debug.Log(col.name);
             }
 
             base.Destroy(dot);
