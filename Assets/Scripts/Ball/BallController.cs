@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Game;
 using UnityEngine;
 using Upgrade;
@@ -8,7 +7,7 @@ namespace Ball
 {
     public class BallController : MonoBehaviour
     {
-        [SerializeField] private float minStretch = .5f, stretchMult = 1 / 50f, stretchWhenSquash = .5f, stretchSpeed = 1f, squashAmount = .5f, squashSpeed = 1f;
+        [SerializeField] private float duration = 10f ,minStretch = .5f, stretchMult = 1 / 50f, stretchWhenSquash = .5f, stretchSpeed = 1f, squashAmount = .5f, squashSpeed = 1f;
         [SerializeField] private Transform render;
         private Rigidbody2D _rigidbody;
         private Transform _transform;
@@ -62,7 +61,7 @@ namespace Ball
             yield return new WaitUntil(() => _transform.position.y <= 0f);
             Destroy();
         }
-
+        
         private void OnDisable()
         {
             StopAllCoroutines();
@@ -76,9 +75,12 @@ namespace Ball
             _transform.localScale = Vector3.one;
             _bouncyness = bouncyness;
             StartCoroutine(DeathRoutine());
+            Invoke("Destroy", duration);
             if (_transform.position.y <= 0f)
                 Destroy();
         }
+
+        public void CancelTimedRoutine() => CancelInvoke();
 
         public void Destroy()
         {

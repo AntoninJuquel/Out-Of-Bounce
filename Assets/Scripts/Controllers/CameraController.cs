@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Systems.Event.Scripts.Channels;
+using Ball;
 using Game;
 using UnityEngine;
 
@@ -69,8 +70,16 @@ namespace Controllers
             _transform.rotation = Quaternion.identity;
         }
 
-        public void SetTarget(Rigidbody2D target) => _target = target;
-        public void SetTarget(GameObject target) => _target = target.GetComponent<Rigidbody2D>();
+        public void SetTarget(Rigidbody2D target)
+        {
+            target.GetComponent<BallController>().CancelTimedRoutine();
+            _target = target;
+        }
+        public void SetTarget(GameObject target)
+        {
+            target.GetComponent<BallController>().CancelTimedRoutine();
+            _target = target.GetComponent<Rigidbody2D>();
+        }
 
         public void StartShake()
         {

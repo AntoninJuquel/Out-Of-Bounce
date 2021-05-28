@@ -97,7 +97,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
   skinType: 1
-  r: {fileID: 0}
 --- !u!1 &1276006599863458759
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +194,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
   skinType: 2
-  r: {fileID: 0}
 --- !u!1 &1638175038895617743
 GameObject:
   m_ObjectHideFlags: 0
@@ -5015,7 +5013,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
   skinType: 8
-  r: {fileID: 0}
 --- !u!1 &4791766661187583728
 GameObject:
   m_ObjectHideFlags: 0
@@ -5113,6 +5110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d77e1733f51c453fae6d05b6c83e513e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 10
   minStretch: 0.5
   stretchMult: 0.02
   stretchWhenSquash: 0.9
@@ -5230,7 +5228,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
   skinType: 3
-  r: {fileID: 0}
 --- !u!1 &6287508590933402611
 GameObject:
   m_ObjectHideFlags: 0
@@ -5391,7 +5388,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
   skinType: 7
-  r: {fileID: 0}
 --- !u!1 &6800964905049544522
 GameObject:
   m_ObjectHideFlags: 0
@@ -5489,7 +5485,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
   skinType: 4
-  r: {fileID: 0}
 --- !u!1 &7039323904020157252
 GameObject:
   m_ObjectHideFlags: 0
@@ -5587,7 +5582,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
   skinType: 5
-  r: {fileID: 0}
 --- !u!1 &9026984802244596731
 GameObject:
   m_ObjectHideFlags: 0
@@ -5685,4 +5679,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
   skinType: 0
-  r: {fileID: 0}
