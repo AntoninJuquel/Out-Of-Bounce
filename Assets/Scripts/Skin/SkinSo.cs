@@ -33,6 +33,7 @@ namespace Skin
         public static IEnumerable<SkinType> SkinTypesArray() => (SkinType[]) Enum.GetValues(typeof(SkinType));
     }
 
+    [Serializable]
     public class SkinSave : UpgradableSave
     {
         public bool Selected;

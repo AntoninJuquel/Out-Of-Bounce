@@ -13,21 +13,22 @@ MonoBehaviour:
   m_Name: Gravity Zero
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 5a7ad430efde2374bab0adfa19acd008, type: 3}
+  - {fileID: 21300000, guid: 98241f8de044fd649bffd9d68d3e8438, type: 3}
   color: {r: 0.6367924, g: 0.8165122, b: 1, a: 1}
   levelRequired: 0
   status: 1
   level: 0
   upgrades:
-  - price: 0
-    description: 
+  - price: 35
+    description: Spawn an anti-gravity zone
   points: 3
   spawnChance: 0.1
   destroyParticles: {fileID: 5567021245606077315, guid: 729739bde3317bc4eb84fdbf3d5d2c89, type: 3}
   destroySound: dot_destroy
-  radius: 12
+  radius: 18
   duration: 3
   force: 0
+  pointEffectorForce: 0
   speed: 0
   areaEffectPrefab: {fileID: 8312879301509076524, guid: 5fd1ef3488559454bb0435792699aeaa, type: 3}
   gradient:

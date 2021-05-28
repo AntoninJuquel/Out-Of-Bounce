@@ -21,6 +21,7 @@ namespace Game
         [SerializeField] private PlayerSo playerSo;
         [SerializeField] private UnityEvent onGameOver;
         [SerializeField] private Button watchAd;
+        [SerializeField] private Button mainMenuButton, pauseButton, resumeButton;
         public static GameStatus GameStatus;
         private static GameStatus gameStatusBeforePause;
         private float _lavaY, _startTime;
@@ -42,6 +43,26 @@ namespace Game
                 Time.timeScale += (1f / 3f) * Time.unscaledDeltaTime;
                 Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);
             }
+#if !UNITY_ANDROID && !UNITY_IOS
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                switch (GameStatus)
+                {
+                    case GameStatus.GameOver:
+                        mainMenuButton.onClick.Invoke();
+                        break;
+                    case GameStatus.Paused:
+                        resumeButton.onClick.Invoke();
+                        break;
+                    case GameStatus.Playing:
+                        pauseButton.onClick.Invoke();
+                        break;
+                    case GameStatus.Starting:
+                        pauseButton.onClick.Invoke();
+                        break;
+                }
+            }
+#endif
         }
 
         private IEnumerator StartRoutine(bool reset)
@@ -154,6 +175,7 @@ namespace Game
 
         public void MainMenu()
         {
+            GameStatus = GameStatus.Menu;
             lavaPit.SetActive(false);
             StopAllCoroutines();
             Time.timeScale = 1;
@@ -167,16 +189,23 @@ namespace Game
 
         public void ShareGame()
         {
+#if UNITY_ANDROID || UNITY_IOS
             new NativeShare()
                 .SetTitle("Partager Out of Bounce")
                 .SetText("Jouez à Out of Bounce et marquez le plus de points possible : ")
                 .SetUrl("https://play.google.com/store/apps/details?id=com.kibblecorp.outofbounce")
                 .Share();
+            #else
+            GUIUtility.systemCopyBuffer = "https://somindras.itch.io/out-of-bounce";
+#endif
         }
+
+        public void QuitGame() => Application.Quit();
     }
 
     public enum GameStatus
     {
+        Menu,
         Starting,
         Playing,
         Paused,

@@ -15,6 +15,7 @@ namespace UserInterface
         [SerializeField] private GameObject shopItem;
         [SerializeField] private TextMeshProUGUI moneyText;
         [SerializeField] private ScrollRect shopScroll;
+        [SerializeField] private Sprite upgradeButton;
 
         public void SetupShop(string shopName)
         {
@@ -58,6 +59,8 @@ namespace UserInterface
                 unlockableDescription.text = unlockable.GetDescription();
                 unlockableButton.interactable = !unlockable.MaxLevel() || !unlockable.Unlocked();
 
+                if (unlockable.Unlocked() && !unlockable.MaxLevel()) unlockableButton.GetComponent<Image>().sprite = upgradeButton;
+
                 unlockableButton.onClick.AddListener(delegate { HandleBuyUnlockable(unlockableFrame, unlockable, unlockableButton, unlockableDescription); });
             }
         }
@@ -72,6 +75,7 @@ namespace UserInterface
             moneyText.text = string.Concat(playerSo.GetMoney(), "$");
             unlockableFrame.color = unlockable.Unlocked() ? Color.green : Color.red;
             unlockableButton.interactable = !unlockable.MaxLevel() || !unlockable.Unlocked();
+            if (unlockable.Unlocked() && !unlockable.MaxLevel()) unlockableButton.GetComponent<Image>().sprite = upgradeButton;
             unlockableDescription.text = unlockable.GetDescription();
         }
     }

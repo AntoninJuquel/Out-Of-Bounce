@@ -1,4 +1,5 @@
-﻿using Game;
+﻿using System;
+using Game;
 using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.Events;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 
 namespace Systems.Ads
 {
+#if UNITY_ANDROID || UNITY_IOS
     [RequireComponent(typeof(Button))]
     public class RewardedAdsButton : MonoBehaviour, IUnityAdsListener
     {
@@ -14,7 +16,6 @@ namespace Systems.Ads
 #elif UNITY_ANDROID
         private const string GameId = "4105545";
 #endif
-
         private Button _myButton;
         private const string MySurfacingId = "rewardedVideo";
         [SerializeField] private UnityEvent onFinished, onSkipped, onFailed;
@@ -80,4 +81,13 @@ namespace Systems.Ads
             // Optional actions to take when the end-users triggers an ad.
         }
     }
+#else
+    public class RewardedAdsButton : MonoBehaviour
+    {
+        private void OnEnable()
+        {
+            gameObject.SetActive(false);
+        }
+    }
+#endif
 }

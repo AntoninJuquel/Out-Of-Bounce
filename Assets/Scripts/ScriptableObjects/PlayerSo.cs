@@ -66,7 +66,7 @@ namespace ScriptableObjects
             {
                 skins.AddRange(skinSet.GetSkins());
             }
-            var skinsSave = SaveManager.LoadByXML("skins.txt", skins.Select(skinSo => new SkinSave {name = skinSo.name, level = skinSo.GetLevel(), unlockStatus = skinSo.GetStatus(), Selected = skinSo.Selected()}).ToList()) as List<SkinSave>;
+            var skinsSave = SaveManager.LoadByBF("skins_bf.txt", skins.Select(skinSo => new SkinSave {name = skinSo.name, level = skinSo.GetLevel(), unlockStatus = skinSo.GetStatus(), Selected = skinSo.Selected()}).ToList()) as List<SkinSave>;
             foreach (var skinSet in skinSets)
             {
                 foreach (var skinSo in skinSet.GetSkins())
@@ -92,7 +92,7 @@ namespace ScriptableObjects
                 skins.AddRange(skinSet.GetSkins());
             }
 
-            SaveManager.SaveByXML("skins.txt", skins.Select(skinSo => new SkinSave {name = skinSo.name, level = skinSo.GetLevel(), unlockStatus = skinSo.GetStatus(), Selected = skinSo.Selected()}).ToList());
+            SaveManager.SaveByBF("skins_bf.txt", skins.Select(skinSo => new SkinSave {name = skinSo.name, level = skinSo.GetLevel(), unlockStatus = skinSo.GetStatus(), Selected = skinSo.Selected()}).ToList());
         }
 
         public void UpdatePlayer(Dictionary<StatisticType, float> achievementValues)
