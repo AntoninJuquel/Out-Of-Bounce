@@ -1,6 +1,4 @@
-﻿using System;
-using Game;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.Events;
 using UnityEngine.UI;
