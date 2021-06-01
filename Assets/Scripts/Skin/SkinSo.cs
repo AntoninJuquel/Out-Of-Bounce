@@ -17,11 +17,6 @@ namespace Skin
 
     public enum SkinType
     {
-        Hat,
-        Clothes,
-        Eyes,
-        Mouth,
-        Accessories,
         Body,
         Platform,
         Trail,

@@ -9,7 +9,7 @@ namespace Platform
     {
         private LineRenderer _lineRenderer;
         private EdgeCollider2D _edgeCollider;
-        private static readonly int BaseColor = Shader.PropertyToID("_BaseColor");
+        private static readonly int Color = Shader.PropertyToID("_Color");
         private float Length => Vector2.Distance(_lineRenderer.GetPosition(0), _lineRenderer.GetPosition(1));
 
         private void Awake()
@@ -27,7 +27,7 @@ namespace Platform
 
         public void Activate(float time)
         {
-            _lineRenderer.material.SetColor(BaseColor, _lineRenderer.material.color * 2f);
+            _lineRenderer.material.SetColor(Color, _lineRenderer.material.color * 2f);
             AudioManager.Instance.Play("platform_activate");
             _edgeCollider.enabled = true;
             Invoke(nameof(Disable), time);

@@ -21,8 +21,8 @@ namespace Platform
         private Vector2 mousePosition => _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         private Camera _mainCamera;
         private List<SkinSo> _platformSkins;
-        private static readonly int BaseMap = Shader.PropertyToID("_BaseMap");
-        private static readonly int BaseColor = Shader.PropertyToID("_BaseColor");
+        private static readonly int MainTex = Shader.PropertyToID("_MainTex");
+        private static readonly int Color = Shader.PropertyToID("_Color");
 
         private void Awake()
         {
@@ -67,8 +67,8 @@ namespace Platform
             var lr = _currentPlatform.GetLineRenderer();
             var edgeCol = _currentPlatform.GetEdgeCollider2D();
             var skin = _platformSkins.Count == 0 ? defaultSkin : _platformSkins[Random.Range(0, _platformSkins.Count)];
-            lr.material.SetTexture(BaseMap, skin.GetSprites()[0].texture);
-            lr.material.SetColor(BaseColor, skin.GetColor() * .5f);
+            lr.material.SetTexture(MainTex, skin.GetSprites()[0].texture);
+            lr.material.SetColor(Color, skin.GetColor() * .5f);
             _mousePositions.Add(mousePosition);
             lr.widthMultiplier = edgeCol.edgeRadius = radius;
             edgeCol.enabled = false;

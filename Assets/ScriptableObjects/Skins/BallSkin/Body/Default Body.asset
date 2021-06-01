@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1353ca2125bb4077a9fbdda107008d63, type: 3}
-  m_Name: Default Body
+  m_Name: Default body
   m_EditorClassIdentifier: 
   sprites:
   - {fileID: 21300000, guid: 72816044c0b6c5f4585b8a996f3acb14, type: 3}
@@ -21,5 +21,5 @@ MonoBehaviour:
   upgrades:
   - price: 0
     description: 
-  skinType: 5
+  skinType: 0
   selected: 0

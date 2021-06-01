@@ -31,7 +31,10 @@ namespace Skin
                 sr.color = skin.GetColor();
             }
             else
+            {
                 _renderer.material.SetTexture(BaseMap, skin.GetSprites()[0].texture);
+                _renderer.material.SetTexture("_MainTex", skin.GetSprites()[0].texture);
+            }
         }
     }
 }

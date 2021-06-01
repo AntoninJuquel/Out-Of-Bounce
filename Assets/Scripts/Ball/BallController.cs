@@ -67,6 +67,7 @@ namespace Ball
         {
             Instantiate(deathParticles, transform.position, Quaternion.identity);
             StopAllCoroutines();
+            CancelInvoke();
             if (_ballManager)
                 _ballManager.RemoveBall(gameObject);
         }
