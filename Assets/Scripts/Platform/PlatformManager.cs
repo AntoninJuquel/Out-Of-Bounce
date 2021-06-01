@@ -30,7 +30,7 @@ namespace Platform
             _mainCamera = Camera.main;
             _platformCounter = _platformAmount = playerSo.GetPlatformCount();
             UpdatePlatformCounter();
-            _platformSkins = playerSo.GetUnlockedSkins()[SkinType.Platform];
+            _platformSkins = playerSo.GetUnlockedSkins()[SkinType.Platforms];
         }
 
         private void Update()

@@ -17,9 +17,9 @@ namespace Skin
 
     public enum SkinType
     {
-        Body,
-        Platform,
-        Trail,
+        Balls,
+        Platforms,
+        Trails,
         Particles
     }
 
