@@ -16,10 +16,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 890bec9eeb45d6440ba81493b4f11312, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
   levelRequired: 0
-  status: 2
+  status: 1
   level: 0
   upgrades:
-  - price: 0
+  - price: 100
     description: 
   skinType: 0
-  selected: 1
+  selected: 0

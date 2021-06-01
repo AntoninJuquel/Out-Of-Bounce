@@ -19,11 +19,11 @@ MonoBehaviour:
   status: 1
   level: 0
   upgrades:
-  - price: 100
+  - price: 250
     description: 50% chance to spawn a lighning bolt when a dot is destroyed
-  - price: 100
+  - price: 250
     description: 100% chance to spawn a lighning bolt when a dot is destroyed
-  - price: 100
+  - price: 250
     description: '100% chance to spawn a lighning bolt when a dot is destroyed
 
       10%

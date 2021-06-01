@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   vault:
-    value: 7492
-    level: 2
-    experience: 10.770373
+    value: 0
+    level: 0
+    experience: 0
     deltalevel: 0
   dots:
   - {fileID: 11400000, guid: b70f04b769509dc41b4246803fbd841f, type: 2}
@@ -39,5 +39,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5010d991ea9c5674bbc69c0250da55dc, type: 2}
   - {fileID: 11400000, guid: 103bbddeb71dbb646b029b85bcd5af70, type: 2}
   - {fileID: 11400000, guid: 81d5aee26ad8b4945b4f79c96edafc09, type: 2}
+  - {fileID: 11400000, guid: 532d2951e2b00ba468add9284f22f1ae, type: 2}
   skinSets:
   - {fileID: 11400000, guid: c9a18a46d22772b448739db99a6b5941, type: 2}
+  - {fileID: 11400000, guid: 0406567a93e912847b77a98b57a4799f, type: 2}
+  - {fileID: 11400000, guid: 4a76794da273ad141a34eb629e8fc7a8, type: 2}
+  - {fileID: 11400000, guid: 7312159d76e5cf141bc5a87c319e14ae, type: 2}
+  - {fileID: 11400000, guid: 0e6260ebb66e8314d81cd23dd30fdd4a, type: 2}
+  - {fileID: 11400000, guid: 4f1b07bf386d70c4eba9dbd3642947c5, type: 2}
+  - {fileID: 11400000, guid: 351904c2ee6eb0840a96ecabe0dcce60, type: 2}

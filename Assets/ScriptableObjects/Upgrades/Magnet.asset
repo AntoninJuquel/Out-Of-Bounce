@@ -19,7 +19,7 @@ MonoBehaviour:
   status: 1
   level: 0
   upgrades:
-  - price: 100
+  - price: 300
     description: Attract MONEY
   dotLayer:
     serializedVersion: 2

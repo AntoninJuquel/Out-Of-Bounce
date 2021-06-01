@@ -9,17 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1353ca2125bb4077a9fbdda107008d63, type: 3}
-  m_Name: Pizza
+  m_Script: {fileID: 11500000, guid: 7231ae80eec24be582614239224bf370, type: 3}
+  m_Name: Default
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: c68effb549af47149914ca7677e4bd4f, type: 3}
+  sprites: []
   color: {r: 1, g: 1, b: 1, a: 1}
   levelRequired: 0
   status: 1
   level: 0
-  upgrades:
-  - price: 25
-    description: 
-  skinType: 0
-  selected: 0
+  upgrades: []
+  skins:
+  - {fileID: 11400000, guid: 93648213625c0ce4a8e8f9f395a3e7a8, type: 2}
+  - {fileID: 11400000, guid: 079d90890551f17418ce3f89ebb4be61, type: 2}
+  - {fileID: 11400000, guid: ca18efe66768e0f4bba1731d9128b97f, type: 2}

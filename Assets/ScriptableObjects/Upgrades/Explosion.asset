@@ -19,7 +19,7 @@ MonoBehaviour:
   status: 1
   level: 0
   upgrades:
-  - price: 100
-    description: Explodes when the ball die
+  - price: 150
+    description: Explodes surrounding dots on death
   explosionParticles: {fileID: 1035170851873987009, guid: e31088bc99eabda47b8b8548be56a08a, type: 3}
   radius: 15

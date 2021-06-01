@@ -66,6 +66,7 @@ namespace ScriptableObjects
             {
                 skins.AddRange(skinSet.GetSkins());
             }
+
             var skinsSave = SaveManager.LoadByBF("skins_bf.txt", skins.Select(skinSo => new SkinSave {name = skinSo.name, level = skinSo.GetLevel(), unlockStatus = skinSo.GetStatus(), Selected = skinSo.Selected()}).ToList()) as List<SkinSave>;
             foreach (var skinSet in skinSets)
             {
@@ -132,7 +133,7 @@ namespace ScriptableObjects
                 var skins = new List<SkinSo>();
                 foreach (var skinSet in skinSets)
                 {
-                    skins = skinSet.GetSkins().FindAll(s => s.Unlocked() && s.GetSkinType() == skinType && s.Selected());
+                    skins.AddRange(skinSet.GetSkins().FindAll(s => s.Unlocked() && s.GetSkinType() == skinType && s.Selected()));
                 }
 
                 _unlockedSkins.Add(skinType, skins);

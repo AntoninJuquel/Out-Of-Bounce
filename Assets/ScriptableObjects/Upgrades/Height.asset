@@ -19,9 +19,9 @@ MonoBehaviour:
   status: 2
   level: 0
   upgrades:
-  - price: 100
+  - price: 25
     description: 'Start height : 32'
-  - price: 100
+  - price: 25
     description: 'Start height : 64'
-  - price: 100
+  - price: 25
     description: 'Start height : 96'

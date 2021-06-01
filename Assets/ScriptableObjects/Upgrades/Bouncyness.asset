@@ -19,9 +19,9 @@ MonoBehaviour:
   status: 2
   level: 0
   upgrades:
-  - price: 100
+  - price: 25
     description: 'Bouncyness : 15'
-  - price: 100
+  - price: 25
     description: 'Bouncyness : 18'
-  - price: 100
+  - price: 25
     description: 'Bouncyness : 21'

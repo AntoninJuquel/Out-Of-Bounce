@@ -22,4 +22,4 @@ MonoBehaviour:
   - price: 0
     description: 
   skinType: 0
-  selected: 0
+  selected: 1

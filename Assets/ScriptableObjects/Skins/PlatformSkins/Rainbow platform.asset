@@ -19,7 +19,7 @@ MonoBehaviour:
   status: 1
   level: 0
   upgrades:
-  - price: 10
+  - price: 150
     description: 
   skinType: 1
   selected: 0

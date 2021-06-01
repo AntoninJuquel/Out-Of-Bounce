@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1963161295159136205}
   - component: {fileID: 1963161295159136195}
   - component: {fileID: 1864144226180234103}
+  - component: {fileID: -2224174105809364803}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Untagged
@@ -165,3 +166,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468a241368ef4fc9ab419fdd341e854b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2224174105809364803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963161295159136204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3910b21d2bb46b6bd0a3facc7c39713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
+  upgradeType: 1

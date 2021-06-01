@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Systems.Unlock;
 using ScriptableObjects;
@@ -27,8 +28,10 @@ namespace Skin
 
         private void HandleCategory(SkinType skinType)
         {
-            foreach (var skins in playerSo.GetSkinSets().Select(skinSet => skinSet.GetSkins().FindAll(skin => skin.GetSkinType() == skinType)))
+            var skins = new List<SkinSo>();
+            foreach (var s in playerSo.GetSkinSets().Select(skinSet => skinSet.GetSkins().FindAll(skin => skin.GetSkinType() == skinType)))
             {
+                skins.AddRange(s);
                 for (var i = 0; i < Mathf.Max(skins.Count, skinsMenu.childCount); i++)
                 {
                     var skinTrans = i < skinsMenu.childCount ? skinsMenu.GetChild(i) : Instantiate(skinItem, skinsMenu).transform;
@@ -43,7 +46,7 @@ namespace Skin
 
                     skinButton.onClick.RemoveAllListeners();
                     skinToggle.onValueChanged.RemoveAllListeners();
-                    
+
                     skinTrans.gameObject.SetActive(inSkinRange);
 
                     if (!inSkinRange) continue;
@@ -75,7 +78,7 @@ namespace Skin
             skinFrame.color = skin.Unlocked() ? Color.green : Color.red;
             playerSo.SavePlayer();
             moneyText.text = string.Concat(playerSo.GetMoney(), "$");
-            
+
             skinButton.gameObject.SetActive(!skin.Unlocked());
             skinToggle.gameObject.SetActive(skin.Unlocked());
             skinToggle.isOn = true;

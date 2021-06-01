@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ScriptableObjects;
 using UnityEngine;
 
@@ -7,12 +6,13 @@ namespace Upgrade
 {
     public class UpgradeController : MonoBehaviour
     {
-        [SerializeField] private PlayerSo _playerSo;
+        [SerializeField] private PlayerSo playerSo;
+        [SerializeField] private UpgradeType upgradeType;
         private List<UpgradeSo> _upgradeSos;
 
         private void Awake()
         {
-            _upgradeSos = _playerSo.GetUpgrades().FindAll(upgrade => upgrade.Unlocked());
+            _upgradeSos = playerSo.GetUpgrades().FindAll(upgrade => upgrade.Unlocked() && upgrade.type == upgradeType);
         }
 
         private void OnEnable()
@@ -28,6 +28,14 @@ namespace Upgrade
             foreach (var upgrade in _upgradeSos)
             {
                 upgrade.UpdateUpgrade(gameObject);
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            foreach (var upgrade in _upgradeSos)
+            {
+                upgrade.FixedUpdateUpgrade(gameObject);
             }
         }
 
