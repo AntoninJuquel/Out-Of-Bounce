@@ -16,7 +16,7 @@ namespace Systems.Ads
 #endif
         private Button _myButton;
         private const string MySurfacingId = "rewardedVideo";
-        [SerializeField] private UnityEvent onFinished, onSkipped, onFailed;
+        [SerializeField] public UnityEvent onFinished, onSkipped, onFailed;
 
         private void Start()
         {
@@ -34,7 +34,7 @@ namespace Systems.Ads
         }
 
         // Implement a function for showing a rewarded video ad:
-        private void ShowRewardedVideo()
+        public void ShowRewardedVideo()
         {
             Advertisement.Show(MySurfacingId);
         }

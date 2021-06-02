@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Systems.Ads;
 using Systems.Unlock;
 using ScriptableObjects;
 using TMPro;
@@ -43,9 +44,13 @@ namespace Skin
                     var skinPrice = skinTrans.GetChild(3).GetComponent<TextMeshProUGUI>();
                     var skinButton = skinTrans.GetChild(4).GetComponent<Button>();
                     var skinToggle = skinTrans.GetChild(5).GetComponent<Toggle>();
+                    var skinAd = skinTrans.GetChild(6).GetComponent<RewardedAdsButton>();
+                    var skinAdButton = skinTrans.GetChild(6).GetComponent<Button>();
 
                     skinButton.onClick.RemoveAllListeners();
                     skinToggle.onValueChanged.RemoveAllListeners();
+                    skinAdButton.onClick.RemoveAllListeners();
+                    skinAd.onFinished.RemoveAllListeners();
 
                     skinTrans.gameObject.SetActive(inSkinRange);
 
@@ -58,11 +63,14 @@ namespace Skin
                     skinPrice.text = string.Concat(skin.GetPrice(), "$");
 
                     skinButton.gameObject.SetActive(!skin.Unlocked());
-                    skinButton.onClick.AddListener(delegate { HandleBuySkin(skinFrame, skin, skinToggle, skinButton); });
+                    skinButton.onClick.AddListener(delegate { HandleBuySkin(skinFrame, skin, skinToggle, skinButton, skinAdButton); });
 
                     skinToggle.gameObject.SetActive(skin.Unlocked());
                     skinToggle.isOn = skin.Selected();
                     skinToggle.onValueChanged.AddListener(delegate(bool isOn) { skin.SetSelected(isOn); });
+
+                    skinAd.gameObject.SetActive(!skin.Unlocked());
+                    skinAdButton.onClick.AddListener(delegate { skinAd.ShowRewardedVideo(); HandleAd(skinFrame, skin, skinToggle, skinButton, skinAd); });
                 }
             }
         }
@@ -72,16 +80,32 @@ namespace Skin
             moneyText.text = string.Concat(playerSo.GetMoney(), "$");
         }
 
-        private void HandleBuySkin(Graphic skinFrame, UnlockableSo skin, Toggle skinToggle, Button skinButton)
+        private void HandleBuySkin(Graphic skinFrame, UnlockableSo skin, Toggle skinToggle, Button skinButton, Button skinAd)
         {
             skin.Unlock(playerSo.GetVault());
-            skinFrame.color = skin.Unlocked() ? Color.green : Color.red;
             playerSo.SavePlayer();
-            moneyText.text = string.Concat(playerSo.GetMoney(), "$");
+            UpdateVisuals(skinFrame, skin, skinToggle, skinButton, skinAd);
+        }
 
+        private void UpdateVisuals(Graphic skinFrame, UnlockableSo skin, Toggle skinToggle, Button skinButton, Button skinAd)
+        {
+            skinFrame.color = skin.Unlocked() ? Color.green : Color.red;
+            moneyText.text = string.Concat(playerSo.GetMoney(), "$");
             skinButton.gameObject.SetActive(!skin.Unlocked());
+            skinAd.gameObject.SetActive(!skin.Unlocked());
             skinToggle.gameObject.SetActive(skin.Unlocked());
             skinToggle.isOn = true;
+        }
+
+        private void HandleAd(Graphic skinFrame, UnlockableSo skin, Toggle skinToggle, Button skinButton, RewardedAdsButton skinAd)
+        {
+            skinAd.onFinished.AddListener(delegate
+            {
+                skin.SetUnlocked(UnlockStatus.Unlocked);
+                playerSo.SavePlayer();
+                UpdateVisuals(skinFrame, skin, skinToggle, skinButton, skinAd.GetComponent<Button>());
+                skinAd.onFinished.RemoveAllListeners();
+            });
         }
     }
 }
