@@ -28,6 +28,7 @@ MonoBehaviour:
 
       10%
       chance to cast a second lighting bolt'
+  type: 0
   dotLayer:
     serializedVersion: 2
     m_Bits: 8

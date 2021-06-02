@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ScriptableObjects;
 using UnityEngine;
 
@@ -47,11 +48,35 @@ namespace Upgrade
             }
         }
 
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            foreach (var upgrade in _upgradeSos)
+            {
+                upgrade.OnCollisionEnter2DUpgrade(gameObject, other);
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            foreach (var upgrade in _upgradeSos)
+            {
+                upgrade.OnTriggerEnter2DUpgrade(gameObject, other);
+            }
+        }
+
         public void OnBounce(GameObject other)
         {
             foreach (var upgrade in _upgradeSos)
             {
                 upgrade.OnBounceUpgrade(gameObject, other);
+            }
+        }
+
+        public void TriggerUpgrades()
+        {
+            foreach (var upgrade in _upgradeSos)
+            {
+                upgrade.TriggerUpgrade(gameObject);
             }
         }
     }

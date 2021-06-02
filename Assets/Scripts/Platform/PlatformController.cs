@@ -2,11 +2,13 @@
 using Systems.Audio;
 using Game;
 using UnityEngine;
+using Upgrade;
 
 namespace Platform
 {
     public class PlatformController : MonoBehaviour, ICollide
     {
+        private UpgradeController _upgradeController;
         private LineRenderer _lineRenderer;
         private EdgeCollider2D _edgeCollider;
         private static readonly int Color = Shader.PropertyToID("_Color");
@@ -16,6 +18,7 @@ namespace Platform
         {
             _lineRenderer = GetComponent<LineRenderer>();
             _edgeCollider = GetComponent<EdgeCollider2D>();
+            _upgradeController = GetComponent<UpgradeController>();
         }
 
         private void Disable()
@@ -31,6 +34,7 @@ namespace Platform
             AudioManager.Instance.Play("platform_activate");
             _edgeCollider.enabled = true;
             Invoke(nameof(Disable), time);
+            _upgradeController.TriggerUpgrades();
         }
 
         public void Bounce(GameObject ball, float bouncyness)
