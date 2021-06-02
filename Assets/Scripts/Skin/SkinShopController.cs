@@ -26,7 +26,7 @@ namespace Skin
                 categoryBtn.SetActive(true);
             }
         }
-
+        
         private void HandleCategory(SkinType skinType)
         {
             var skins = new List<SkinSo>();
@@ -69,7 +69,7 @@ namespace Skin
                     skinToggle.isOn = skin.Selected();
                     skinToggle.onValueChanged.AddListener(delegate(bool isOn) { skin.SetSelected(isOn); });
 
-                    skinAd.gameObject.SetActive(!skin.Unlocked());
+                    skinAdButton.interactable = !skin.Unlocked();
                     skinAdButton.onClick.AddListener(delegate { skinAd.ShowRewardedVideo(); HandleAd(skinFrame, skin, skinToggle, skinButton, skinAd); });
                 }
             }
@@ -78,6 +78,7 @@ namespace Skin
         private void OnEnable()
         {
             moneyText.text = string.Concat(playerSo.GetMoney(), "$");
+            HandleCategory(SkinType.Balls);
         }
 
         private void HandleBuySkin(Graphic skinFrame, UnlockableSo skin, Toggle skinToggle, Button skinButton, Button skinAd)
@@ -92,7 +93,7 @@ namespace Skin
             skinFrame.color = skin.Unlocked() ? Color.green : Color.red;
             moneyText.text = string.Concat(playerSo.GetMoney(), "$");
             skinButton.gameObject.SetActive(!skin.Unlocked());
-            skinAd.gameObject.SetActive(!skin.Unlocked());
+            skinAd.interactable = !skin.Unlocked();
             skinToggle.gameObject.SetActive(skin.Unlocked());
             skinToggle.isOn = true;
         }
