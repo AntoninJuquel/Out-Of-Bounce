@@ -16,7 +16,7 @@ namespace Systems.Ads
 #endif
         private Button _myButton;
         private const string MySurfacingId = "rewardedVideo";
-        [SerializeField] public UnityEvent onFinished, onSkipped, onFailed;
+        public UnityEvent onFinished, onSkipped, onFailed;
 
         private void Start()
         {
@@ -82,7 +82,12 @@ namespace Systems.Ads
 #else
     public class RewardedAdsButton : MonoBehaviour
     {
+        public UnityEvent onFinished, onSkipped, onFailed;
         private void OnEnable()
+        {
+            gameObject.SetActive(false);
+        }
+        public void ShowRewardedVideo()
         {
             gameObject.SetActive(false);
         }
