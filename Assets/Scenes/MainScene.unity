@@ -2221,6 +2221,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  interactableOnAwake: 1
 --- !u!1 &205691133
 GameObject:
   m_ObjectHideFlags: 0
@@ -19635,7 +19636,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1434699982}
   m_OnClick:
     m_PersistentCalls:
@@ -19699,6 +19700,7 @@ MonoBehaviour:
   onFailed:
     m_PersistentCalls:
       m_Calls: []
+  interactableOnAwake: 0
 --- !u!1 &1436264665
 GameObject:
   m_ObjectHideFlags: 0
