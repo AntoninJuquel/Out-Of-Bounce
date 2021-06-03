@@ -20,5 +20,6 @@ MonoBehaviour:
   upgrades: []
   skins:
   - {fileID: 11400000, guid: fdc0079ab5d20984e83a3d0a3a435aa1, type: 2}
+  - {fileID: 11400000, guid: 09cd94526cf3367418eb87942def0297, type: 2}
   - {fileID: 11400000, guid: dd8dbbdbe0f9de349a4725f27d78da0d, type: 2}
   - {fileID: 11400000, guid: 9fb28e447bf35314096264dca5609c12, type: 2}
