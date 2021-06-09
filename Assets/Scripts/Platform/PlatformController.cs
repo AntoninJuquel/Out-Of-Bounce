@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Systems.Audio;
 using Game;
 using UnityEngine;
@@ -24,15 +25,21 @@ namespace Platform
         private void Disable()
         {
             CancelInvoke();
-            _edgeCollider.enabled = false;
             gameObject.SetActive(false);
         }
 
-        public void Activate(float time)
+        public void Activate(LineRenderer lineRenderer, float time)
         {
+            var positions = new Vector3[2];
+            lineRenderer.GetPositions(positions);
+
+            _lineRenderer.material = lineRenderer.material;
             _lineRenderer.material.SetColor(Color, _lineRenderer.material.color * 2f);
+            _lineRenderer.SetPositions(positions);
+            _lineRenderer.widthMultiplier = _edgeCollider.edgeRadius = lineRenderer.widthMultiplier;
+            _edgeCollider.SetPoints(Utilities.ToVector2Array(positions).ToList());
+
             AudioManager.Instance.Play("platform_activate");
-            _edgeCollider.enabled = true;
             Invoke(nameof(Disable), time);
             _upgradeController.TriggerUpgrades();
         }
@@ -44,9 +51,5 @@ namespace Platform
             AudioManager.Instance.Play("platform_bounce");
             Disable();
         }
-
-        public LineRenderer GetLineRenderer() => _lineRenderer;
-        public EdgeCollider2D GetEdgeCollider2D() => _edgeCollider;
-        public void SetActive(bool active) => gameObject.SetActive(active);
     }
 }

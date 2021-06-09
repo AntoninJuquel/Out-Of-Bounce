@@ -16,17 +16,18 @@ namespace Platform
         [SerializeField] private float radius = .25f, platformTimer = 5f;
         [SerializeField] private SkinSo defaultSkin;
         private int _platformAmount, _platformCounter = 3;
-        private PlatformController _currentPlatform;
-        private List<Vector3> _mousePositions = new List<Vector3>();
-        private Vector2 mousePosition => _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        private LineRenderer _lineRenderer;
+        private Vector2 MousePosition => _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         private Camera _mainCamera;
         private List<SkinSo> _platformSkins;
+
         private static readonly int MainTex = Shader.PropertyToID("_MainTex");
         private static readonly int Color = Shader.PropertyToID("_Color");
 
         private void Awake()
         {
             Instance = this;
+            _lineRenderer = GetComponent<LineRenderer>();
             _mainCamera = Camera.main;
             _platformCounter = _platformAmount = playerSo.GetPlatformCount();
             UpdatePlatformCounter();
@@ -37,56 +38,34 @@ namespace Platform
         {
             if (GameManager.GameStatus == GameStatus.Paused) return;
 
-            if (Input.GetMouseButtonDown(0) && _platformCounter > 0 && !EventSystem.current.IsPointerOverGameObject())
-            {
-                StartLine();
-            }
-
-            if (!_currentPlatform) return;
-
+            if (Input.GetMouseButtonDown(0) && _platformCounter > 0 && !EventSystem.current.IsPointerOverGameObject()) StartLine();
             if (Input.GetMouseButton(0)) UpdateLine();
-            else if (Input.GetMouseButtonUp(0)) ExitLine();
-        }
-
-        private void DrawLine()
-        {
-            var lr = _currentPlatform.GetLineRenderer();
-            var edgeCol = _currentPlatform.GetEdgeCollider2D();
-            lr.positionCount = _mousePositions.Count;
-            lr.SetPositions(_mousePositions.ToArray());
-            edgeCol.points = Game.Utilities.ToVector2Array(_mousePositions.ToArray());
+            if (Input.GetMouseButtonUp(0)) ExitLine();
         }
 
         private void StartLine()
         {
+            var skin = _platformSkins.Count == 0 ? defaultSkin : _platformSkins[Random.Range(0, _platformSkins.Count)];
+            _lineRenderer.material.SetTexture(MainTex, skin.GetSprites()[0].texture);
+            _lineRenderer.material.SetColor(Color, skin.GetColor() * .5f);
+            _lineRenderer.widthMultiplier = radius;
+            _lineRenderer.positionCount = 2;
+            _lineRenderer.SetPositions(new[] {(Vector3) MousePosition, (Vector3) MousePosition});
+
             _platformCounter--;
             UpdatePlatformCounter();
-            _mousePositions.Add(mousePosition);
-            _currentPlatform = SpawnFromPool("Platform", Vector2.zero, Quaternion.identity).GetComponent<PlatformController>();
-            _currentPlatform.SetActive(true);
-            var lr = _currentPlatform.GetLineRenderer();
-            var edgeCol = _currentPlatform.GetEdgeCollider2D();
-            var skin = _platformSkins.Count == 0 ? defaultSkin : _platformSkins[Random.Range(0, _platformSkins.Count)];
-            lr.material.SetTexture(MainTex, skin.GetSprites()[0].texture);
-            lr.material.SetColor(Color, skin.GetColor() * .5f);
-            _mousePositions.Add(mousePosition);
-            lr.widthMultiplier = edgeCol.edgeRadius = radius;
-            edgeCol.enabled = false;
-            DrawLine();
         }
 
         private void UpdateLine()
         {
-            if (_mousePositions.Count < 2) _mousePositions.Add(mousePosition);
-            else _mousePositions[1] = mousePosition;
-            DrawLine();
+            _lineRenderer.SetPosition(1, MousePosition);
         }
 
         private void ExitLine()
         {
-            _currentPlatform.Activate(platformTimer);
-            _mousePositions = new List<Vector3>();
-            _currentPlatform = null;
+            var platform = SpawnFromPool("Platform", Vector2.zero, Quaternion.identity).GetComponent<PlatformController>();
+            platform.Activate(_lineRenderer, platformTimer);
+            _lineRenderer.positionCount = 0;
         }
 
         private void UpdatePlatformCounter() => CanvasManager.Instance.SetPlatformText(_platformCounter);
