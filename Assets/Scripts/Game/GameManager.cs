@@ -187,6 +187,8 @@ namespace Game
             lavaPit.transform.position = new Vector3(xPosition, _lavaY);
         }
 
+        public float GetDeathPosition() => lavaPit.transform.position.y + (lavaPit.transform.localScale.y / 2f);
+
         public void ShareGame()
         {
 #if UNITY_ANDROID || UNITY_IOS
@@ -195,7 +197,7 @@ namespace Game
                 .SetText("Jouez à Out of Bounce et marquez le plus de points possible : ")
                 .SetUrl("https://play.google.com/store/apps/details?id=com.kibblecorp.outofbounce")
                 .Share();
-            #else
+#else
             GUIUtility.systemCopyBuffer = "https://somindras.itch.io/out-of-bounce";
 #endif
         }

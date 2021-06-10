@@ -9,7 +9,7 @@ namespace Ball
     {
         [SerializeField] private float duration = 10f, minStretch = .5f, stretchMult = 1 / 50f, stretchWhenSquash = .5f, stretchSpeed = 1f, squashAmount = .5f, squashSpeed = 1f;
         [SerializeField] private Transform render;
-        [SerializeField]private GameObject deathParticles;
+        [SerializeField] private GameObject deathParticles;
         private Rigidbody2D _rigidbody;
         private Transform _transform;
         private float _stretchAmount, _squashAmount, _stretchVel, _squashVel, _bouncyness = 15f;
@@ -59,7 +59,7 @@ namespace Ball
 
         private IEnumerator DeathRoutine()
         {
-            yield return new WaitUntil(() => _transform.position.y <= 0f);
+            yield return new WaitUntil(() => _transform.position.y <= GameManager.Instance.GetDeathPosition());
             Destroy();
         }
 
