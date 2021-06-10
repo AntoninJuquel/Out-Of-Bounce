@@ -33,6 +33,7 @@ namespace Platform
             var positions = new Vector3[2];
             lineRenderer.GetPositions(positions);
 
+            _lineRenderer.positionCount = 2;
             _lineRenderer.material = lineRenderer.material;
             _lineRenderer.material.SetColor(Color, _lineRenderer.material.color * 2f);
             _lineRenderer.SetPositions(positions);

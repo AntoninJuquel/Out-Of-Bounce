@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Systems.Chunk;
 using Systems.Event.Scripts.Channels;
 using Controllers;
@@ -59,8 +58,8 @@ namespace Dot
         public void Bounce(GameObject ball, float bouncyness)
         {
             intEventChannelSo.RaiseEvent(_dotSo.GetPoints());
-            ScoreManager.Instance.SpawnPopup(_dotSo.GetPoints(), transform.position);
             colorEventChannelSo.RaiseEvent(_dotSo.GetColor());
+            ScoreManager.Instance.SpawnPopup(_dotSo.GetPoints(), transform.position);
             DotManager.Instance.RemoveDot(_chunk, gameObject);
             CameraController.Instance.StartShake();
             _dotSo.Bounce(ball, gameObject, bouncyness);

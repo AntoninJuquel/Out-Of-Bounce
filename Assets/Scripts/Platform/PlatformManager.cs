@@ -39,7 +39,7 @@ namespace Platform
             if (GameManager.GameStatus == GameStatus.Paused) return;
 
             if (Input.GetMouseButtonDown(0) && _platformCounter > 0 && !EventSystem.current.IsPointerOverGameObject()) StartLine();
-            if (Input.GetMouseButton(0)) UpdateLine();
+            if (Input.GetMouseButton(0) && _lineRenderer.positionCount == 2) UpdateLine();
             if (Input.GetMouseButtonUp(0)) ExitLine();
         }
 
