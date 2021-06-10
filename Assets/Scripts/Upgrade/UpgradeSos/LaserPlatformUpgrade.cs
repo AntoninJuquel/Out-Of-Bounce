@@ -16,7 +16,7 @@ namespace Upgrade.UpgradeSos
             var rot = Quaternion.LookRotation(Vector2.Perpendicular(points[1] - points[0]).normalized, Vector3.forward);
 
             var particleSystems = Instantiate(laserParticles, (points[0] + points[1]) / 2f, rot).GetComponentsInChildren<ParticleSystem>();
-            Debug.Log(particleSystems.Length);
+
             foreach (var particleSystem in particleSystems)
             {
                 var shape = particleSystem.shape;
