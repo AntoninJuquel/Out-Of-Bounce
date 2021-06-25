@@ -9,16 +9,20 @@ namespace Upgrade
     {
         [SerializeField] private PlayerSo playerSo;
         [SerializeField] private UpgradeType upgradeType;
-        private List<UpgradeSo> _upgradeSos;
+        [SerializeField] private List<UpgradeSo> upgradeSos;
 
         private void Awake()
         {
-            _upgradeSos = playerSo.GetUpgrades().FindAll(upgrade => upgrade.Unlocked() && upgrade.type == upgradeType);
+            upgradeSos = playerSo.GetUpgrades().FindAll(upgrade => upgrade.Unlocked() && upgrade.type == upgradeType);
+            for (var i = 0; i < upgradeSos.Count; i++)
+            {
+                upgradeSos[i] = Instantiate(upgradeSos[i]);
+            }
         }
 
         private void OnEnable()
         {
-            foreach (var upgrade in _upgradeSos)
+            foreach (var upgrade in upgradeSos)
             {
                 upgrade.OnEnableUpgrade(gameObject);
             }
@@ -26,7 +30,7 @@ namespace Upgrade
 
         private void Update()
         {
-            foreach (var upgrade in _upgradeSos)
+            foreach (var upgrade in upgradeSos)
             {
                 upgrade.UpdateUpgrade(gameObject);
             }
@@ -34,7 +38,7 @@ namespace Upgrade
 
         private void FixedUpdate()
         {
-            foreach (var upgrade in _upgradeSos)
+            foreach (var upgrade in upgradeSos)
             {
                 upgrade.FixedUpdateUpgrade(gameObject);
             }
@@ -42,7 +46,7 @@ namespace Upgrade
 
         private void OnDisable()
         {
-            foreach (var upgrade in _upgradeSos)
+            foreach (var upgrade in upgradeSos)
             {
                 upgrade.OnDisableUpgrade(gameObject);
             }
@@ -50,7 +54,7 @@ namespace Upgrade
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            foreach (var upgrade in _upgradeSos)
+            foreach (var upgrade in upgradeSos)
             {
                 upgrade.OnCollisionEnter2DUpgrade(gameObject, other);
             }
@@ -58,7 +62,7 @@ namespace Upgrade
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            foreach (var upgrade in _upgradeSos)
+            foreach (var upgrade in upgradeSos)
             {
                 upgrade.OnTriggerEnter2DUpgrade(gameObject, other);
             }
@@ -66,7 +70,7 @@ namespace Upgrade
 
         public void OnBounce(GameObject other)
         {
-            foreach (var upgrade in _upgradeSos)
+            foreach (var upgrade in upgradeSos)
             {
                 upgrade.OnBounceUpgrade(gameObject, other);
             }
@@ -74,7 +78,7 @@ namespace Upgrade
 
         public void TriggerUpgrades()
         {
-            foreach (var upgrade in _upgradeSos)
+            foreach (var upgrade in upgradeSos)
             {
                 upgrade.TriggerUpgrade(gameObject);
             }
