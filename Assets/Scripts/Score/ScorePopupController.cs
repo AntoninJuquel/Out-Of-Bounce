@@ -1,4 +1,3 @@
-using System;
 using Packages.LeanTween;
 using TMPro;
 using UnityEngine;
