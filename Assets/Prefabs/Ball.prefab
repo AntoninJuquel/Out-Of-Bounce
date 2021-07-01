@@ -4833,6 +4833,7 @@ GameObject:
   - component: {fileID: 4063497742045984361}
   - component: {fileID: -5823088519036017866}
   - component: {fileID: -4185481111497638478}
+  - component: {fileID: -8462221417150710568}
   m_Layer: 6
   m_Name: Ball
   m_TagString: Untagged
@@ -4939,6 +4940,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSo: {fileID: 11400000, guid: 2751265f429461f40acf8900c6d0cdbf, type: 2}
   upgradeType: 0
+  upgradeSos: []
+--- !u!114 &-8462221417150710568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4791766661187583728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55112df72b5d48039b7b0028a72ce7b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionRotations: []
 --- !u!1 &6287508590933402611
 GameObject:
   m_ObjectHideFlags: 0

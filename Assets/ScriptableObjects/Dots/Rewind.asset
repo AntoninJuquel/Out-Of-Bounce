@@ -9,23 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95dfe6a099b745479ae9b1427e6c7149, type: 3}
-  m_Name: Gravity Directional
+  m_Script: {fileID: 11500000, guid: 25d942cd2a7e4b9fb5f1d465b80c29d1, type: 3}
+  m_Name: Rewind
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: a3dfc8c523b653c4db0e1d66741a8a4e, type: 3}
-  color: {r: 0.39215687, g: 0, b: 1, a: 1}
+  - {fileID: 21300000, guid: 0b0a2797d3b4f2d4985d8b8354717389, type: 3}
+  color: {r: 1, g: 0.3820755, b: 0.51884466, a: 1}
   levelRequired: 0
   status: 2
   level: 0
   upgrades:
-  - price: 10
-    description: Redirect in a given direction
-  points: 2
-  spawnChance: 0.1
+  - price: 200
+    description: 
+  points: 3
+  spawnChance: 0.05
   destroyParticles: {fileID: 5567021245606077315, guid: 729739bde3317bc4eb84fdbf3d5d2c89, type: 3}
   destroySound: dot_destroy
-  areaEffectorPrefab: {fileID: 1506898221632921974, guid: 4b315ecb6eee36349a47e2625277c3cb, type: 3}
-  radius: 5
-  force: 20
-  duration: 3
