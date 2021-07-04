@@ -24,6 +24,7 @@ namespace Controllers
             _startColor = _bloom.tint.value;
             
             _bloom.active = PlayerPrefs.GetInt("Bloom", 1) == 1;
+            _bloom.intensity.Override(PlayerPrefs.GetFloat("BloomIntensity", 1) * 5f);
         }
 
         private IEnumerator ColorLerp(Color startColor, Color endColor, float time, bool pingPong)
@@ -49,6 +50,12 @@ namespace Controllers
         {
             PlayerPrefs.SetInt("Bloom", enable ? 1 : 0);
             _bloom.active = enable;
+        }
+
+        public void SetBloom(float value)
+        {
+            PlayerPrefs.SetFloat("BloomIntensity", value);
+            _bloom.intensity.Override(value * 5f);
         }
     }
 }

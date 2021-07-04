@@ -36,7 +36,8 @@ namespace UserInterface
             {
                 var value = PlayerPrefs.GetFloat(slider.name, .5f);
                 slider.value = value;
-                audioMixer.SetFloat(slider.name, Mathf.Log10(value) * 20f);
+                if(slider.name.Contains("Volume"))
+                    audioMixer.SetFloat(slider.name, Mathf.Log10(value) * 20f);
             }
 
             foreach (var toggle in toggles)

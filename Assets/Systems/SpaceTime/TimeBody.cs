@@ -6,13 +6,14 @@ namespace Systems.SpaceTime
 {
     public class TimeBody : MonoBehaviour
     {
-        [SerializeField] private List<PositionRotation> positionRotations = new List<PositionRotation>();
+        private List<PositionRotation> _positionRotations;
         private Transform _transform;
         private Rigidbody2D _rb;
         private bool _isRewinding;
 
         private void Awake()
         {
+            _positionRotations = new List<PositionRotation>();
             _transform = transform;
             _rb = GetComponent<Rigidbody2D>();
         }
@@ -24,26 +25,25 @@ namespace Systems.SpaceTime
 
         private void FixedUpdate()
         {
-            
             if (!_isRewinding) Record();
         }
 
         private void Record()
         {
-            if (positionRotations.Count > Mathf.Round(5f / Time.fixedDeltaTime))
+            if (_positionRotations.Count > Mathf.Round(5f / Time.fixedDeltaTime))
             {
-                positionRotations.RemoveAt(positionRotations.Count - 1);
+                _positionRotations.RemoveAt(_positionRotations.Count - 1);
             }
 
-            positionRotations.Insert(0, new PositionRotation(_transform.position, _transform.rotation));
+            _positionRotations.Insert(0, new PositionRotation(_transform.position, _transform.rotation));
         }
 
         private void Rewind()
         {
-            if (positionRotations.Count > 0)
+            if (_positionRotations.Count > 0)
             {
-                _transform.SetPositionAndRotation(positionRotations[0].Position, positionRotations[0].Rotation);
-                positionRotations.RemoveAt(0);
+                _transform.SetPositionAndRotation(_positionRotations[0].Position, _positionRotations[0].Rotation);
+                _positionRotations.RemoveAt(0);
             }
             else
             {
@@ -64,7 +64,6 @@ namespace Systems.SpaceTime
         }
     }
 
-    [Serializable]
     public class PositionRotation
     {
         public Vector3 Position { get; }
@@ -72,8 +71,8 @@ namespace Systems.SpaceTime
 
         public PositionRotation(Vector3 position, Quaternion rotation)
         {
-            this.Position = position;
-            this.Rotation = rotation;
+            Position = position;
+            Rotation = rotation;
         }
     }
 }

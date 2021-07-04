@@ -17,7 +17,7 @@ namespace Game
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
-        [SerializeField] private GameObject lavaPit;
+        [SerializeField] private GameObject lavaPit, tutorial;
         [SerializeField] private PlayerSo playerSo;
         [SerializeField] private UnityEvent onGameOver;
         [SerializeField] private Button watchAd;
@@ -131,6 +131,7 @@ namespace Game
             playerSo.CacheSkins();
             Time.timeScale = 1;
             lavaPit.SetActive(true);
+            tutorial.SetActive(true);
             var load = SceneManager.LoadSceneAsync("GameScene", LoadSceneMode.Additive);
             load.completed += asyncOperation => StartCoroutine(StartRoutine(true));
         }

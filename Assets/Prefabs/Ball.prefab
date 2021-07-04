@@ -4953,7 +4953,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55112df72b5d48039b7b0028a72ce7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionRotations: []
 --- !u!1 &6287508590933402611
 GameObject:
   m_ObjectHideFlags: 0
