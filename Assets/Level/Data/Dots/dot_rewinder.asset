@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25d942cd2a7e4b9fb5f1d465b80c29d1, type: 3}
+  m_Name: dot_rewinder
+  m_EditorClassIdentifier: 
+  title: Rewind
+  image: {fileID: 21300000, guid: 0b0a2797d3b4f2d4985d8b8354717389, type: 3}
+  <Level>k__BackingField: 1
+  levels:
+  - <Name>k__BackingField: Rewind
+    <Image>k__BackingField: {fileID: 21300000, guid: 0b0a2797d3b4f2d4985d8b8354717389, type: 3}
+    <Price>k__BackingField: 0
+    <LockState>k__BackingField: 3
+    description: 
+  selectable: 1
+  <Selected>k__BackingField: 0
+  onItemChange:
+    m_PersistentCalls:
+      m_Calls: []
+  layer:
+    serializedVersion: 2
+    m_Bits: 8
+  color: {r: 0.92549026, g: 0.53333336, b: 0.7686275, a: 1}
+  spawnChance: 0.05
+  <Points>k__BackingField: 1
+  <Sprites>k__BackingField: []
+  deathFeedback: {fileID: 4739482055778560424, guid: 5c5fa3e47a50d6d488f3d55cc92af7f5, type: 3}

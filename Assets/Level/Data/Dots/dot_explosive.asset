@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9035c62a36a34273b22e3017f9322bcc, type: 3}
+  m_Name: dot_explosive
+  m_EditorClassIdentifier: 
+  title: Explosive
+  image: {fileID: 21300000, guid: 6bd788992dc2099458d7491c891ea31a, type: 3}
+  <Level>k__BackingField: 1
+  levels:
+  - <Name>k__BackingField: Explosive
+    <Image>k__BackingField: {fileID: 21300000, guid: 6bd788992dc2099458d7491c891ea31a, type: 3}
+    <Price>k__BackingField: 1000
+    <LockState>k__BackingField: 3
+    description: 
+  selectable: 1
+  <Selected>k__BackingField: 1
+  onItemChange:
+    m_PersistentCalls:
+      m_Calls: []
+  layer:
+    serializedVersion: 2
+    m_Bits: 8
+  color: {r: 0.8588236, g: 0.30588236, b: 0.04705883, a: 1}
+  spawnChance: 0.1
+  <Points>k__BackingField: 1
+  <Sprites>k__BackingField: []
+  deathFeedback: {fileID: 4739482055778560424, guid: cd868d1f7aec46b43bdc42d1222491cd, type: 3}
+  forcePerLevel:
+  - 25
+  radiusPerLevel:
+  - 17
+  whatIsDot:
+    serializedVersion: 2
+    m_Bits: 392
+  whatIsBall:
+    serializedVersion: 2
+    m_Bits: 64

@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b2c7fd193144ec694f32c296f0fb76a, type: 3}
+  m_Name: dot_antigravity
+  m_EditorClassIdentifier: 
+  title: Gravity Zero
+  image: {fileID: 21300000, guid: 98241f8de044fd649bffd9d68d3e8438, type: 3}
+  <Level>k__BackingField: 3
+  levels:
+  - <Name>k__BackingField: Gravity Zero
+    <Image>k__BackingField: {fileID: 21300000, guid: 98241f8de044fd649bffd9d68d3e8438, type: 3}
+    <Price>k__BackingField: 0
+    <LockState>k__BackingField: 3
+    description: 
+  - <Name>k__BackingField: Gravity Zero
+    <Image>k__BackingField: {fileID: 21300000, guid: 98241f8de044fd649bffd9d68d3e8438, type: 3}
+    <Price>k__BackingField: 0
+    <LockState>k__BackingField: 3
+    description: 
+  - <Name>k__BackingField: Gravity Zero
+    <Image>k__BackingField: {fileID: 21300000, guid: 98241f8de044fd649bffd9d68d3e8438, type: 3}
+    <Price>k__BackingField: 0
+    <LockState>k__BackingField: 3
+    description: 
+  selectable: 1
+  <Selected>k__BackingField: 1
+  onItemChange:
+    m_PersistentCalls:
+      m_Calls: []
+  layer:
+    serializedVersion: 2
+    m_Bits: 8
+  color: {r: 0.47058827, g: 0.9843138, b: 0.80392164, a: 1}
+  spawnChance: 0.1
+  <Points>k__BackingField: 1
+  <Sprites>k__BackingField: []
+  deathFeedback: {fileID: 4739482055778560424, guid: 5c5fa3e47a50d6d488f3d55cc92af7f5, type: 3}
+  radiusPerLevel:
+  - 15
+  - 25
+  - 50
+  durationPerLevel:
+  - 5
+  - 7
+  - 10
+  pointEffectorForcePerLevel:
+  - 0
+  areaEffectPrefab: {fileID: 8312879301509076524, guid: 5fd1ef3488559454bb0435792699aeaa, type: 3}
+  gradient:
+    m_Mode: 1
+    m_GradientMin:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    m_GradientMax:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 0}
+      key1: {r: 1, g: 1, b: 1, a: 0.9823529}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 32768
+      atime2: 65535
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 3
+    m_ColorMin: {r: 0, g: 0, b: 0, a: 0}
+    m_ColorMax: {r: 0, g: 0, b: 0, a: 0}
+  whatIsDot:
+    serializedVersion: 2
+    m_Bits: 8

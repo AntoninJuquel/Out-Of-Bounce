@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985d8d5129074726a33a5b9c9eb9e5bc, type: 3}
+  m_Name: powerup_laser_platform
+  m_EditorClassIdentifier: 
+  title: Laser platform
+  image: {fileID: 21300000, guid: e491f57655f490d41823808f3a1daaa7, type: 3}
+  <Level>k__BackingField: 0
+  levels:
+  - <Name>k__BackingField: Laser platform
+    <Image>k__BackingField: {fileID: 21300000, guid: e491f57655f490d41823808f3a1daaa7, type: 3}
+    <Price>k__BackingField: 0
+    <LockState>k__BackingField: 2
+    description: 
+  selectable: 1
+  <Selected>k__BackingField: 0
+  onItemChange:
+    m_PersistentCalls:
+      m_Calls: []
+  type: 1
+  whatIsDot:
+    serializedVersion: 2
+    m_Bits: 8
+  laserParticles: {fileID: 4650094288100281077, guid: 9a5133653ed069b43bcde4fee69d1132, type: 3}

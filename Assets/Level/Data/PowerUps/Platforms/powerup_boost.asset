@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e4f3d6da22b4b3c90378925136c0941, type: 3}
+  m_Name: powerup_boost
+  m_EditorClassIdentifier: 
+  title: Boost platform
+  image: {fileID: 0}
+  <Level>k__BackingField: 2
+  levels:
+  - <Name>k__BackingField: Boost platform
+    <Image>k__BackingField: {fileID: 0}
+    <Price>k__BackingField: 0
+    <LockState>k__BackingField: 3
+    description: Create a boost area pointing upward when you spawn a platform
+  - <Name>k__BackingField: Boost platform
+    <Image>k__BackingField: {fileID: 0}
+    <Price>k__BackingField: 0
+    <LockState>k__BackingField: 3
+    description: Create a boost on both sides
+  selectable: 1
+  <Selected>k__BackingField: 1
+  onItemChange:
+    m_PersistentCalls:
+      m_Calls: []
+  color: {r: 1, g: 0.7529412, b: 0, a: 1}
+  force: 50
+  duration: 10
+  areaEffectorPrefab: {fileID: 1506898221632921974, guid: 4b315ecb6eee36349a47e2625277c3cb, type: 3}

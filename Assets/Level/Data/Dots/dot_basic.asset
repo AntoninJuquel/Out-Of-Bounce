@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa1095cc1c3f47f4a511aad31b79a042, type: 3}
+  m_Name: dot_basic
+  m_EditorClassIdentifier: 
+  title: Basic
+  image: {fileID: 21300000, guid: 5a7ad430efde2374bab0adfa19acd008, type: 3}
+  <Level>k__BackingField: 1
+  levels:
+  - <Name>k__BackingField: Basic
+    <Image>k__BackingField: {fileID: 0}
+    <Price>k__BackingField: 0
+    <LockState>k__BackingField: 3
+    description: 
+  selectable: 0
+  <Selected>k__BackingField: 1
+  onItemChange:
+    m_PersistentCalls:
+      m_Calls: []
+  layer:
+    serializedVersion: 2
+    m_Bits: 8
+  color: {r: 0.6392157, g: 0.93725497, b: 0.56078434, a: 1}
+  spawnChance: 1
+  <Points>k__BackingField: 100
+  <Sprites>k__BackingField: []
+  deathFeedback: {fileID: 4739482055778560424, guid: 5c5fa3e47a50d6d488f3d55cc92af7f5, type: 3}

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1353ca2125bb4077a9fbdda107008d63, type: 3}
+  m_Name: skin_trail_default
+  m_EditorClassIdentifier: 
+  title: Default trail
+  image: {fileID: 7482667652216324306, guid: 3789e965a70b2f049936c2560048fb1d, type: 3}
+  <Level>k__BackingField: 1
+  levels:
+  - <Name>k__BackingField: 
+    <Image>k__BackingField: {fileID: 0}
+    <Price>k__BackingField: 0
+    <LockState>k__BackingField: 3
+    description: 
+  selectable: 1
+  <Selected>k__BackingField: 1
+  onItemChange:
+    m_PersistentCalls:
+      m_Calls: []
+  <Sprite>k__BackingField: {fileID: 7482667652216324306, guid: 3789e965a70b2f049936c2560048fb1d, type: 3}

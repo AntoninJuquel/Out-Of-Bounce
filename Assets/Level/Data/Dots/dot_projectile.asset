@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f2e357c91b4301be6b1bd28f79872f, type: 3}
+  m_Name: dot_projectile
+  m_EditorClassIdentifier: 
+  title: Projectiles
+  image: {fileID: 21300000, guid: 6acbcd994bbe15f4fbd45514ac93349a, type: 3}
+  <Level>k__BackingField: 3
+  levels:
+  - <Name>k__BackingField: Projectiles
+    <Image>k__BackingField: {fileID: 21300000, guid: 6acbcd994bbe15f4fbd45514ac93349a, type: 3}
+    <Price>k__BackingField: 0
+    <LockState>k__BackingField: 3
+    description: 
+  - <Name>k__BackingField: Projectiles
+    <Image>k__BackingField: {fileID: 21300000, guid: 6acbcd994bbe15f4fbd45514ac93349a, type: 3}
+    <Price>k__BackingField: 0
+    <LockState>k__BackingField: 3
+    description: 
+  - <Name>k__BackingField: Projectiles
+    <Image>k__BackingField: {fileID: 21300000, guid: 6acbcd994bbe15f4fbd45514ac93349a, type: 3}
+    <Price>k__BackingField: 0
+    <LockState>k__BackingField: 3
+    description: 
+  selectable: 1
+  <Selected>k__BackingField: 0
+  onItemChange:
+    m_PersistentCalls:
+      m_Calls: []
+  layer:
+    serializedVersion: 2
+    m_Bits: 8
+  color: {r: 0, g: 0.9604411, b: 1, a: 1}
+  spawnChance: 0.1
+  <Points>k__BackingField: 1
+  <Sprites>k__BackingField: []
+  deathFeedback: {fileID: 4739482055778560424, guid: 5c5fa3e47a50d6d488f3d55cc92af7f5, type: 3}
+  projectileGo: {fileID: 378646502181773580, guid: 32131b7efc1b20048b73f5ff020f5a0e, type: 3}
+  projectileSprite: {fileID: 3625043607559282579, guid: 0d267bc78a0864eb48358689b29ed20a, type: 3}
+  projectileSpeedPerLevel:
+  - 15
+  - 30
+  - 50
+  projectileDurationPerLevel:
+  - 5
+  projectileNumberPerLevel:
+  - 4
+  - 6
+  - 10

@@ -1,0 +1,7 @@
+[submodule "Assets/Systems/ChunkSystem"] 
+  path = Assets/Systems/ChunkSystem
+  url = https://github.com/AntoninJuquel/ChunkSystem
+
+[submodule "Assets/Systems/ReferenceSharing"] 
+  path = Assets/Systems/ReferenceSharing
+  url = https://github.com/AntoninJuquel/ReferenceSharing

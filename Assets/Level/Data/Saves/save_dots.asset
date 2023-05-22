@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e7c1b6eacc4a9aa37a1a1b6e096952, type: 3}
+  m_Name: save_dots
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: b4aa04be5f83c264b8345621390fe528, type: 2}
+    - {fileID: 11400000, guid: 3bb57eb4e2814ca49a503f017e240087, type: 2}
+    - {fileID: 11400000, guid: 7c50c7f1b70767947aba90f084b371ac, type: 2}
+    - {fileID: 11400000, guid: b70f04b769509dc41b4246803fbd841f, type: 2}
+    - {fileID: 11400000, guid: e5f4be341321a7249ba91d2c62b93f79, type: 2}
+    - {fileID: 11400000, guid: 294579e1a0e567f4994680f578bfd3c9, type: 2}
+    - {fileID: 11400000, guid: 694327941d97c994cabf4c6d585e2ca0, type: 2}
+    - {fileID: 11400000, guid: dead608448cd36c46b0ab354cf99ccaf, type: 2}
+    - {fileID: 11400000, guid: b93a1a404111f424b887be29940f257b, type: 2}
+    - {fileID: 11400000, guid: 55fb2897668ac2147a36e18f6da34d46, type: 2}
+    - {fileID: 11400000, guid: 68cba9ced2c8d5b45955ab92bc750f0c, type: 2}
+    - {fileID: 11400000, guid: c621096b9b9efd5419c11be4c0ff129b, type: 2}
+    - {fileID: 11400000, guid: 846bc1739e8164e41a9ca6a496d8c11b, type: 2}
+    - {fileID: 11400000, guid: 898388a25e4b481438a8b1cec8669ca5, type: 2}
+    - {fileID: 11400000, guid: d46cdd054cb43d34eb19edb1222df287, type: 2}
+    - {fileID: 11400000, guid: 1b4d7bc093855f040a5f972b481bbc3c, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: saveObjects
+      Entry: 7
+      Data: 0|Save.ISave[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 16
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 10
+      Data: 6
+    - Name: 
+      Entry: 10
+      Data: 7
+    - Name: 
+      Entry: 10
+      Data: 8
+    - Name: 
+      Entry: 10
+      Data: 9
+    - Name: 
+      Entry: 10
+      Data: 10
+    - Name: 
+      Entry: 10
+      Data: 11
+    - Name: 
+      Entry: 10
+      Data: 12
+    - Name: 
+      Entry: 10
+      Data: 13
+    - Name: 
+      Entry: 10
+      Data: 14
+    - Name: 
+      Entry: 10
+      Data: 15
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  directory: dots
+  saveType: 0

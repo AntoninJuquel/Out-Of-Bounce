@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e7c1b6eacc4a9aa37a1a1b6e096952, type: 3}
+  m_Name: save_skins
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: ec20e2eede1bf76468afd45eb7b71064, type: 2}
+    - {fileID: 11400000, guid: bb5d2a3dc3630bd4eb945fad5c42e921, type: 2}
+    - {fileID: 11400000, guid: 079d90890551f17418ce3f89ebb4be61, type: 2}
+    - {fileID: 11400000, guid: 6e39711a7bce3c34c9e284460b8f91be, type: 2}
+    - {fileID: 11400000, guid: 021d3347fc98ee34cbbf6563241629e2, type: 2}
+    - {fileID: 11400000, guid: 5a8adba30db08b04cad6f73e2db2c0b6, type: 2}
+    - {fileID: 11400000, guid: 85879df27c582fe4b9d1a0ada1da91da, type: 2}
+    - {fileID: 11400000, guid: 09cd94526cf3367418eb87942def0297, type: 2}
+    - {fileID: 11400000, guid: 9242fc362e2356849a4126a7fee6c4b0, type: 2}
+    - {fileID: 11400000, guid: 52dba1e926d0d084a88a0371975cbe8e, type: 2}
+    - {fileID: 11400000, guid: fdc0079ab5d20984e83a3d0a3a435aa1, type: 2}
+    - {fileID: 11400000, guid: 50e9c26e3dea6f24b8f51f2d28dc4447, type: 2}
+    - {fileID: 11400000, guid: 53d0d520824949f4a943683f14c9afed, type: 2}
+    - {fileID: 11400000, guid: 24e63390ad9e39345b93bfb304065107, type: 2}
+    - {fileID: 11400000, guid: aa5e44377cc546644aa18ddc6516933e, type: 2}
+    - {fileID: 11400000, guid: dd8dbbdbe0f9de349a4725f27d78da0d, type: 2}
+    - {fileID: 11400000, guid: 16f7b1e564c885c44839192c0dec62cd, type: 2}
+    - {fileID: 11400000, guid: 93648213625c0ce4a8e8f9f395a3e7a8, type: 2}
+    - {fileID: 11400000, guid: e850c45a87f280e4f9e3f06ea6e80e2d, type: 2}
+    - {fileID: 11400000, guid: 2b644ad48fde2df49b56b0fe07980e4a, type: 2}
+    - {fileID: 11400000, guid: ca18efe66768e0f4bba1731d9128b97f, type: 2}
+    - {fileID: 11400000, guid: 9fb28e447bf35314096264dca5609c12, type: 2}
+    - {fileID: 11400000, guid: b138f318157db42469db38edd8c5fe7f, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: saveObjects
+      Entry: 7
+      Data: 0|Save.ISave[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 23
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 10
+      Data: 6
+    - Name: 
+      Entry: 10
+      Data: 7
+    - Name: 
+      Entry: 10
+      Data: 8
+    - Name: 
+      Entry: 10
+      Data: 9
+    - Name: 
+      Entry: 10
+      Data: 10
+    - Name: 
+      Entry: 10
+      Data: 11
+    - Name: 
+      Entry: 10
+      Data: 12
+    - Name: 
+      Entry: 10
+      Data: 13
+    - Name: 
+      Entry: 10
+      Data: 14
+    - Name: 
+      Entry: 10
+      Data: 15
+    - Name: 
+      Entry: 10
+      Data: 16
+    - Name: 
+      Entry: 10
+      Data: 17
+    - Name: 
+      Entry: 10
+      Data: 18
+    - Name: 
+      Entry: 10
+      Data: 19
+    - Name: 
+      Entry: 10
+      Data: 20
+    - Name: 
+      Entry: 10
+      Data: 21
+    - Name: 
+      Entry: 10
+      Data: 22
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  directory: skins
+  saveType: 0

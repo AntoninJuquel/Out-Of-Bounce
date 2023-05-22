@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6df6826bb9a56b94a80367c6ff4a099f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player: {fileID: 11400000, guid: 687978d854f214344b9f661baf3f95e5, type: 2}
+  - shopItemCardPrefab: {instanceID: 0}
+  - shopContainer: {instanceID: 0}
+  - moneyText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
